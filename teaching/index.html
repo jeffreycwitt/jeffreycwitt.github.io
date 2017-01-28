@@ -1,0 +1,15 @@
+---
+layout: page
+title:  Teaching
+---
+
+<div class="home">
+  <h2>Course Syllabi</h2>
+  <ul>
+  {% for p in site.pages %}
+  {% if p.layout == "syllabus" %}
+    <li><a href="{{p.url}}">{{ p.title }}</a></li>
+  {% endif %}
+  {% endfor %}
+  </ul>
+</div>
