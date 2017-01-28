@@ -1,0 +1,24 @@
+---
+layout: default
+---
+<article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title | escape }}</h1>
+  </header>
+
+  <div class="post-content">
+    <style>
+    li {
+    text-indent: -20px;
+    padding-left: 20px;
+    }
+    span.date{
+      font-style: italic;
+    }
+    </style>
+    <div>
+      {{ content }}
+  </div>
+
+</article>
