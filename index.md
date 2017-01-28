@@ -8,7 +8,7 @@ layout: home
 
 <img rel="foaf:img" src="/assets/images/witt.jpg" alt="Profile Picture" style="float: left; margin: 20px 16px 5px 6px; width: 150px;"/>
 
-By training, I am a specialist in high- and late-medieval philosophy and theology. My present work focuses on the fourteenth century, but I am also interested in the impact of Scholasticism on the Renaissance, the Reformation, and early modern philosophy
+Greetings. Welcome to my professional page. I am a specialist in high- and late-medieval philosophy and theology. My present work focuses on the fourteenth century, but I am also interested in the impact of Scholasticism on the Renaissance, the Reformation, and early modern philosophy
 
 I also have a growing interest in the digital humanities and the process of moving philosophical texts from their original manuscript form to media more accessible to the community of scholars. Please see my ongoing development of the [Scholastic Commentaries and Texts Archive](http://scta.info), the [LombardPress Publication Project](http://lombardpress.org), and an example of this kind of publication at [http://scta.lombardpress.org](http://scta.lombardpress.org).
 
