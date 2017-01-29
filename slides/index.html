@@ -1,0 +1,14 @@
+---
+layout: page
+title:  Slide Decks
+---
+
+<div class="home">
+  <ul>
+  {% for p in site.pages %}
+    {% if p.layout == "slide" %}
+      <li><a href="{{p.url}}">{{ p.title }}</a></li>
+      {% endif %}
+  {% endfor %}
+  </ul>
+</div>
