@@ -7,14 +7,17 @@ layout: home
 
 
 <img rel="foaf:img" src="/assets/images/witt.jpg" alt="Profile Picture" style="float: left; margin: 4px 16px 5px 6px; width: 150px;"/>Greetings. Welcome to my professional page. My name is
-<span about="http://jeffreycwitt.com/#me" id="me" typeof="foaf:Person">
-      <a property="foaf:name rdfs:label" rel="foaf:homepage foaf:made" href="http://jeffreycwitt.com">
-        <span about="http://jeffreycwitt.com/#me">
+<span about="http://jeffreycwitt.github.io#me" id="me" typeof="foaf:Person">
+      <a property="foaf:name rdfs:label" rel="foaf:homepage foaf:made" href="http://jeffreycwitt.github.io#me">
+        <span about="http://jeffreycwitt.github.io#me">
           <span property="foaf:givenName">Jeffrey</span> C.
           <span property="foaf:familyName">Witt</span>
         </span>
       </a>
-      
+      <span id="cert" property="cert:key" resource="http://jeffreycwitt.github.io#cert" typeof="cert:RSAPublicKey">
+          <meta property="cert:modulus" datatype="xsd:hexBinary" content="" />
+          <meta property="cert:exponent" datatype="xsd:nonNegativeInteger" content="65537" />
+      </span>
     </span>
     I am a specialist in high- and late-medieval philosophy and theology. My present work focuses on the fourteenth century, but I am also interested in the impact of Scholasticism on the Renaissance, the Reformation, and early modern philosophy
 
