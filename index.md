@@ -14,10 +14,7 @@ layout: home
           <span property="foaf:familyName">Witt</span>
         </span>
       </a>
-      <!--<span id="cert" property="cert:key" resource="http://jeffreycwitt.com/#cert" typeof="cert:RSAPublicKey">
-          <meta property="cert:modulus" datatype="xsd:hexBinary" content="" />
-          <meta property="cert:exponent" datatype="xsd:nonNegativeInteger" content="65537" />
-      </span> -->
+      
     </span>
     I am a specialist in high- and late-medieval philosophy and theology. My present work focuses on the fourteenth century, but I am also interested in the impact of Scholasticism on the Renaissance, the Reformation, and early modern philosophy
 
