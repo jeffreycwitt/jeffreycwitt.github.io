@@ -15,7 +15,7 @@ layout: home
         </span>
       </a>
       <span id="cert" property="cert:key" resource="http://jeffreycwitt.github.io#cert" typeof="cert:RSAPublicKey">
-          <meta property="cert:modulus" datatype="xsd:hexBinary" content="" />
+          <meta property="cert:modulus" datatype="xsd:hexBinary" content="add88983"/>
           <meta property="cert:exponent" datatype="xsd:nonNegativeInteger" content="65537" />
       </span>
     </span>
