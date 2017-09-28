@@ -1,0 +1,14 @@
+body:after {
+content: "Jeffrey C. Witt © https://creativecommons.org/licenses/by-nc-sa/4.0/";
+position: fixed;
+bottom: 3.5em;
+left: 3.5em;
+opacity: 0.5
+}
+
+.small p {
+  font-size: 20px;
+}
+.small ul{
+  font-size: 20px;
+}

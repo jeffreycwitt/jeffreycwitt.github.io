@@ -6,7 +6,7 @@ title:  Slide Decks
 <div class="home">
   <ul>
   {% for p in site.pages %}
-    {% if p.layout == "slide" and p.category != "class" %}
+    {% if p.layout == "slide" and p.category == "class" %}
     <li><a href="{{p.url}}">{{ p.title }}</a>
       <span style="display: block; padding-left: 10px">{{p.description}}</span>
       <span style="display: block; padding-left: 10px">{{p.place}}</span>
