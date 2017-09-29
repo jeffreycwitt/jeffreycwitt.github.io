@@ -38,7 +38,8 @@ place: "Harvard University, Cambridge, MA"
   2. Semantic Encoding vs. Visual Encoding
   3. The Basic Rules of XML
   4. TEI and Why We Need
-  5. Hands on Work
+  5. Collaboration with Git and Github
+  6. Hands on Work
 
 </section>
 
@@ -58,7 +59,7 @@ place: "Harvard University, Cambridge, MA"
     are communicated to you as a human reader.
 
     4) Identify what kinds of relationships between data types are communicated
-    and how is this communicated.
+    and how this is communicated.
 
     Question: Were there any data types or relationships presented in ambiguous or unclear ways?
     What made these features ambiguous?
@@ -164,7 +165,6 @@ place: "Harvard University, Cambridge, MA"
 	</section>
 	<section>
 		<h2>The X in XML stands for eXtensible</h2>
-
 		<p>
       This means that XML actually does not specify any set of tags or element names.
       Anyone can make up their own set of elements and use them however they like.
@@ -197,12 +197,12 @@ place: "Harvard University, Cambridge, MA"
 	</section>
 	<section>
 		<h2>TEI: a predefined set of elements designed by and for humanities scholars and textual editors</h2>
+    <p>TEI is designed to privilege the descriptive markup of a text over presentational markup</p>
 	</section>
 	<section>
 		<h2>About TEI and the TEI Guidelines</h2>
     <h3>Activity</h3>
     <p>Explore the TEI Guidelines <a href="http://www.tei-c.org/release/doc/tei-p5-doc/en/html/index.html">http://www.tei-c.org/release/doc/tei-p5-doc/en/html/index.html</a></p>
-    <p>Tutorials: <a href="http://teibyexample.org/">http://teibyexample.org/</a></p>
     <hr/>
     <p>Question: What element (or elements) should I use to identify the manuscript I'm transcribing?</p>
     <p>Question: What element should I use to encode a new page, a new column, or a new line in a manuscript?</p>
@@ -287,14 +287,48 @@ place: "Harvard University, Cambridge, MA"
 </section>
 <section>
   <section data-markdown>
+    # Collaboration with Github and Git
+
+    * Git is a version control software
+    * Github is a collaboration platform that relies on Git.
+
+  </section>
+  <section data-markdown class="medium">
+    ## Git Branches
+
+    Git and Github allows us all to work on the same file system and then seamlessly bring our collective work together,
+    while at the same time tracking every change in a version history.
+
+    A key component of this workflow is the concept of branches.
+
+    Each user can create a "branch" (or copy) of a "repository".
+
+    They can then make changes to their own branch without fear of overwriting anyone else's changes.
+
+    However, because these branches retain a connection to the main "stem",
+    an adminstrator can easily view all these branches and merge them together.
+
+  </section>
+  <section data-markdown>
+    ## TEI Web Editor
+
+    The TEI Web Editor is simplified editor that tries to make it as easy as possible
+    for an editor to create a branch, get to work, and submit their changes.
+
+  </section>
+</section>
+<section>
+  <section data-markdown>
     ## Hands On Work
 
-    Some questions to consider as a team
+    Some questions to consider while you work:
 
-    * What special features about our texts do we want to record?
-    * What unique encoding challenges do our documents present?
-    * How can we make sure we are recording this information in the same way?
-    * What TEI elements best express the underlying logic of our texts (rather than merely how we want it to look)?
+    * Am I engaging in Descriptive markup or Presentation markup?
+    * What TEI elements best express the underlying logic of my texts (rather than merely how I want it to look)?
+    * What special features about my texts do I want to record?
+    * What unique encoding challenges do my documents present?
+    * How can I make sure I am recording this information in the same way as my other team members?
+
   </section>
 </section>
 <section data-markdown class="small">

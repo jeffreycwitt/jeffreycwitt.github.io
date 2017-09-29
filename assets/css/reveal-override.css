@@ -12,3 +12,7 @@ opacity: 0.5
 .small ul{
   font-size: 20px;
 }
+
+.medium p {
+  font-size: 30px;
+}
