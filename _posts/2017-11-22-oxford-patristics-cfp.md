@@ -2,7 +2,7 @@
 layout: post
 title:  "Politics and Society: The Patristic Legacy in the Middle Ages"
 subtitle: "a call for papers"
-date:   2017-02-28
+date:   2017-11-22
 comments: true
 description: A call for papers for a workshop on the Patristic Legacy in the Middle Ages.
 ---
