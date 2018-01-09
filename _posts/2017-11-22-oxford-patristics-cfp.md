@@ -11,7 +11,7 @@ description: A call for papers for a workshop on the Patristic Legacy in the Mid
 
 ##### Workshop Proposal and Call for Papers for:
 
-#### XIXth International Conference on Patristics Studies
+#### XVIIIth International Conference on Patristics Studies
 Oxford University
 19 August-24 August 2019
 
