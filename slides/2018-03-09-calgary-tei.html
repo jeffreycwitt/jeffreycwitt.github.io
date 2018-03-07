@@ -25,6 +25,7 @@ place: "University of Calgary"
   <hr/>
   <p>2018 University of Calgary, March 9th</p>
   <p>Slide Deck: <a href="http://jeffreycwitt.com/slides/2018-03-09-calgary-tei">http://jeffreycwitt.com/slides/2018-03-09-calgary-tei</a>
+  <p>A place for shared files: <a href="http://bit.ly/2wi4acf">http://bit.ly/2wi4acf</a></p>
 </p>
 
 
@@ -44,9 +45,10 @@ place: "University of Calgary"
     * [What is TEI and Why Do We Need It](#/8)
     * [Encoding and Styling with TEI](#/9)
   * Lunch 12:30-1:30
-  * [1:30-3:30 - Session 3](#session-3)
+  * [1:30-2:30 - Session 3](#session-3)
+    * Examples of Publications with TEI
     * [Publishing an Edition with TEI](#/11)
-  * [3:45-4:30pm - Session 4](#/12)
+  * [2:30-4:30pm - Session 4](#/12)
     * [Advanced Topics in TEI](#/13)
     * [Wrap Up Discussion](#/18)
 </section>
@@ -95,7 +97,10 @@ place: "University of Calgary"
     ### 6.	To have an understanding of “advanced” textual encoding practices.
 
     a.  To understand how to do basic encoding of common features of a critical edition,
-    such as a critical apparatus, an apparatus fontium, and diplomatic transcriptions
+    such as a critical apparatus, an apparatus fontium, diplomatic transcriptions, segment classification.
+
+    b. To know what resources are available both to guide your encoding
+    and to help you go further.
 
   </section>
 </section>
@@ -192,11 +197,11 @@ place: "University of Calgary"
 
 	<p>In addition to containing text and other elements, elements can take on "attributes".</p>
 
-	<div class="xml-block">
+	<div class="xml-block" style="font-size: 30px;">
 		<span class="element">&lt;quote <span class="attribute">type="paraphrase"</span>&gt;</span>This a paraphrased quotation <span class="element">&lt;/quote&gt;</span>
 	</div>
 	<br/>
-	<div class="xml-block">
+	<div class="xml-block" style="font-size: 30px;">
 			<span class="element">&lt;div <span class="attribute">type="articulus"</span>&gt;</span>This is an article division <span class="element">&lt;/div&gt;</span>
 	</div>
 	</section>
@@ -506,7 +511,7 @@ place: "University of Calgary"
 </section>
 <section>
   <section data-markdown>
-    # Advanced TEI Topics
+    ## TEI Customizations and Advanced TEI Topics
 
     1. Diplomatic Transcriptions
     2. Recording Names, Places, Interpretations, et alia
@@ -585,6 +590,19 @@ place: "University of Calgary"
 
 
   </section>
+  <section data-markdown>
+    #### Style these classifications with a CSS selector
+
+    ```css-syntax
+    name[ref="#bob1"]{
+      background-color: yellow;
+    }
+    ```
+
+
+
+
+  </section>
 </section>
 <section>
   <section data-markdown>
@@ -604,7 +622,7 @@ place: "University of Calgary"
   <section data-markdown>
     ### Activity
 
-    Using the [TEI-WEB-EDITOR](https://tei-web-editor.herokuapp.com/) that we worked with yesterday...
+    Using the [TEI-WEB-EDITOR](https://tei-web-editor.herokuapp.com/) that we worked with earlier...
     * Open the file called: `/xml/lbp-1.0.0-critical-edition.xml`
     * Follow the LombardPress-Critical Schema for creating an apparatus fontium [http://lombardpress.org/schema/docs/critical/#apparatus-fontium](http://lombardpress.org/schema/docs/critical/#apparatus-fontium)
     * Then view your file on githubpages at [your-username].github.io/simple-tei-edition/critical.html.
@@ -631,7 +649,7 @@ place: "University of Calgary"
   <section data-markdown>
     ### Activity
 
-    Using the [TEI-WEB-EDITOR](https://tei-web-editor.herokuapp.com/) that we worked with yesterday...
+    Using the [TEI-WEB-EDITOR](https://tei-web-editor.herokuapp.com/) that we worked with earlier...
     * Open the file called: `/xml/lbp-1.0.0-critical-edition.xml`
     * Follow the LombardPress-Critical Schema for creating an apparatus fontium [http://lombardpress.org/schema/docs/critical/#apparatus-criticus](http://lombardpress.org/schema/docs/critical/#apparatus-criticus)
     * [more instructions on next slide]
@@ -642,7 +660,7 @@ place: "University of Calgary"
 
     * Then view your file on githubpages at [your-username].github.io/critical.html.
     * Hover over the places you've marked with a citation, and view those citations in the bottom of of the browser window.
-    * To see, a print out view. Save a copy of your file to your desktop. Make sure it validates in Oxygen and then upload for conversion at [http://print.lombardpress.org](http://print.lombardpress.org) or [http://52.214.200.219/](http://52.214.200.219/)
+    * To see, a print out view. Save a copy of your file to your desktop. Make sure it validates in Oxygen and then upload for conversion at [http://print.lombardpress.org](http://print.lombardpress.org)
 
   </section>
 </section>
