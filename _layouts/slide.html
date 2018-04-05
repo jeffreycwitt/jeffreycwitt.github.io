@@ -25,25 +25,25 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-    <link rel="stylesheet" href="{{ "/javascripts/reveal.js/css/reveal.css" | prepend: site.baseurl }}"/>
+    <link rel="stylesheet" href="{{ "/javascripts/reveal.js-3.6.0/css/reveal.css" | prepend: site.baseurl }}"/>
     {%if page.theme %}
-      <link rel="stylesheet" href="{{ "/javascripts/reveal.js/css/theme/" | prepend: site.baseurl | append: page.theme | append: '.css' }}" id="theme"/>
+      <link rel="stylesheet" href="{{ "/javascripts/reveal.js-3.6.0/css/theme/" | prepend: site.baseurl | append: page.theme | append: '.css' }}" id="theme"/>
     {% else %}
-      <link rel="stylesheet" href="{{ "/javascripts/reveal.js/css/theme/black.css" | prepend: site.baseurl }}" id="theme"/>
+      <link rel="stylesheet" href="{{ "/javascripts/reveal.js-3.6.0/css/theme/black.css" | prepend: site.baseurl }}" id="theme"/>
     {% endif %}
 
     <!-- reveal override -->
     <link rel="stylesheet" href="{{ "/assets/css/reveal-override.css" | prepend: site.baseurl }}"/>
 
     <!-- Code syntax highlighting -->
-    <link rel="stylesheet" href="{{ "/javascripts/reveal.js/lib/css/zenburn.css" | prepend: site.baseurl }}"/>
+    <link rel="stylesheet" href="{{ "/javascripts/reveal.js.3.6.0/lib/css/zenburn.css" | prepend: site.baseurl }}"/>
 
     <!-- Printing and PDF exports -->
     <script>
       var link = document.createElement( 'link' );
       link.rel = 'stylesheet';
       link.type = 'text/css';
-      link.href = window.location.search.match( /print-pdf/gi ) ? '{{ "/javascripts/reveal.js/css/print/pdf.css" | prepend: site.baseurl }}' : '{{ "/javascripts/reveal.js/css/print/paper.css" | prepend: site.baseurl }}';
+      link.href = window.location.search.match( /print-pdf/gi ) ? '{{ "/javascripts/reveal.js-3.6.0/css/print/pdf.css" | prepend: site.baseurl }}' : '{{ "/javascripts/reveal.js-3.6.0/css/print/paper.css" | prepend: site.baseurl }}';
       document.getElementsByTagName( 'head' )[0].appendChild( link );
     </script>
 
@@ -64,8 +64,8 @@
       </div>
     </div>
 
-    <script src="{{ "/javascripts/reveal.js/lib/js/head.min.js" | prepend: site.baseurl }}"></script>
-    <script src="{{ "/javascripts/reveal.js/js/reveal.js" | prepend: site.baseurl }}"></script>
+    <script src="{{ "/javascripts/reveal.js-3.6.0/lib/js/head.min.js" | prepend: site.baseurl }}"></script>
+    <script src="{{ "/javascripts/reveal.js-3.6.0/js/reveal.js" | prepend: site.baseurl }}"></script>
     <script>
       // Full list of configuration options available at:
       // https://github.com/hakimel/reveal.js#configuration
@@ -81,12 +81,12 @@
         {% endif %}
         // Optional reveal.js plugins
         dependencies: [
-          { src: '{{ "/javascripts/reveal.js/lib/js/classList.js" | prepend: site.baseurl }}', condition: function() { return !document.body.classList; } },
-          { src: '{{ "/javascripts/reveal.js/plugin/markdown/marked.js" | prepend: site.baseurl }}', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: '{{ "/javascripts/reveal.js/plugin/markdown/markdown.js" | prepend: site.baseurl }}', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: '{{ "/javascripts/reveal.js/plugin/highlight/highlight.js" | prepend: site.baseurl }}', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-          { src: '{{ "/javascripts/reveal.js/plugin/zoom-js/zoom.js" | prepend: site.baseurl }}', async: true },
-          { src: '{{ "/javascripts/reveal.js/plugin/notes/notes.js" | prepend: site.baseurl }}', async: true }
+          { src: '{{ "/javascripts/reveal.js-3.6.0/lib/js/classList.js" | prepend: site.baseurl }}', condition: function() { return !document.body.classList; } },
+          { src: '{{ "/javascripts/reveal.js-3.6.0/plugin/markdown/marked.js" | prepend: site.baseurl }}', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '{{ "/javascripts/reveal.js-3.6.0/plugin/markdown/markdown.js" | prepend: site.baseurl }}', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '{{ "/javascripts/reveal.js-3.6.0/plugin/highlight/highlight.js" | prepend: site.baseurl }}', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: '{{ "/javascripts/reveal.js-3.6.0/plugin/zoom-js/zoom.js" | prepend: site.baseurl }}', async: true },
+          { src: '{{ "/javascripts/reveal.js-3.6.0/plugin/notes/notes.js" | prepend: site.baseurl }}', async: true }
         ]
       });
     </script>
