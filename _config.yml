@@ -23,6 +23,8 @@ twitter_username: jeffreycwitt
 github_username:  jeffreycwitt
 assets_url: "https://s3.amazonaws.com/lum-faculty-jcwitt-public/"
 
+permalink: /:year-:month-:day-:title/
+
 # Build settings
 markdown: kramdown
 theme:
