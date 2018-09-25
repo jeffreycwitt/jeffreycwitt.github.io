@@ -1,0 +1,233 @@
+---
+layout: slide
+title: Introduction to XML and TEI Part II - Critical Editing with TEI
+description: Introduction to XML and TEI Part II - Critical Editing with TEI
+theme: white
+transition: slide
+tags: hide
+---
+
+<style>
+.xml-block {background-color: lightgray; text-align: left;}
+.element {color: red;}
+.attribute {color: blue;}
+.indent1 {padding-left: 20px;}
+.indent2 {padding-left: 40px;}
+</style>
+
+<section data-markdown>
+
+## Introduction to XML and TEI Part II: Critical Editing with TEI
+
+---
+
+Jeffrey C. Witt (Loyola University Maryland)
+
+---
+
+</section>
+
+<section>
+	<section>
+		<h2>Encoding the Apparatus Criticus</h2>
+	</section>
+	<section>
+		<p>The first thing we need to know is that the creation of a field standard schemata for critical editing is still in development.</p>
+	</section>
+	<section>
+		<p>The central challenge lies in replacing the visually and ambiguously encoded apparatus criticus with a semantically encoded data base.</p>
+
+		<p>This primarily means we need to abstract from the way we eventually expect our apparatus to look. We must think in terms of data types.</p>
+	</section>
+
+	<section>
+		<p>What are the different types required to construct an apparatus?</p>
+		<ul>
+			<li>Lemma</li>
+			<li>Reading</li>
+			<li>Sigla</li>
+			<li>Some kind of abbreviated description of the type of variation</li>
+		</ul>
+	</section>
+	<section>
+		<h2>TEI Guidelines for a Critical Apparatus</h2>
+		<p>See: <a href="http://www.tei-c.org/release/doc/tei-p5-doc/en/html/TC.html">http://www.tei-c.org/release/doc/tei-p5-doc/en/html/TC.html</a></p>
+		<p>The basic form of a TEI apparatus entry is as follows:</p>
+		<div class="xml-block">
+			<span class="element">&lt;app&gt;</span><br/>
+				<span class="element indent1" style="padding-left: 20px">&lt;lem&gt;</span>fides<span class="element">&lt;/lem&gt;</span><br/>
+				<span class="element indent1" style="padding-left: 20px">&lt;rdg <span class="attribute">wit="#V"</span>&gt;</span>fidem<span class="element">&lt;/rdg&gt;</span><br/>
+			<span class="element">&lt;/app&gt;</span><br/>
+		</div>
+	</section>
+	<section>
+		<h2>The @type attribute</h2>
+		<p>Now there are obviously more kinds of variants than a simple form variation.</p>
+		<p>There are omissions, corrections, additions, etc.</p>
+		<p>To deal with this variation, we are developing a taxonomy of "types" that you can add to your apparatus entry as follows.</p>
+
+		<div class="xml-block">
+			<span class="element">&lt;app&gt;</span><br/>
+				<span class="element" style="padding-left: 20px">&lt;lem&gt;</span>fides<span class="element">&lt;/lem&gt;</span></br>
+				<span class="element" style="padding-left: 20px">&lt;rdg <span class="attribute">wit="#V"</span> <span class="attribute">type="omission"</span>/&gt;</span><br/>
+			<span class="element">&lt;/app&gt;</span><br/>
+		</div>
+		</section>
+		<section>
+		<p>Or</p>
+		<div class="xml-block">
+			<span class="element">&lt;app&gt;</span><br/>
+				<span class="element" style="padding-left: 20px">&lt;lem&gt;</span>fides<span class="element">&lt;/lem&gt;</span><br/>
+				<span class="element" style="padding-left: 20px">&lt;rdg <span class="attribute">wit="#V"</span> <span class="attribute">type="correction-substitution"</span>&gt;</span><br/>
+					<span class="element" style="padding-left: 40px">&lt;subst&gt;</span><br/>
+						<span class="element" style="padding-left: 60px">&lt;del&gt;</span>fidem<span class="element">&lt;/del&gt;</span><br/>
+						<span class="element" style="padding-left: 60px">&lt;add&gt;</span>fides<span class="element">&lt;/add&gt;</span><br/>
+					<span class="element" style="padding-left: 40px">&lt;/subst&gt;</span><br/>
+				<span class="element" style="padding-left: 20px">&lt;/rdg&gt;</span><br/>
+			<span class="element">&lt;/app&gt;</span><br/>
+		</div>
+	</section>
+	<!--<section>
+	<p>[List of currently supported apparatus types]</p>
+	</section> -->
+	<section>
+		<h2>Semantic encoding and new possibilities</h2>
+		<p>Because we are encoding data types and not presentation forms...</p>
+		<p>And because our digital representation allows us to transcend the concerns of limited space...</p>
+		<p>We can add additional data to our apparatus criticus that is simply not possible in printed editions.</p>
+	</section>
+	<section>
+		<h3>For example, we can add a note specific to each apparatus entry.</h3>
+
+		<div class="xml-block">
+			<span class="element">&lt;app&gt;</span><br/>
+				<span class="element indent1" style="padding-left: 20px">&lt;lem&gt;</span>fides<span class="element">&lt;/lem&gt;</span><br/>
+				<span class="element indent1" style="padding-left: 20px">&lt;rdg <span class="attribute">wit="#V"</span>&gt;</span>fidem<span class="element">&lt;/rdg&gt;</span><br/>
+				<span class="element indent1" style="padding-left: 20px">&lt;note&gt;</span>This is a note about this specific apparatus entry. Here you could explain at length why you made this decision along with any other pertinent details related to this variant entry.<span class="element">&lt;/note&gt;</span><br/>
+			<span class="element">&lt;/app&gt;</span><br/>
+			<br/>
+		</div>
+	</section>
+	<section>
+		<h3>With all this is in place, we can render the critical apparatus as seen in this demo:</h3>
+		<iframe width="740" height="450" src="https://www.youtube.com/embed/5zC1ZoEdw8Q" frameborder="0" allowfullscreen></iframe>
+	</section>
+	<section>
+		<h2>A note on the state of development</h2>
+		<p>It needs to be noted that while we can offer some guidelines about how to
+		semantically encode an apparatus, these guidelines are very much a work in progress.</p>
+	</section>
+	<section>
+		<p>My goal and the goal of the groups I work with is to help provide guidelines that can standardize this progress as much as possible.</p>
+		<p>Our work is advanced by partnering with groups who are committed to semantic encoding.</p>
+		<p>As you encounter new use cases and encoding problems, we can develop an increasingly robust set of guidelines and best practices.</p>
+		<p>But the point is that this is a partnership, in which we develop together.</p>
+		<p>This means we will encounter encoding issues to which I cannot give you a direct answer.</p>
+		<p>But if you can log your encoding issue into our system, we can develop a feature request and work to support this or that data type.</p>
+	</section>
+
+	<section>
+		<h2>Dealing with uncertainty</h2>
+		<p>The @type=manual</p>
+		<div class="xml-block">
+			<span class="element">&lt;app&gt;</span><br/>
+				<span class="element" style="padding-left: 20px">&lt;lem&gt;</span>fides<span class="element">&lt;/lem&gt;</span><br/>
+				<span class="element" style="padding-left: 20px">&lt;rdg <span class="attribute">wit="#V"</span> <span class="attribute">type="manual"</span>&gt;</span>fides] fides <br/>
+				<span class="element" style="padding-left: 40px">&lt;hi <span class="attribute">rend="italic"</span>&gt;</span>corr ex.<span class="element">&lt;/hi&gt;</span> interl. fidem<span class="element" style="padding-left: 20px">&lt;/rdg&gt;</span><br/>
+			<span class="element">&lt;/app&gt;</span><br/>
+		</div>
+		<p>Note: This is BAD Semantic encoding. It should not be encouraged. But it is a method we can use as we collect information about various use cases. Each @type=manual becomes an instance that alerts us to the need to create an abstract data type.</p>
+	</section>
+	<section>
+		<h2>Feature Requests and Encoding Questions</h2>
+		<p>Feature requests and encoding questions can be asked here: <a href="https://github.com/lombardpress/lombardpress-schema/issues">https://github.com/lombardpress/lombardpress-schema/issues</a>. All you need to do is create a new issue and describe your encoding problem. It is ideal if you can add a screen shot of the encoding problem you are facing.</p>
+		<p>Every time you are tempted to create an @type=manual, you should create an issue asking if there is proper type for the variant instance you are currently dealing with.</p>
+	</section>
+	<section>
+		<h3>The emerging form of organizational oversight for editorial schema</h3>
+		<img src="{{ site.assets_url }}porto-slides/critical-schema-diagram.png">
+	</section>
+	<section>
+		<h2>Planned Meetings</h2>
+		<ul>
+			<li>LombardPress Team Meeting, Barcelona, July 12th-14th</li>
+			<li>Digital Latin Library Meeting, Raleigh, NC, USA July 27th-28th</li>
+			<li>GRPL meeting, Boston, MA, USA August 1st</li>
+			<li>Sentences Commentary Meeting, Basel, Switzerland, August 15th-19th</li>
+		</ul>
+		<p>The point is that a lot of work is currently on-going. And there is a lot of energy behind it.</p>
+		<p>If your team commits to this approach, we can leverage your interest and you can have a major voice at the table.</p>
+		<p>For example, it would be ideal to meet on a yearly basis to develop our encoding standards. Next summer, it would be great to have a representative from the Petrus Hispanus project at each of these standards meetings.</p>
+	</section>
+</section>
+<section>
+	<section>
+		<h2>Encoding the Apparatus Fontium</h2>
+	</section>
+	<section>
+		<h2>There are two major types of data in a critical edition that usually get linked to an apparatus fontium.</h2>
+		<ul>
+			<li>Quotations</li>
+			<li>References</li>
+	</section>
+	<section>
+		<h2>Quotations</h2>
+		<p>We encode quotations as follows:</p>
+		<div class="xml-block">
+			<span class="element">&lt;cit&gt;</span><br/>
+				<span class="element" style="padding-left: 20px">&lt;quote&gt;</span>This is a quotation, perhaps from Augustine's City of God<span class="element">&lt;/quote&gt;</span><br/>
+				<span class="element" style="padding-left: 20px">&lt;bibl&gt;</span>Augustine, City of God, III, 2, 5 (PL XX:XX)<span class="element" style="padding-left: 20px">&lt;/bibl&gt;</span><br/>
+			<span class="element">&lt;/cit&gt;</span>
+		</div>
+	</section>
+	<section>
+	<h2>References</h2>
+		<p>We encode references as follows:</p>
+		<div class="xml-block">
+			<span class="element">&lt;cit&gt;</span><br/>
+				<span class="element" style="padding-left: 20px">&lt;ref&gt;</span>Magister in libro I, distinctione 23<span class="element">&lt;/ref&gt;</span><br/>
+				<span class="element" style="padding-left: 20px">&lt;bibl&gt;</span>Lombard, Sententia, I, d. 23, c. 2 (Brady I:XX)<span class="element" style="padding-left: 20px">&lt;/bibl&gt;</span><br/>
+			<span class="element">&lt;/cit&gt;</span>
+		</div>
+	</section>
+
+</section>
+
+
+<section>
+	<section>
+		<h2>Encoding the Diplomatic or Documentary Edition</h2>
+	</section>
+	<section>
+		<h3>The emerging form of organizational oversight for schema of diplomatic editions</h3>
+		<img src="{{ site.assets_url }}porto-slides/diplomatic-schema-diagram.png"/>
+	</section>
+	<section>
+		<h3>Creating diplomatic transcriptions alongside our critical texts allows us to record all kinds of detail about each witness that normally is squeezed out of a print critical editions on account of the limits of printing space.</h3>
+	</section>
+	<section>
+		<h3>For example we can record medieval and normalized spellings</h3>
+		<div class="xml-block">
+			<span class="element">&lt;choice&gt;</span><br/>
+				<span class="element" style="padding-left: 20px">&lt;orig&gt;</span>sicud<span class="element" style="padding-left: 20px">&lt;/orig&gt;</span><br/>
+				<span class="element" style="padding-left: 20px">&lt;reg&gt;</span>sicut<span class="element" style="padding-left: 20px">&lt;/reg&gt;</span><br/>
+			<span class="element">&lt;/choice&gt;</span>
+		</div>
+	</section>
+	<section>
+		<h4>But that only begins to scratch the surface. We can record line breaks, marginal notes, and even medieval punctuation.</h4>
+		<img src="{{ site.assets_url }}porto-slides/diplomatic-transcr-example.png"/>
+	</section>
+	<section>
+		<h3>Creating diplomatic transcriptions opens up all new kinds of possibilities.</h3>
+	</section>
+	<section>
+		<h4>For example: On demand collations</h4>
+		<img src="{{ site.assets_url }}porto-slides/lbp-with-collation.png"/>
+	</section>
+	<section>
+		<h4>For example: transcription-image line alignment</h4>
+		<img src="{{ site.assets_url }}porto-slides/plaoul-with-images-example.png"/>
+	</section>
+
+</section>
