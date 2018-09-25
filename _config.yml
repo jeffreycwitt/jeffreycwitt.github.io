@@ -21,12 +21,17 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "jeffreycwitt.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jeffreycwitt
 github_username:  jeffreycwitt
+assets_url: "https://s3.amazonaws.com/lum-faculty-jcwitt-public/"
 
 # Build settings
 markdown: kramdown
 theme:
+future: true
 gems:
   - jekyll-feed
 exclude:
   - Gemfile
   - Gemfile.lock
+collections:
+  slides:
+    output: true

@@ -6,7 +6,7 @@ layout: home
 ---
 
 
-<img rel="foaf:img" src="/assets/images/witt.jpg" alt="Profile Picture" style="float: left; margin: 4px 16px 5px 6px; width: 150px;"/>Greetings. Welcome to my professional page. My name is
+<img rel="foaf:img" src="{{ site.assets_url }}witt.jpg" alt="Profile Picture" style="float: left; margin: 4px 16px 5px 6px; width: 150px;"/>Greetings. Welcome to my professional page. My name is
 <span about="http://jeffreycwitt.com/#me" id="me" typeof="foaf:Person">
       <a property="foaf:name rdfs:label" rel="foaf:homepage foaf:made" href="http://jeffreycwitt.com"><span about="http://jeffreycwitt.com/#me"><span property="foaf:givenName">Jeffrey</span> <span property="foaf:familyName">Witt</span></span></a>
       <span id="cert" property="cert:key" resource="http://jeffreycwitt.com/#cert" typeof="cert:RSAPublicKey">

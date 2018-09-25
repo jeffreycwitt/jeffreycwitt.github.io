@@ -1,0 +1,251 @@
+---
+layout: slide
+title: The Scholastic Commentaries and Texts Archive -- Creating the Foundation of a Critical Corpus
+theme: white
+transition: slide
+tags: presentation
+---
+
+
+<section>
+<h3>The Scholastic Commentaries and Texts Archive: Creating the Foundation of a Critical Corpus</h3>
+<hr/>
+<p>Jeffrey C. Witt (Loyola University Maryland) | @jeffreycwitt</p>
+<hr/>
+<p>2017 MLA, Philadelphia, Pennyslvania, January 7, 2017</p>
+<p>Slide Deck: <a href="http://lombardpress.org/slides/2017-01-07-mla/">http://lombardpress.org/slides/2017-01-07-mla</a></p>
+</section>
+<section>
+  <section data-markdown>
+    # Problems and Aspirations
+  </section>
+  <section data-markdown>
+    ## At the current time...
+    ## The medieval corpus is an invisible tapestry
+  </section>
+  <section data-markdown>
+    ## We want to provide a scientific view of each thread within the context of the whole.
+    ### A scientific view through computer assisted:
+    - Analysis
+    - Search
+    - Access
+    - Synthesis
+  </section>
+</section>
+<section>
+  <section data-markdown>
+    # The Current Paradigm
+    ## Text-as-Document
+  </section>
+  <section data-markdown>
+    ## The problem with the text-as-document approach
+    ### Data Isolation: in print and on the web
+  </section>
+  <section>
+    <img src="{{ site.assets_url }}altavilla-page.png"/>
+  </section>
+  <section>
+    <img src="{{ site.assets_url }}auriol-page.png"/>
+  </section>
+  <section>
+    <img src="{{ site.assets_url }}candia-page.png"/>
+  </section>
+  <section>
+    <img src="{{ site.assets_url }}rufus-of-cornwall.png"/>
+  </section>
+  <section>
+    <img src="{{ site.assets_url }}mirecourt-page.png"/>
+  </section>
+  <section>
+    <img src="{{ site.assets_url }}fitzralph-page.png"/>
+  </section>
+  <section>
+    <img src="{{ site.assets_url }}magister-sententiarum-page.png"/>
+  </section>
+  <section>
+    <img src="{{ site.assets_url }}2016-08-25-basel-workshop-report/data-silo-example.png"/>
+  </section>
+  <section data-markdown>
+    **In sum**: research groups are currently
+    choosing the most inefficient way possible
+    to make data available on the web,
+    while leaving us with results that go barely
+    beyond the capabilities of the printed page.
+  </section>
+</section>
+<section>
+<section data-markdown>
+  # A New Paradigm
+  ## Text-as-Network
+</section>
+<section data-markdown style="font-size: 30px">
+  Despite the inarguable benefits the Web provides, until recently the same principles that
+  enabled the Web of documents to flourish have not been applied to data. Traditionally, data
+  published on the Web has been made available as raw dumps in formats such as CSV or
+  XML, or marked up as HTML tables, sacrificing much of its structure and semantics. In the
+  conventional hypertext Web, the nature of the relationship between two linked documents is
+  implicit, as the data format, i.e. HTML, is not sufficiently expressive to enable individual
+  entities described in a particular document to be connected by typed links to related
+  entities.
+
+  Christian Bizer, Tom Heath, Tim Berners-Lee, "Linked Data - The Story So Far", http://tomheath.com/papers/bizer-heath-berners-lee-ijswis-linked-data.pdf
+
+</section>
+<section>
+  "Data is relationships." -- Tim Berners Lee, Ted Talk, February 2009
+</section>
+<section>
+  <iframe width="700px" height="500px" src="https://www.youtube.com/embed/OM6XIICm_qo" frameborder="0" allowfullscreen></iframe>
+</section>
+</section>
+<section data-markdown>
+  # Actualization
+</section>
+<section>
+  <section data-markdown>
+    ## Our Data
+  </section>
+  <section>
+    <img src="{{ site.assets_url }}hierarchy7.jpg"/>
+  </section>
+  <section>
+    <img src="{{ site.assets_url }}distinction-thread-infographic.png"/>
+  </section>
+  <section>
+    <img src="{{ site.assets_url }}web.jpg"/>
+  </section>
+  <section>
+    <img src="{{ site.assets_url }}2016-08-25-basel-workshop-report/united-data-set-example.png"/>
+  </section>
+</section>
+<section>
+  <section data-markdown>
+    ## Our Data Model
+  </section>
+  <section data-markdown style="font-size: 24px">
+- WorkGroup
+- Work
+  - The idea of Moby Dick
+- Expression
+  - The idea of Melville's expression (as opposed to a screen play expression)
+- Manifestation
+  - The idea of the 1959 edition of Moby Dick
+- Item
+  - One physical copy of the 1959 edition in a particular library
+- Transcription
+  - the idea of a digital transcription of the 1959 edition of Moby Dick
+  - includes properties like hasXML, hasJson, hasPlaintext, hasHtml
+  </section>
+  <section data-markdown style="font-size: 24px">
+- Manifestation Surface
+  - the idea of page 1 in 1959 edition of Moby Dick
+- Item Surface
+  - the physical page 1 in a particular copy of the 1959 edition of Moby Dick
+- IIIF Canvas
+- IIIF image annotation
+  - images taken of the physical page 1 in a particular copy
+  </section>
+  <section>
+    <img src="https://raw.githubusercontent.com/scta/scta-ontology/master/SCTASCHEMA3.png"/>
+  </section>
+  <section>
+    <img src="{{ site.assets_url }}scta-ontology-surface-visualization.png"/>
+  </section>
+  <section>
+    <h2>Creating the data set with RDF extraction</h2>
+    <img src="{{ site.assets_url }}Screen-Shot-2015-09-07-at-1.03.42-PM.png"/>
+  </section>
+</section>
+<section>
+  <section data-markdown>
+    ## Using the Network
+  </section>
+  <section>
+    <h2>Critical Corpus Database Visualization</h2>
+    <img src="{{ site.assets_url }}scta-db-visualization.png"/>
+  </section>
+  <section>
+    <h2>Building common libraries for accession the text-network</h2
+    <a href="https://github.com/lombardpress/lbp.rb">https://github.com/lombardpress/lbp.rb</a>
+    <img src="{{ site.assets_url }}lbprb-classes.png"/>
+  </section>
+</section>
+<section>
+  <section data-markdown>
+    ## Lbp Print Interface
+  </section>
+  <section>
+    <img src="{{ site.assets_url }}workGroup-with-expressions.png"/>
+  </section>
+  <section>
+    <img src="{{ site.assets_url }}Screen-Shot-2015-06-17-at-2.03.54-PM.png"/>
+  </section>
+  <section>
+    <img src="{{ site.assets_url }}porto-slides/lbp-with-collation.png"/>
+  </section>
+  <section>
+    <img src="{{ site.assets_url }}porto-slides/lbp-referencedBy.png"/>
+  </section>
+  <section>
+    <img src="{{ site.assets_url }}porto-slides/lbp-with-referenced-text-and-para-info.png"/>
+  </section>
+</section>
+<section>
+  <section data-markdown>
+    ## Mirador Interface
+  </section>
+  <section>
+    <img src="{{ site.assets_url }}mirador_annotations.png"/>
+  </section>
+  <section>
+    <img src="{{ site.assets_url }}mirador-view-after-search.png"/>
+  </section>
+  <section>
+    <img src="{{ site.assets_url }}mirador-view-after-toc.png"/>
+  </section>
+</section>
+<section>
+  <section data-markdown>
+    ## Lbp Print Interface
+  </section>
+  <section>
+    <img src="{{ site.assets_url }}lbp-print-cl-and-output.png"/>
+  </section>
+  <section>
+    <img src="{{ site.assets_url }}porto-slides/typeset-print-edition.jpg"/>
+  </section>
+</section>
+<section data-markdown style="font-size: 18px;">
+  ###Suggested Readings
+
+  ####Introduction
+
+  [http://lombardpress.org/2016/08/02/bcht-scta-lbp-overview/](http://lombardpress.org/2016/08/02/bcht-scta-lbp-overview/)
+
+  ####Modeling and Workflows
+
+  [http://lombardpress.org/2016/06/12/DTS-modeling-proposal/](http://lombardpress.org/2016/06/12/DTS-modeling-proposal/)
+
+  [http://lombardpress.org/2016/08/09/surfaces-canvases-and-zones/](http://lombardpress.org/2016/08/09/surfaces-canvases-and-zones/)
+
+  [http://lombardpress.org/placing-medieval-texts-within-a-critical-corpus/](http://lombardpress.org/placing-medieval-texts-within-a-critical-corpus/)
+
+  ####On Information sharing and linked open data
+
+  [http://lombardpress.org/2016/04/16/iiif-webmentions/](http://lombardpress.org/2016/04/16/iiif-webmentions/)
+
+  [http://lombardpress.org/2016/08/25/basel-workshop-report/](http://lombardpress.org/2016/08/25/basel-workshop-report/)
+
+  ####On Peer Review
+
+  [http://lombardpress.org/2016/05/19/the-traveling-imprimatur/](http://lombardpress.org/2016/05/19/the-traveling-imprimatur/)
+
+  ####On LombardPress Web
+
+  [http://lombardpress.org/bringing-ecodices-and-openn-together/](http://lombardpress.org/bringing-ecodices-and-openn-together/)
+
+  [http://lombardpress.org/conceiving-the-digital-critical-apparatus/](http://lombardpress.org/conceiving-the-digital-critical-apparatus/)
+
+  [http://lombardpress.org/demo-of-full-integration-of-iiif-images-into-lombardpress/](http://lombardpress.org/conceiving-the-digital-critical-apparatus/)
+
+</section>

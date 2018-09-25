@@ -5,6 +5,7 @@ subtitle: "a call for papers"
 date:   2017-11-22
 comments: true
 description: A call for papers for a workshop on the Patristic Legacy in the Middle Ages.
+tags: cfp
 ---
 
 <hr/>
