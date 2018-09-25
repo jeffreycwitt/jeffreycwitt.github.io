@@ -4,22 +4,47 @@ layout: default
 <h1>{{page.title}}</h1>
 
 <ul class="post-list">
+  <h3>Posts</h3>
   {% for post in site.posts %}
+    {% unless post.tags contains "hidden" and page.title != "hidden" %}
+      {% if post.tags contains page.title %}
+      <li>
+        <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+        <!-- <a href="{{p.url}}">{{ p.title }}</a> -->
+        <span style="display: block; padding-left: 10px">{{post.description}}</span>
+        <span style="display: block; padding-left: 10px">{{post.place}}</span>
+        <span style="display: block; padding-left: 10px">{{ post.date | date: "%b %-d, %Y" }}</span>
+        <span style="display: block; padding-left: 10px">
+          Tags:
+        {% for tag in post.tags %}
+          <a href="/tags/{{ tag }}/">{{ tag }}</a>
+        {% endfor %}
+        </span>
+      </li>
+      {% endif %}
+    {% endunless %}
+  {% endfor %}
+</ul>
 
-  {% if post.tags contains page.title %}
-    <li>
-      <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-      <!-- <a href="{{p.url}}">{{ p.title }}</a> -->
-      <span style="display: block; padding-left: 10px">{{post.description}}</span>
-      <span style="display: block; padding-left: 10px">{{post.place}}</span>
-      <span style="display: block; padding-left: 10px">{{ post.date | date: "%b %-d, %Y" }}</span>
-      <span style="display: block; padding-left: 10px">
-        Tags:
-      {% for tag in post.tags %}
-        <a href="/tags/{{ tag }}/">{{ tag }}</a>
-      {% endfor %}
-      </span>
-    </li>
-    {% endif %}
+<ul class="slides-list">
+  <h3>SlideDecks</h3>
+  {% for slide in site.slides %}
+    {% unless slide.tags contains "hidden" and page.title != "hidden" %}
+      {% if slide.tags contains page.title %}
+      <li>
+        <a class="post-link" href="{{ slide.url | relative_url }}">{{ slide.title | escape }}</a>
+        <!-- <a href="{{p.url}}">{{ p.title }}</a> -->
+        <span style="display: block; padding-left: 10px">{{slide.description}}</span>
+        <span style="display: block; padding-left: 10px">{{slide.place}}</span>
+        <span style="display: block; padding-left: 10px">{{ slide.date | date: "%b %-d, %Y" }}</span>
+        <span style="display: block; padding-left: 10px">
+          Tags:
+        {% for tag in slide.tags %}
+          <a href="/tags/{{ tag }}/">{{ tag }}</a>
+        {% endfor %}
+        </span>
+      </li>
+      {% endif %}
+    {% endunless %}
   {% endfor %}
 </ul>
