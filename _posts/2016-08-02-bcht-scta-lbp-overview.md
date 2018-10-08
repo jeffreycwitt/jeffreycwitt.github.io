@@ -60,7 +60,7 @@ With that in mind let me close by offering some examples of how this kind of dat
 
 First, it should be emphasized again that our approach is in no way opposed to the goal of creating beautiful traditional print books. Here are some examples of the output we can produce.
 
-![]({{ site.assets_url }}porto-slides/typeset-print-edition.jpg)
+![]({{ site.assets_url }}typeset-print-edition.jpg)
 
 ![]({{ site.assets_url }}graciliscover.png)
 
@@ -84,15 +84,15 @@ The result of crawling these documents can be viewed in our database visualizati
 
 This database becomes a service that makes multiple web applications possible. One such application is the LombardPress web publication framework. LombardPress is simply one application that knows how to query the underlying public database for the information it needs in order to create a unique reading environment. See for example: [http://scta.lombardpress.org](http://scta.lombardpress.org).
 
-![]({{ site.assets_url }}porto-slides/plaoul-with-images-example.png)
+![]({{ site.assets_url }}plaoul-with-images-example.png)
 
-![]({{ site.assets_url }}porto-slides/lbp-quotedBy-display.png)
+![]({{ site.assets_url }}lbp-quotedBy-display.png)
 
-![]({{ site.assets_url }}porto-slides/lbp-with-app.png)
+![]({{ site.assets_url }}lbp-with-app.png)
 
-![]({{ site.assets_url }}porto-slides/lbp-with-collation.png)
+![]({{ site.assets_url }}lbp-with-collation.png)
 
-![]({{ site.assets_url }}porto-slides/lbp-with-referenced-text-and-para-info.png)
+![]({{ site.assets_url }}lbp-with-referenced-text-and-para-info.png)
 
 ### Mirador
 
@@ -100,7 +100,7 @@ But the important point is that this information is not locked into the the Lomb
 
 ![]({{ site.assets_url }}2016-04-16-iiif-webmentions/mirador-view-after-search.png)
 
-![]({{ site.assets_url }}porto-slides/mirador-manifest-list.png)
+![]({{ site.assets_url }}mirador-manifest-list.png)
 
 ### SCTA Statistics
 

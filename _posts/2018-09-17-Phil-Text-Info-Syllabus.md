@@ -26,7 +26,10 @@ tags: teaching digital-humanities
 
 1. Information Chapter 7
 1. Vannevar Bush, "As we may think", *The Atlantic*
-1. Ted Nelson, cc. ?? , *Literary Machines*
+1. Ted Nelson, "Hyperworld" in Chapter 0, *Literary Machines*, pp. 0/1-13
+1. Ted Nelson, "Hypertext" in Chapter 1, *Literary Machines*, pp. 1/14-19
+1. Ted Nelson, "2.1 An Electronic Literary System" in Chapter 2,  *Literary Machines*, pp. 2/4-8
+1. Ted Nelson, "2.2 What is Literature?" in Chapter 2, *Literary Machines*, pp. 2/9-12
 1. Roland Barthes, "The Death of the Author"
 
 # Thursday
