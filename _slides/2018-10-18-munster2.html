@@ -13,7 +13,7 @@ place: "Münster, Germany"
 
 <section>
 
-  <h3>Connecting an Open and Decentralized Text Corpus with the Scholastic Commentaries and Texts Archive</h3>
+  <h4>Connecting an Open and Decentralized Text Corpus with the Scholastic Commentaries and Texts Archive</h4>
   <hr/>
   <p>Jeffrey C. Witt (Loyola University Maryland) | @jeffreycwitt</p>
   <hr/>
@@ -23,31 +23,58 @@ place: "Münster, Germany"
 
 
 </section>
-<section data-markdown style="font-size: 25px;">
+<section>
+  <section data-markdown>
 * We want this data to be able to be created in a decentralized fashion.
-  * That is, there is no requirement that data be made in this program or in this platform
+  * That is, there is no requirement that data be made in this program or in this platform. It should be able to be created anywhere.
+  </section>
+  <section data-markdown>
 * We want this data to be published (made accessible) in a decentralized fashion.
   * That is to be useful, data does not have to live in a particular place, one does not have to ask permission to make it available or to access and use it.
+  </section>
+  <section data-markdown>
 * Despite this decentralization, we want this data to be able to be aggregated and indexed so that we can construct connections between texts and promote discovery across the corpus.
-  * We want to make this decentralized data, to be enhanced by the results of aggregation
+  * In sum, we want this decentralized data to be enhanced by the results of aggregation
+  </section>
+  <section data-markdown>
 * And we want this enhanced data to be made available according to general standards and APIs that existing presentation clients can understand and consume.
   * That is, we want to make enhanced data available in ways that client applications understand so as to dramatically reduce the cost of digital presentation of this data and the maintenance of these presentations.
+  </section>
 
 </section>
 
 <section data-background="{{ site.assets_url }}scta-overview.svg" data-background-size="contain">
 </section>
 <section>
+  <section data-markdown>
+    ## Data Creation
+  </section>
   <section data-background="{{ site.assets_url }}scta-data-creation.svg" data-background-size="contain">
   </section>
   <section data-background="{{ site.assets_url }}iiif-teiwebeditor-leipzig.png" data-background-size="contain">
   </section>
 </section>
 <section>
+  <section data-markdown>
+    ## Data Standards
+  </section>
+  <section data-markdown>
+
+Text Edition Schema: LombardPress-Schema  [https://github.com/lombardpress/lombardpress-schema](https://github.com/lombardpress/lombardpress-schema)
+
+Expression Description Files (EDFs) [https://github.com/scta/edf-schema](https://github.com/scta/edf-schema)
+
+Transcriptions Description File (TDFs) [https://github.com/scta/tdf-schema](https://github.com/scta/tdf-schema)
+
+  </section>
+</section>
+<section>
+  <section data-markdown>
+    ## Data Aggregation
+  </section>
   <section data-background="{{ site.assets_url }}scta-data-aggregation.svg" data-background-size="contain">
   </section>
   <section data-background="{{ site.assets_url }}scta-bash-aggregation.png" data-background-size="contain">
-   bash aggregation screen shot
   </section>
   <section data-background="{{ site.assets_url }}scta-stats-2018-10-13.png" data-background-size="contain">
   </section>
@@ -59,12 +86,18 @@ place: "Münster, Germany"
 </section>
 <section>
   <section data-markdown>
-    ## Transition from text-as-document to text-as-network paradigm
+    ### RDFS Schema (Defining a Linked Data Graph)
+
+    #### Transition from text-as-document to text-as-network paradigm
+
+    [http://scta.github.io/scta-rdf-schema/](http://scta.github.io/scta-rdf-schema/)
+
+
   </section>
   <section data-background="{{ site.assets_url }}web.jpg" data-background-size="contain">
   </section>
   <section data-markdown>
-    # Text-network as a Matrix of Hierarchies
+    ### Text-Network as a Matrix of Hierarchies
 
     * OHCO, Order Hierarchy of Content Objects
     * FRBR, Functional Requirements for Bibliographic Reference
@@ -110,16 +143,59 @@ place: "Münster, Germany"
   <section data-background="{{ site.assets_url }}scta-rdf-cross-walking-example.svg" data-background-size="contain">
   </section>
 </section>
-<section data-markdown>
-  # Data Display
-</section>
-<section data-markdown data-background="{{ site.assets_url }}lbprb-classes.png" data-background-size="contain">
-  # Lbp.rb
-
-</section>
 <section>
   <section data-markdown>
-    # LombardPress-Web
+    ### APIs and Presentation Clients
+
+* SCTA Core
+* SPARQL Endpoint
+* Lbp.rb Library
+* IIIF API
+* CSV API
+* Simple Presentation API
+* OAI PMH
+* Peer Review as an API
+
+
+  </section>
+  <section data-markdown>
+    ### SCTA Linked Data Core API
+
+$ curl -iH "Accept: text/plain" https://scta.info/resource/lectio1
+
+$ curl -iH "Accept: text/turtle" https://scta.info/resource/lectio1
+
+$ curl -iH "Accept: application/rdf+xml" https://scta.info/resource/lectio1
+
+$ curl -iH "Accept: application/json" https://scta.info/resource/lectio1
+
+
+  </section>
+  <section data-markdown>
+    ## SCTA SPARQL Endpoint
+ ```
+SELECT ?s ?p ?o
+WHERE {
+	?s ?p ?o
+}
+LIMIT 10
+```
+    [http://sparql.scta.info/ds/query?query=SELECT+%3Fs+%3Fp+%3Fo%0D%0AWHERE+%7B%0D%0A%09%3Fs+%3Fp+%3Fo%0D%0A%7D%0D%0ALIMIT+10%0D%0A&output=text&stylesheet=](http://sparql.scta.info/ds/query?query=SELECT+%3Fs+%3Fp+%3Fo%0D%0AWHERE+%7B%0D%0A%09%3Fs+%3Fp+%3Fo%0D%0A%7D%0D%0ALIMIT+10%0D%0A&output=text&stylesheet=)
+  </section>
+  <section data-markdown data-background="{{ site.assets_url }}lbprb-classes.png" data-background-size="contain">
+    # Lbp.rb
+  </section>
+  <section data-markdown>
+    ### Examples of Client Using SPARQL Endpoint
+    #### RCS
+    [https://rcs.philsem.unibas.ch/](https://rcs.philsem.unibas.ch/)
+  </section>
+  <section data-markdown data-background="{{ site.assets_url }}rcs-scta-import.png" data-background-size="contain">
+  </section>
+  <section data-markdown>
+    ### Examples of Client Using SPARQL Endpoint
+    #### LombardPress-Web Presentation Client
+    (http://scta.lombardpress.org)
   </section>
   <section data-background="{{ site.assets_url }}lbp-api-p-image-display.png" data-background-size="contain">
   </section>
@@ -129,10 +205,25 @@ place: "Münster, Germany"
 
   <section data-background="{{ site.assets_url }}lbp-with-app.png" data-background-size="contain">
   </section>
-</section>
-<section>
   <section data-markdown>
-    # Mirador
+    ### Examples of Client Using SPARQL Endpoint
+    #### Ad fontes
+    (http://lombardpress.org/adfontes)
+  </section>
+  <section data-background="{{ site.assets_url }}quotation-x-y-relation.png" data-background-size="contain">
+  </section>
+  <section data-background="{{ site.assets_url }}quotation-x-y-z-relations.png" data-background-size="contain">
+  </section>
+  <section data-background="{{ site.assets_url }}holcotq1-network.gif" data-background-size="contain">
+  </section>
+  <section data-markdown>
+    # IIIF API
+    [http://iiif.io](http://iiif.io)
+    [https://scta.info/iiif/scta/collection](https://scta.info/iiif/scta/collection)
+  </section>
+  <section data-markdown>
+    ### Example of Client Using IIIF API
+    #### Mirador
   </section>
   <section data-background="{{ site.assets_url }}iiif-ldn-leipzig-example.png" data-background-size="contain">
   </section>
@@ -142,15 +233,67 @@ place: "Münster, Germany"
   </section>
   <section data-background="{{ site.assets_url }}mirador-view-after-toc.png" data-background-size="contain">
   </section>
+  <section data-markdown style="font-size: 30px">
+
+### Linked Data Notifications and IIIF
+
+Example manifest from the BSB
+
+[https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00103424/manifest](https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00103424/manifest)
+
+Example SCTA transcription via IIIF API
+
+[https://scta.info/iiif/hiltalingencommentary/clm26711/layer/transcription](https://scta.info/iiif/hiltalingencommentary/clm26711/layer/transcription)
+
 </section>
-<section>
+<section data-markdown>
+  ### More Connections with Linked Data Notifications
+
+  http://lombardpress.org/2017/01/24/linking-research/
+</section>
   <section data-markdown>
-    # Ad fontes
+    # CSV API
+    [https://scta.info/csv/scta](https://scta.info/csv/scta)
   </section>
-  <section data-background="{{ site.assets_url }}quotation-x-y-relation.png" data-background-size="contain">
+
+  <section data-background="{{ site.assets_url }}topic_modelling2.png" data-background-size="contain">
   </section>
-  <section data-background="{{ site.assets_url }}quotation-x-y-z-relations.png" data-background-size="contain">
+  <section data-background="{{ site.assets_url }}topic-modelling-4.svg" data-background-size="contain">
   </section>
-  <section data-background="{{ site.assets_url }}holcotq1-network.gif" data-background-size="contain">
+  <section data-background="{{ site.assets_url }}topic-modelling-3.svg" data-background-size="contain">
+  </section>
+
+  <section data-markdown>
+    # Simple Presentation API
+
+    [https://scta.info/api/presentation/1.0/plaoulcommentary](https://scta.info/api/presentation/1.0/plaoulcommentary)
+  </section>
+  <section data-markdown>
+    ### Example of Client Using Simple Presentation API
+    #### Pellego
+
+    [http://lombardpress.org/pellego/](http://lombardpress.org/pellego/)
+
+    [http://jeffreycwitt.com/pellego-demo/](http://jeffreycwitt.com/pellego-demo/)
+  </section>
+  <section data-markdown>
+    # OAI-PMH API
+
+    [https://scta.info/oai](https://scta.info/oai)
+
+    [http://oaipmh.ekt.gr/#ListRecords](http://oaipmh.ekt.gr/#ListRecords)
+  </section>
+  <section data-markdown style="font-size: 30px">
+    ### Example of Client Using Simple Presentation API
+    #### World Cat
+
+    [http://www.worldcat.org/search?q=on:DGCNT+http://scta.info/oai+SCTA+MDSCT&qt=results_page](http://www.worldcat.org/search?q=on:DGCNT+http://scta.info/oai+SCTA+MDSCT&qt=results_page)
+  </section>
+  <section data-markdown>
+    ### Peer Review as an API
+
+    [https://dll-review-registry.digitallatin.org/](https://dll-review-registry.digitallatin.org/)
+
+    [https://dll-review-registry.digitallatin.org/docs/index.html](https://dll-review-registry.digitallatin.org/docs/index.html)
   </section>
 </section>
