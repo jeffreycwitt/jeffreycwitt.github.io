@@ -23,6 +23,9 @@ Each reading below has a file reference. During the course of the seminar, files
   * **Focused**: p. 11, p. 18
 1. Nicholas Carr, "Introduction" in *The Shallows*, pp. 1-4 [file 01-02](https://drive.google.com/open?id=1eG0LGpOJ7113S5Z2j6Vt8RE0AJea75n2)
   * **Focused**: all
+1. Karl Marx, "[4. The Essence of the Materialist Conception of History.
+Social Being and Social Consciousness]" in *German Ideology*, pdf pp. 1-2 [file 01-04](https://drive.google.com/open?id=1K-Zvi0APWFl2riS7IwKDff9zwEumQMU2)
+  * **Recommended**: all
 1. Plato, *The Phaedrus*, pdf pp. 1-36 [file 01-03](https://drive.google.com/open?id=1shv7X75cF--_C5vqPN49k0TQcyqjFqgk)
   * **Focused**: pp. 12-18 (speech in praise of the lover), pp. 28-30 (criteria of true rhetoric), pp. 32-36 (in defense of speech over the written word)
 
