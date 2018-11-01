@@ -65,7 +65,7 @@ Social Being and Social Consciousness]" in *German Ideology*, pdf pp. 1-2 [file 
 
 # Thursday
 
-1. Sahle, Patrick. "Zwischen Mediengebundenheit Und Transmedialisierung." Editio 24 (2010): 23–36 [file 04-01](https://drive.google.com/open?id=1_zvr0-NwPliRB1lltvgIuKvd4BwUjxpY), Working Translation (file 04-01a)
+1. Sahle, Patrick. "Zwischen Mediengebundenheit Und Transmedialisierung." Editio 24 (2010): 23–36 [file 04-01](https://drive.google.com/open?id=1_zvr0-NwPliRB1lltvgIuKvd4BwUjxpY), Working/Rough Translation [file 04-01a](https://drive.google.com/open?id=1cRsl-dA1kmAvIwHikucrmMz4_GF2BEBB)
   * **Focused**: all
 1. De Rose, et al. "What is a Text Really", *Journal of Computing in Higher Education*, vol. 1 (2), 1990, pp. 3-26 [file 04-02](https://drive.google.com/open?id=1F-KfS6HGuP7mPK7BlQ_9fxwPdmcIe1ut)
   * **Focused**: pp. 1-6
