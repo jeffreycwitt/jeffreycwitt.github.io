@@ -26,6 +26,8 @@ Each reading below has a file reference. During the course of the seminar, files
 1. Karl Marx, "[4. The Essence of the Materialist Conception of History.
 Social Being and Social Consciousness]" in *German Ideology*, pdf pp. 1-2 [file 01-04](https://drive.google.com/open?id=1K-Zvi0APWFl2riS7IwKDff9zwEumQMU2)
   * **Recommended**: all
+1. Karl Marx, "Ruling Ideas" in *German Ideology*, pdf pp. 1-3 [file 01-05](https://drive.google.com/open?id=1gKMu0ssKw8C7k7CK1TM9BywKsb1CMTsx)
+  * **Recommended**: all
 1. Plato, *The Phaedrus*, pdf pp. 1-36 [file 01-03](https://drive.google.com/open?id=1shv7X75cF--_C5vqPN49k0TQcyqjFqgk)
   * **Focused**: pp. 12-18 (speech in praise of the lover), pp. 28-30 (criteria of true rhetoric), pp. 32-36 (in defense of speech over the written word)
 
