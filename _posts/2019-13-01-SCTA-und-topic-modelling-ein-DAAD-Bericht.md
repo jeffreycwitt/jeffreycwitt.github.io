@@ -58,7 +58,7 @@ Viel mehr Beispiele von dem 16 und 17 Jahrhundert könnten gefunden werden.
 
 Aber der Anspruch hat wohl in die modernische Zeit angehaltet.
 
-Die Skolion von der Ausgabe von Bonaventure von dem spät 19 Jahrhundert ist ein treffliches Beispiel.
+Das Skolion der Ausgabe von Bonaventure von dem spät 19 Jahrhundert ist ein treffliches Beispiel.
 
 ![TopicModellingSearchResults1]({{ site.assets_url }}bonaventure_scholion.png)
 
