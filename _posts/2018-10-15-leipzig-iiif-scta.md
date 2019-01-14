@@ -4,7 +4,7 @@ title:  "Forscher und Institutionen via IIIF verbinden"
 date:   2018-10-15
 comments: true
 description: Transkription meines Vortrags bei Leipzig Universität "Outreach" Veranstaltung
-tags: scta iiif
+tags: scta iiif deutsch
 ---
 
 Danke ihnen. Ich bin sehr froh hier zu sein und ich freue mich Ihnen ein bisschen erzählen zu dürfen, warum IIIF wichtig für Forscher der mittelalterlichen Geistesgeschichte ist und warum IIIF ein Mittel sein kann, die Zusammenarbeit zwischen Forschern und Kulturerbe-Institutionen effizienter zu gestalten.
