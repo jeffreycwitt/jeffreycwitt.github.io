@@ -9,9 +9,10 @@ tags: scta deutsch
 
 SCTA und Topic Modelling: ein DAAD Bericht
 
-Mit der Explosion von Daten wird die Frage der Zukunft nicht sein, ist dieser Text oder Datum verfügbar, sondern können wir dieser Text oder Text-Teil finden in dem Stapel von was verfügbar ist?
+Mit der Explosion von Daten wird die Frage der Zukunft nicht sein, “Ist dieser Text oder sind diese Daten verfügbar?”, sondern “Können wir diesen Text oder Text-Teil finden in dem Stapel dessen, was verfügbar ist?”
 
-Die wissenschaftliche Gemeinde lagert diese Aufgabe auf unsere eigene Gefahr aus. Wenn Daten theoretisch verfügbar sind aber noch nicht entdeckbar, dann ist das Problem ein Problem von Kuration. Wenn wir tausende Ergebnisse haben, oder millionen, können wir nicht alle diese Ergebnisse untersuchen. Wir müssen auswählen, und das ist Kuration. Kuration ist eine Art von Auswahl beruht auf Grundsätze. Darum fordert wissenschaftliche Entdeckung Kuration beruht auf wissenschaftlichen Grundsätzen. Zu auslagern die Kuration zu Korporation ist unwissenschaftliche Ergebnisse anzunehmen. Wir, die Fachleute, müssen die Verantwort annehmen, die neuen digitalen Ansätze zu lernen und anzuwenden, sodass wir in der Lage sind, in der Aufgabe von Kuration teilzunehmen.
+Die wissenschaftliche Gemeinde lagert diese Aufgabe der adäquaten Auswahl von Informationen auf eigene Gefahr aus. Wenn Daten theoretisch verfügbar sind, aber noch nicht auffindbar, dann ist dies ein Problem von Kuration. Wenn wir tausende oder sogar Millionen Ergebnisse haben, können wir nicht alle diese Ergebnisse untersuchen. Wir müssen auswählen und das ist Kuration. Kuration ist eine Art von Auswahl beruhend auf Grundsätzen. Wissenschaftliche Entdeckung fordert Kuration beruhend auf wissenschaftlichen Grundsätzen. Diese Kuration auszulagern und zum Beispiel Google zu überlassen, heißt, mit unwissenschaftlichen Ergebnissen zu arbeiten. Wir, die Fachleute, müssen die Verantwort annehmen, die neuen digitalen Ansätze zu lernen und anzuwenden, so dass wir in der Lage sind, in der Aufgabe von Kuration teilzunehmen.
+
 
 Mit der Hilfe von der Deutsche Akademische Austauschung, habe ich, als Leiter der SCTA (Scholastic Commentaries and Texts Archive, https://scta.info), gestreben, ein ersten Schritt in dieser Richtung zu nehmen, ein ersten Versuch dieser Verantwortung anzunehmen.
 
@@ -82,4 +83,4 @@ Und abermals, in demselben Bild können wir diese in Beziehung stehende Absätze
 
 ![TopicModellingSearchResults1]({{ site.assets_url }}lbp-recommendations-by-topic.gif)
 
-In die Zukunft, planen wir beiden Ansätze immer enger zusammenzubringen, so dass wir, durch diese Kombination von Eigenschaften und Metadaten, die von den Forschern erzeugt sind, und von Eigenschaften, von dem Computer erzeugt sind, einen kraftvolleren Empfehlungsdienst erschaffen können: ein dienst, der uns erlaubt, die Verbindungen dem ganzen Korpus in eine wissenschaftlich und umfassende Weise hindurch zu sehen.
+In der Zukunft planen wir beide Ansätze immer enger zusammenzubringen, so dass wir durch die Kombination von Eigenschaften, die von den Forschern erzeugt wurden, und jenen, die vom Computer erzeugt wurden, einen effektiven Empfehlungsdienst erschaffen können: einen Dienst, der uns erlaubt, die Verbindungen den ganzen Korpus hindurch in einer wissenschaftlichen und umfassenden Weise zu sehen.
