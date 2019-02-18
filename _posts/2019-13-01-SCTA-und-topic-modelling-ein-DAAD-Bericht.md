@@ -15,19 +15,19 @@ Die wissenschaftliche Gemeinde lagert diese Aufgabe der adäquaten Auswahl von I
 
 Mithilfe des Deutschen Akademischen Austausch-Dienstes habe ich als Leiter des SCTA (Scholastic Commentaries and Texts Archive, https://scta.info) einen ersten Schritt in diese Richtung gemacht, einen ersten Versuch, diese Verantwortung zu übernehmen.
 
-Am Anfang Oktober habe ich mit meinem Kollegen, Dr. Thomas Köntges, bei der Digital Humanities Lab an der Universität Leipzig, versucht, "Natural Language Processing", nämlich "Topic Modelling", Ansätze zu dem SCTA Korpus anzuwenden.
+Anfang Oktober 2018 habe ich mit meinem Kollegen Dr. Thomas Köntges bei der Digital Humanities Lab an der Universität Leipzig versucht, einen Ansatz des “Natural Language Processing” Ansätze, nämlich das sogenannte  “Topic Modelling”,  auf das SCTA Korpus anzuwenden.
 
-Der Grundidee ist, dass wir mit der Kombination von Computer Kraft und Fachkenntnis ein Profil jedes Absatzes in der Scholastik Corpus bauen können. Mit diesen Profilen können wir erwartete und unerwartete Verbindungen in den ganzen Korpus hindurch entdecken.
+Die Grundidee ist, dass wir mit der Kombination von Computer-Rechenleistung und Fachkenntnis ein Profil jedes Absatzes im Scholastik-Korpus bauen können. Mit diesen Profilen können wir erwartete und unerwartete Verbindungen im gesamten Korpus entdecken.
 
-Keines würde möglich gewesen, ohne das Fachkenntnis und Zusammenarbeitung mit Dr. Thomas Köntges. Dr. Köntges hat eine wichtige Applikation entwickelt, die heißt "ToPan", mit der man den Text analysieren und "Topics" erschaffen könnte.
+Nichts von dem wäre möglich gewesen ohne die Fachkenntnis und Zusammenarbeit mit Dr. Thomas Köntges. Dr. Köntges hat eine wichtige Applikation entwickelt, die “ToPan” heißt und mit der man Texte analysieren und “Topics” erschaffen kann.
 
-In dem Bild unten kann man sehen ein Beispiel eines Topics von Dr. Köntges Applikation "ToPan" erzeugt.
+In dem Bild unten kann man ein Beispiel eines Topics sehen, das von Dr. Köntges Applikation “ToPan” erzeugt wurde.
 
 ![Topan]({{ site.assets_url }}toPan-topic-modelling-viz.png)
 
-Mit diesen Topics oder Thema kann man dann dieses Korpus unterscheiden und sortieren.
+Mit diesen Topics oder Themen kann man dann dieses Korpus unterscheiden und sortieren.
 
-Die Frage is nur, wie kann man solches riesiges Korpus automatisch in diese Application füttern. Um das zu erschaffen, habe ich ein "CSV API" für das ganze SCTA-Korpus erzeugt. Diese API macht millionen von scholastikern Lateinischen Wörter verfügbar in einer Form, die eine Applikation wie "ToPan" verstehen kann.
+Die Frage ist nur: Wie kann man ein so riesiges Korpus wie das SCTA Korpus automatisch in diese Applikation eingeben? Um das zu schaffen, habe ich ein “CSV API” für das ganze SCTA-Korpus erzeugt. Dieses API macht Millionen von Lateinischen Wörtern, die in scholastischen Texten gefunden werden, in einer Form verfügbar, die eine Applikation wie “ToPan” verstehen kann.
 
 Der nächste Schritt, bevor diese Ergebnisse nützlich sein werden, ist diese Ergebnisse in solche Art und Weise zu veröffentlichen, dass sie von anderer "Client Applications" gebrauchen werden könnten. Dr. Köntges hat schon noch eine Applikation entwickelt, heißt Metallo, um diese Ergebnisse darzustellen. Zusammen haben wir diese Applikation modifiziert, so dass es die Ergebnisse verfügbar als nützlich Daten machen kann, nämlich als "JSON data".
 
