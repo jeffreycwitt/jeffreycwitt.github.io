@@ -35,30 +35,32 @@ Nach diesen Schritten waren wir jetzt in der Lage, diese Ergebnisse zu benutzen,
 
 Die offensichtlichste Anwendung von diesen Absatz-Profilen ist, Nutzern zu erlauben,  Suchergebnisse nach Themen zu gliedern und zu sortieren. Auf diese Art und Weise vermeiden wir unwissenschaftlichen Gebrauch von Suchergebnissen, worin wir nur die ersten Suchergebnisse wählen, weil sie zuerst vorkommen, und nicht, weil sie die besten sind oder (sie) am Besten zu unserer Forschung passen.
 
-Zum Beispiel kann man in dem ersten Bild unten eine Liste von unsortierten Suchergebnissen sehen. Der Suchdienst hat das Ergebnis “potentia absoluta” in vielen verschiedenen Absätzen gefunden, aber das Absatz-Profil und ein verbundenes Thema weisen darauf hin, dass die folgenden Absätze dieselbe Phrase, “potentia absoluta”, in drei verschiedenen Diskussionen benutzen.  <!-- left off with corrections here 6/4 --> Ein einfaches Beispiel sein würde, eine rohe Suche für das Wort, "Leiter", die Absätze zurücksenden, die etwas mit sowohl einem Bergsteiger als auch einem Chef von einem Geschäft zu tun haben. Mit der Hilfe von Topic Modelling, können wir diese verschiedenen Diskussionen sortieren, als man in dem zweiten Bild sehen kann.
+Zum Beispiel kann man in dem ersten Bild unten eine Liste von unsortierten Suchergebnissen sehen. Der Suchdienst hat das Ergebnis “potentia absoluta” in vielen verschiedenen Absätzen gefunden, aber das Absatz-Profil und ein verbundenes Thema weisen darauf hin, dass die folgenden Absätze dieselbe Phrase, “potentia absoluta”, in drei verschiedenen Diskussionen benutzen.  <!-- left off with corrections here 6/4 -->
+
+Ein einfaches Beispiel wäre: eine rohe Suche für das Wort “Leiter”, die Absätze zurücksendet, die sowohl etwas mit einem Bergsteiger als auch mit einem Chef von einem Geschäft zu tun haben. Mithilfe von Topic Modelling können wir diese verschiedenen Diskussionen sortieren, wie man in dem zweiten Bild sehen kann.
 
 ![TopicModellingSearchResults1]({{ site.assets_url }}lbp-topic-modelling-search-results1.png)
 
-Hier kann ein Nutzer ein Topic auswählen und nur die Absätze sehen, die etwas mit dieser Diskussion zu tun hat.
+Hier kann ein Nutzer ein Topic auswählen und nur die Absätze sehen, die etwas mit dieser Diskussion zu tun haben.
 
 ![TopicModellingSearchResults1]({{ site.assets_url }}lbp-topic-modelling-search-results2.png)
 
-Aber die Sortierung von Suchergebnisse ist nur der Anfang.
+Aber die Sortierung von Suchergebnissen ist nur der Anfang.
 
-Mit der Hilfe von einem Profil für jeden Absatz, zielen wir darauf, einen Empfehlungsdienst zu bauen. Solcher Dienst sollte einen traditionellen Anspruch erfüllen, nämlich, die Fähigkeit Nutzern auf verknüpften Diskussionen zu zu steuern.
+Mithilfe von einem Profil für jeden Absatz zielen wir darauf, einen Empfehlungsdienst zu bauen. Solch ein Dienst sollte einen traditionellen Anspruch erfüllen, nämlich, die Fähigkeit Nutzer zu verknüpfte Diskussionen zu führen.
 
-In dieser Bild können wir sehen, dass das ein traditionelles Ziel ist.
+In diesem Bild können wir sehen, dass das ein traditionelles Ziel ist.
 
 Cremona 1618
 https://books.google.com/books?id=h2IUiZ6aYZUC&pg=PA66#v=onepage&q&f=false
 
 ![TopicModellingSearchResults1]({{ site.assets_url }}scholion-cremona1618-example)
 
-Viel mehr Beispiele von dem 16 und 17 Jahrhundert könnten gefunden werden.
+Viele weitere Beispiele aus dem 16. und 17. Jahrhundert könnten gefunden werden.
 
-Aber der Anspruch hat wohl in die modernische Zeit angehaltet.
+Aber dieser Anspruch hat sogar bis in die moderne Zeit angehalten.
 
-Das Skolion der Ausgabe von Bonaventure von dem spät 19 Jahrhundert ist ein treffliches Beispiel.
+Das Skolion der Ausgabe von Bonaventure aus dem späten 19. Jahrhundert ist ein treffliches Beispiel.
 
 ![TopicModellingSearchResults1]({{ site.assets_url }}bonaventure_scholion.png)
 
@@ -68,7 +70,7 @@ Aber unsere Erwartungen sind auch unsere Grenze, denn wir suchen Verbindungen nu
 
 Die Hilfe, hier von wohlmeinenden Herausgebern zur Verfügung gestellt, gibt uns nur ein Muster von Verbindungen. Diese ist jedoch keineswegs umfassend oder wissenschaftlich. Sie ist nur eine Auswahl, die auf den Vorlieben des Herausgebers beruht. Und obwohl diese Auswahlen oft hilfreich sein könnten, steuern sie trotzdem die Richtung aller nachfolgenden Forschung, entgegen jeder Forderung von Wissenschaft oder historischer Genauigkeit. Ist der Verweis in der Bonaventura Skolion auf die parallele Diskussion in Gregory Biel nur da, weil diese in Biel eng verbunden mit jener in Bonaventure ist? Enger oder wichtiger als alle Diskussionen, die zwischen der Zeit Bonaventures und der Zeit Biels (fast zweihundert Jahre) stattgefunden haben, die trotzdem nicht erwähnt sind? Es ist wahrscheinlicher, dass Biel im Kopf des Herausgebers einer der “Big Guys”, einer der “wichtigen Scholastiker,” ist und deshalb ist ihm diese Diskussion bewusst. Dieser Prozess allerdings ist ein Teufelskreis. Biel ist gelistet, während viele andere spätere Scholastiker nicht gelistet sind, weil der Herausgeber glaubt, dass Biel wichtiger ist. Nachforscher sehen diese Liste und orientieren ihre Arbeit daran. Aufgrund der begrenzten Zeit entscheiden sich die nachfolgenden Forscher von diesem Skolion, die Diskussion von Biel zu untersuchen und übersehen die anderen Diskussionen. Also geht der Kreis weiter und unweigerlich entdecken wir nur, was unsere bisherigen Entscheidungen uns erlauben zu entdecken.
 
-Was wir brauchen, ist ein wissenschaftlicherer und unfassenderer Ansatz: ein Ansatz, der die Diskussionen enthüllt, die von unseren Vorurteilen versteckt werden.
+Was wir brauchen, ist ein wissenschaftlicherer und umfassenderer Ansatz: ein Ansatz, der die Diskussionen enthüllt, die von unseren Vorurteilen versteckt werden.
 
 “Topic Modelling” kann uns hier helfen. Mit der Hilfe gewaltiger Computerrechenleistung können wir die Relevanz jedes Absatzes betrachten; nicht nur die Absätze, die uns schon bekannt sind. Der Computer kann ein Profil von jedem Absatz bauen und wir können dieses Profil benutzen, um verbundenen Passagen zu empfehlen und anzuzeigen.
 
