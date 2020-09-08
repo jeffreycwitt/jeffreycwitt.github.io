@@ -41,11 +41,11 @@ As evidence here, I point to an article from 2008 by Venicio Marcolino.
 
 In the image below Marcolino attempts to trace and identify parallels between two texts in the fourteenth century, each of which survive in manuscript witnesses, one at the British Library, the other at the BSB.
 
-![Marcolino picture]({{ site.assets_url }}gracilisBaselIIFPost/marcolinoConnections.png)
+![Marcolino picture]({{ site.assets_url }}gracilisBaselIIIFPost/marcolinoConnections.png)
 
 Thanks to IIIF, it is easy to bring these witnesses together.
 
-![mirador with manuscripts: gracilis and Basel]({{ site.assets_url }}gracilisBaselIIFPost/gracilis-basel-thumbnails.png)
+![mirador with manuscripts: gracilis and Basel]({{ site.assets_url }}gracilisBaselIIIFPost/gracilis-basel-thumbnails.png)
 
 But it doesn't automatically make comparison easy. These are large manuscripts filled with a lot of content. It takes a tremendous amount of labor to find units of texts within each respective manuscript to create meaningful comparison. 
 
@@ -59,7 +59,7 @@ First because the points of comparison pointed to here are granular and precise.
 
 Once found, the temptation is to "draw a box" and mark the conceptual point of comparison. 
 
-![making direct annotations]({{ site.assets_url }}gracilisBaselIIFPost/gracilis-basel-box-annotations.png)
+![making direct annotations]({{ site.assets_url }}gracilisBaselIIIFPost/gracilis-basel-box-annotations.png)
 
 This is my plea. Please don't do this!
 
