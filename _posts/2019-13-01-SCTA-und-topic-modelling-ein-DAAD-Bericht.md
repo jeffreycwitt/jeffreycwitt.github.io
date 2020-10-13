@@ -54,7 +54,7 @@ In diesem Bild können wir sehen, dass das ein traditionelles Ziel ist.
 Cremona 1618
 https://books.google.com/books?id=h2IUiZ6aYZUC&pg=PA66#v=onepage&q&f=false
 
-![TopicModellingSearchResults1]({{ site.assets_url }}scholion-cremona1618-example)
+![TopicModellingSearchResults1]({{ site.assets_url }}scholion-cremona1618-example.png)
 
 Viele weitere Beispiele aus dem 16. und 17. Jahrhundert könnten gefunden werden.
 
