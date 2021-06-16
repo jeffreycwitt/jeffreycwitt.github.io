@@ -53,9 +53,9 @@ But being general here will allow our calculations to not just work with linear 
 
 So let's imagine I've been biking for 1 hours ($$ T_1=1$$ and $$ b = 1 $$) and my average over that 1 hour has been 15mph ($$ f(x) = 15 $$). We can compute the distance covered at this point ($$\mathrm{d}y$$) by computing the definite integral: $$\int_0^1 15 \mathrm{d}t $$ which becomes $$15(1)$$ or 15 miles. 
 
-If we want to get to the speed over that hour, we can just divide $$\mathrm{d}y$$ by how long I've been traveling, $$ \mathrm{d}t $$; in other words $$ \frac{\mathrm{d}y}{\mathrm{d}t}$$, or $$ \frac{s}{b} %%which equals $$\frac{15}{1} or 15 miles per hour. 
+If we want to get to the speed over that hour, we can just divide $$\mathrm{d}y$$ by how long I've been traveling, $$ \mathrm{d}t $$; in other words $$ \frac{\mathrm{d}y}{\mathrm{d}t}$$, or $$ \frac{s}{b} $$ which equals $$\frac{15}{1}$$ or 15 miles per hour. 
 
-Ok, but our final goal is $$ \frac{17}{1} or 17 miles per hour. 
+Ok, but our final goal is $$ \frac{17}{1} $$ or 17 miles per hour. 
 
 So to reach our goal, we're going to need an overall distance $$ d $$ (or $$ dy $$), that when divided by the overall time $$ b + x $$ (where x is the additional time traveled) gives us 17. 
 
@@ -63,9 +63,9 @@ But we already know part of the overall function that is going to lead us to $$ 
 
 So getting to a $$\mathrm{d}y$$ ($$ d $$, the overall distance) where $$ \frac{\mathrm{d}y}{b+x}=17 $$ is a matter of adding another integral to the value of the already known integral.
 
-$$ \mathrm{d}y = \int_0^b f(x) \mathrm{d}t + \int_0^x g(x) \mathrm{d}t 
+$$ \mathrm{d}y = \int_0^b f(x) \mathrm{d}t + \int_0^x g(x) \mathrm{d}t $$
 
-And since we know our target average speed (17) is just the overall distance divided by the overall time $$ \frac{\mathrm{d}y}{b + x} we have the following equation
+And since we know our target average speed (17) is just the overall distance divided by the overall time $$ \frac{\mathrm{d}y}{b + x} $$ we have the following equation
 
 $$ 17 = \frac{\int_0^b f(x) \mathrm{d}t + \int_0^x g(x) \mathrm{d}t}{b+x} $$
 
@@ -143,9 +143,9 @@ $$15 = \frac{13}{17}(g(x)) $$
 
 $$\frac{15}{\frac{13}{17}} = g(x) $$
 
-$$15 * \frac{17}{13} = g(x) $$
+$$15(\frac{17}{13}) = g(x) $$
 
-$$ g(x) = 19.615 $$
+$$ 19.615 = g(x)$$
 
 Thus after traveling 1 hour at an average of 15 miles per hour, with only 15 miles left, I would need to average 19.615 mph over the next 15 miles to reach my goal of an overall average 17 mph for the entire trip.
 
