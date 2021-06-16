@@ -7,41 +7,41 @@ tags: math
 
 <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-I've been taking a calculus course of late and looking for applications. Besides math, I love to bike and since biking involves lots of changes it seems like a good place to experiment with applications of my current calculus knowledge.
+I've been taking a calculus course of late and have been looking for applications. Besides math, I love to bike, and since biking involves lots of changes, it seems like a good place to experiment with applications of my current calculus knowledge.
 
 In this experiment I wanted to use calculus to answer some questions that often arise during my ride. 
 
-I often ride familiar routes, and for those familiar routes I often have a target total miles per hour average that I would like to reach. At given point in my route, I will like down at my simple computer I learn that, thus far, I have been averaging 15mph. 
+I often ride familiar routes, and for those familiar routes I often have a target "total miles per hour average" that I would like to reach. At given point in my route, I will look down at my simple computer and learn that, thus far, I have been averaging 15mph. 
 
-But if my goal for the total route is 17mph, I'm usually curious about what will take during the remainder of the proposed route in order to meet my goal. 
+But if my goal for the total route is 17mph, I'm usually curious about what it will take during the remainder of the proposed route in order to meet my goal. 
 
-Unfortunately, predicting what I will need to do (or whether it is even remotely possible) is not very intuitive. The rate of change in my overall average is dependent on a lot more than just my current average. How quickly I can improve my overall average is significantly affected by how long I have been riding, how close my current average is to my goal average, and how much distance (or time) remains in the overall route. Moreover, the rate of changes is constantly in flux as the underlying parameters (overall average, distance traveled, distance remaining) are changing as I continue my ride. 
+Unfortunately, predicting what I will need to do (or whether it is even remotely possible) is not very intuitive. The rate of change in my overall average is dependent on a lot more than just my current average. How quickly I can improve my overall average is significantly affected by how long I have been riding, how close my current average is to my goal average, and how much distance (or time) remains in the overall route. Moreover, the rate of change is constantly in flux as the underlying parameters (overall average, distance traveled, distance remaining) are changing as I continue my ride. 
 
-What I would like to do is be able to create a "bike computer" interface that (using its knowledge of my current distance, time, and average, and the amount distance or time remaining in my route) reports the new average I need to maintain in order to meet my goal and/or the distance or time I will require to meet my goal and my current pace.
+What I would like to do is be able to create a "bike computer" interface that (using its knowledge of my current distance, time, and average, and the amount distance or time remaining in my route) constantly reports and updates the new average I need to maintain in order to meet my goal (as well as the distance or time I will require to meet my goal at my current pace).
 
 Calculus (and integration in particular) will be particularly useful tools for building such an interface. 
 
-Let's start general formula that will be needed to in order for my new computer to constantly perform these calculations. 
+Let's start with the general formula that will be needed to in order for my new computer to constantly perform these calculations. 
 
 Our overall goal is to reach a target speed. So this is a good place to start. 
 
-If our goal is to finish with an average of 17mph, we're going to need end with a distance and time that can give us this result. 
+If our goal is to finish with an average of 17mph, we're going to need to end with a distance and time that can give us this result. 
 
-Since 
+Since:
 
 $$ Speed = \frac{Distance}{Time} $$
 
-We know we will need something like this:
+we know that we will need something like this:
 
 $$ 17 = \frac{Distance}{Time} $$
 
-But our challenge is to pick any point somewhere in the middle of the route and based on the distance covered at that point in time, to pick a new speed that leads us to our desired overall average. 
+But our challenge is to pick any point somewhere in the middle of the route and, based on the distance covered at that point in time, to pick a new speed that leads us to our desired overall average. 
 
 In this case, we know the starting distance (which we will call $$ s $$) of the overall distance ($$ d $$) (which we also know) and we know the time traveled ($$ b $$) at $$T_1$$. 
 
-But want to discover the second part (which we will call $$ r $$ for remaining distance) of $$ d $$ at $$T_2$$ and the additional time required to reach $$T_2$$ (which we will call $$ x $$) based on the already completed distance $$ s $$ and initial time $$ b $$, and most important the speed required to cover that distance ($$r$$) within the allotted amount of remaining time ($$ x $$).
+But we want to discover the second part (which we will call $$ r $$ for remaining distance) of $$ d $$ at $$T_2$$ and the additional time required to reach $$T_2$$ (which we will call $$ x $$) based on the already completed distance $$ s $$ and initial time $$ b $$ and, most importantly, the speed required to cover that remaining distance ($$r$$) within the allotted amount of remaining time ($$ x $$).
 
-Let's start by calculating the distance ($$ s $$) at time $$T_1$$ or $$ b $$. 
+Let's start by calculating the starting distance ($$ s $$) at time $$T_1$$ or $$ b $$. 
 
 This is an integral function: 
 
@@ -57,7 +57,7 @@ If we want to get to the speed over that hour, we can just divide $$\mathrm{d}y$
 
 Ok, but our final goal is $$ \frac{17}{1} $$ or 17 miles per hour. 
 
-So to reach our goal, we're going to need an overall distance $$ d $$ (or $$ dy $$), that when divided by the overall time $$ b + x $$ (where x is the additional time traveled) gives us 17. 
+So to reach our goal, we're going to need an overall distance $$ d $$ (or $$ dy $$) that, when divided by the overall time $$ b + x $$ (where x is the additional time traveled), gives us 17. 
 
 But we already know part of the overall function that is going to lead us to $$ \mathrm{d}y $$. So our question is really **what do we need to add to get to our desired result**? Or more concretely, how fast do we need to travel over the additional amount of time $$x$$. Let's call this new and unknown rate of change $$g(x)$$. 
 
@@ -65,7 +65,7 @@ So getting to a $$\mathrm{d}y$$ ($$ d $$, the overall distance) where $$ \frac{\
 
 $$ \mathrm{d}y = \int_0^b f(x) \mathrm{d}t + \int_0^x g(x) \mathrm{d}t $$
 
-And since we know our target average speed (17) is just the overall distance divided by the overall time $$ \frac{\mathrm{d}y}{b + x} $$ we have the following equation
+And since we know our target average speed (17) is just the overall distance divided by the overall time $$ \frac{\mathrm{d}y}{b + x} $$ we have the following equation:
 
 $$ 17 = \frac{\int_0^b f(x) \mathrm{d}t + \int_0^x g(x) \mathrm{d}t}{b+x} $$
 
@@ -85,7 +85,7 @@ $$ g(x) = \frac{r}{x} $$
 
 So we just need to find $$ r $$ or the remaining distance.
 
-And remaining distance will be the total distance of the route $$ d $$ minus the start (already travelled) distance $$ s $$ at $$T_1$$. 
+And remaining distance will be the total distance of the route $$ d $$ minus the starting (already travelled) distance $$ s $$ at $$T_1$$. 
 
 The starting distance $$ s $$ can be computed from the speed and time at $$T_1$$ which is $$ s = f(x)b$$
 
@@ -111,7 +111,7 @@ If my goal remains 17mph and the overall route is 30 miles and $$T_1 = 1$$ and m
 
 $$ 17 = \frac{\int_0^1 15 \mathrm{d}t + \int_0^\frac{30-15(1)}{g(x)} g(x) \mathrm{d}t}{1+\frac{30-15(1)}{g(x)}} $$
 
-which reduces to 
+which reduces to:
 
 $$ 17 = \frac{15(1) + \frac{g(x)(30-15(1))}{g(x)}}{1 + \frac{30-15}{g(x)}}$$
 
@@ -131,7 +131,7 @@ Distribute:
 
 $$ 17(1) + 17(\frac{15}{g(x)}) = 30 $$
 
-And the solve:
+And then solve:
 
 $$ 17(\frac{15}{g(x)}) = 30-17 $$
 
