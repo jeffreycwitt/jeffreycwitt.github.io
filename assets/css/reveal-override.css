@@ -16,3 +16,7 @@ opacity: 0.5
 .medium p {
   font-size: 30px;
 }
+
+html.opaquebg .slide-background {
+	opacity: 0.4 !important;
+}
