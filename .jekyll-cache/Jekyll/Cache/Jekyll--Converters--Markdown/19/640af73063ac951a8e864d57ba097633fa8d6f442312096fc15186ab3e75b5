@@ -1,0 +1,152 @@
+I"�&<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<p>I’ve been taking a calculus course of late and have been looking for applications. Besides math, I love to bike, and since biking involves lots of changes, it seems like a good place to experiment with applications of my current calculus knowledge.</p>
+
+<p>In this experiment I wanted to use calculus to answer some questions that often arise during my ride.</p>
+
+<p>I often ride familiar routes, and for those familiar routes I often have a target “total miles per hour average” that I would like to reach. At given point in my route, I will look down at my simple computer and learn that, thus far, I have been averaging 15mph.</p>
+
+<p>But if my goal for the total route is 17mph, I’m usually curious about what it will take during the remainder of the proposed route in order to meet my goal.</p>
+
+<p>Unfortunately, predicting what I will need to do (or whether it is even remotely possible) is not very intuitive. The rate of change in my overall average is dependent on a lot more than just my current average. How quickly I can improve my overall average is significantly affected by how long I have been riding, how close my current average is to my goal average, and how much distance (or time) remains in the overall route. Moreover, the rate of change is constantly in flux as the underlying parameters (overall average, distance traveled, distance remaining) are changing as I continue my ride.</p>
+
+<p>What I would like to do is be able to create a “bike computer” interface that (using its knowledge of my current distance, time, and average, and the amount distance or time remaining in my route) constantly reports and updates the new average I need to maintain in order to meet my goal (as well as the distance or time I will require to meet my goal at my current pace).</p>
+
+<p>Calculus (and integration in particular) will be particularly useful tools for building such an interface.</p>
+
+<p>Let’s start with the general formula that will be needed to in order for my new computer to constantly perform these calculations.</p>
+
+<p>Our overall goal is to reach a target speed. So this is a good place to start.</p>
+
+<p>If our goal is to finish with an average of 17mph, we’re going to need to end with a distance and time that can give us this result.</p>
+
+<p>Since:</p>
+
+\[Speed = \frac{Distance}{Time}\]
+
+<p>we know that we will need something like this:</p>
+
+\[17 = \frac{Distance}{Time}\]
+
+<p>But our challenge is to pick any point somewhere in the middle of the route and, based on the distance covered at that point in time, to pick a new speed that leads us to our desired overall average.</p>
+
+<p>In this case, we know the starting distance (which we will call \(s\)) of the overall distance (\(d\)) (which we also know) and we know the time traveled (\(b\)) at \(T_1\).</p>
+
+<p>But we want to discover the second part (which we will call \(r\) for remaining distance) of \(d\) at \(T_2\) and the additional time required to reach \(T_2\) (which we will call \(x\)) based on the already completed distance \(s\) and initial time \(b\) and, most importantly, the speed required to cover that remaining distance (\(r\)) within the allotted amount of remaining time (\(x\)).</p>
+
+<p>Let’s start by calculating the starting distance (\(s\)) at time \(T_1\) or \(b\).</p>
+
+<p>This is an integral function:</p>
+
+\[\mathrm{d}y = \int_0^b f(x) \mathrm{d}t\]
+
+<p>Again \(b\) is the time (in hours) and \(f(x)\) is the function that describes the change in distance during \(\mathrm{d}t\). In our example \(f(x)\) will be very simple (i.e. the derivative of a linear function, like 15).</p>
+
+<p>But being general here will allow our calculations to not just work with linear functions but later with more elaborate functions (e.g. functions that might describe the average speed at \(T_1\) of a rocket) and will allow our calculations to be even more accurate.</p>
+
+<p>So let’s imagine I’ve been biking for 1 hours (\(T_1=1\) and \(b = 1\)) and my average over that 1 hour has been 15mph (\(f(x) = 15\)). We can compute the distance covered at this point (\(\mathrm{d}y\)) by computing the definite integral: \(\int_0^1 15 \mathrm{d}t\) which becomes \(15(1)\) or 15 miles.</p>
+
+<p>If we want to get to the speed over that hour, we can just divide \(\mathrm{d}y\) by how long I’ve been traveling, \(\mathrm{d}t\); in other words \(\frac{\mathrm{d}y}{\mathrm{d}t}\), or \(\frac{s}{b}\) which equals \(\frac{15}{1}\) or 15 miles per hour.</p>
+
+<p>Ok, but our final goal is \(\frac{17}{1}\) or 17 miles per hour.</p>
+
+<p>So to reach our goal, we’re going to need an overall distance \(d\) (or \(dy\)) that, when divided by the overall time \(b + x\) (where x is the additional time traveled), gives us 17.</p>
+
+<p>But we already know part of the overall function that is going to lead us to \(\mathrm{d}y\). So our question is really <strong>what do we need to add to get to our desired result</strong>? Or more concretely, how fast do we need to travel over the additional amount of time \(x\). Let’s call this new and unknown rate of change \(g(x)\).</p>
+
+<p>So getting to a \(\mathrm{d}y\) (\(d\), the overall distance) where \(\frac{\mathrm{d}y}{b+x}=17\) is a matter of adding another integral to the value of the already known integral.</p>
+
+\[\mathrm{d}y = \int_0^b f(x) \mathrm{d}t + \int_0^x g(x) \mathrm{d}t\]
+
+<p>And since we know our target average speed (17) is just the overall distance divided by the overall time \(\frac{\mathrm{d}y}{b + x}\) we have the following equation:</p>
+
+\[17 = \frac{\int_0^b f(x) \mathrm{d}t + \int_0^x g(x) \mathrm{d}t}{b+x}\]
+
+<p>Now we’re getting close. We can see our goal \(g(x)\), but before we can solve for \(g(x)\), we first need to find \(x\) or the additional amount of time anticipated in the planned route.</p>
+
+<p>But this a little tricky because I don’t know the time yet. The amount of time it will take will depend on how fast I go or \(g(x)\) which is exactly what I’m trying to find.</p>
+
+<p>However, because I know the route of my overall ride and thus the distance of the overall route, we can describe \(x\) in terms of \(g(x)\) and remaining distance which we have called \(r\).</p>
+
+<p>Again, recall that:</p>
+
+\[Speed = \frac{Distance}{Time}\]
+
+<p>therefore:</p>
+
+\[g(x) = \frac{r}{x}\]
+
+<p>So we just need to find \(r\) or the remaining distance.</p>
+
+<p>And remaining distance will be the total distance of the route \(d\) minus the starting (already travelled) distance \(s\) at \(T_1\).</p>
+
+<p>The starting distance \(s\) can be computed from the speed and time at \(T_1\) which is \(s = f(x)b\)</p>
+
+<p>Putting all this together, we have:</p>
+
+\[r = d - f(x)b\]
+
+<p>And with the help of r, we can now replace all \(x\)’s (the remaining time) with \(\frac{d-f(x)b}{g(x)}\), and then we can solve for \(g(x)\).</p>
+
+<p>Back to our above equation, summing the two integrals:</p>
+
+\[y = \frac{\mathrm{d}y}{\mathrm{d}t} = \frac{\int_0^b f(x) \mathrm{d}t + \int_0^x g(x) \mathrm{d}t}{b+x}\]
+
+<p>This can be now modified to:</p>
+
+\[y = \frac{\mathrm{d}y}{\mathrm{d}t} = \frac{\int_0^b f(x) \mathrm{d}t + \int_0^\frac{d - f(x)b}{g(x)} g(x) \mathrm{d}t}{b+\frac{d - f(x)b}{g(x)}}\]
+
+<p>It’s worth stopping here for a second to recognize this above equation as the important bit. All we have left to do is plug in our known quantities and solve for g(x). But the abstract equation here helps us see that this equation should work in any scenario, even if the parameters are very different or f(x) is a very complicated function or even if g(x) needed to be variable function and not just a constant.</p>
+
+<p>With that in mind, let’s solve our original practical problem with our known quantities.</p>
+
+<p>If my goal remains 17mph and the overall route is 30 miles and \(T_1 = 1\) and my average at \(T_1 = f(x) = 15\), then</p>
+
+\[17 = \frac{\int_0^1 15 \mathrm{d}t + \int_0^\frac{30-15(1)}{g(x)} g(x) \mathrm{d}t}{1+\frac{30-15(1)}{g(x)}}\]
+
+<p>which reduces to:</p>
+
+\[17 = \frac{15(1) + \frac{g(x)(30-15(1))}{g(x)}}{1 + \frac{30-15}{g(x)}}\]
+
+<p>As the \(g(x)\) in the top fraction cancels out and a few more sums can be simplified, we can further reduce to:</p>
+
+\[17 = \frac{15 + (30-15)}{1 + (\frac{30-15}{g(x)})}\]
+
+\[17 = \frac{15 + 15}{1 + \frac{30-15}{g(x)}}\]
+
+\[17 = \frac{30}{1 + \frac{15}{g(x)}}\]
+
+<p>Cross multiply to get:</p>
+
+\[17(1 + \frac{15}{g(x)}) = 30\]
+
+<p>Distribute:</p>
+
+\[17(1) + 17(\frac{15}{g(x)}) = 30\]
+
+<p>And then solve:</p>
+
+\[17(\frac{15}{g(x)}) = 30-17\]
+
+\[17(\frac{15}{g(x)}) = 13\]
+
+\[\frac{15}{g(x)} = \frac{13}{17}\]
+
+\[15 = \frac{13}{17}(g(x))\]
+
+\[\frac{15}{\frac{13}{17}} = g(x)\]
+
+\[15(\frac{17}{13}) = g(x)\]
+
+\[19.615 = g(x)\]
+
+<p>Thus after traveling 1 hour at an average of 15 miles per hour, with only 15 miles left, I would need to average 19.615 mph over the next 15 miles to reach my goal of an overall average 17 mph for the entire trip.</p>
+
+<p>The entire above set of calculations can be automated based on various input parameters and from there we get the BikeComputer Application which can provide a range of outputs depending on inputs.</p>
+
+<p><img src="https://s3.amazonaws.com/lum-faculty-jcwitt-public/bikeComputer.png" alt="bikeComputerExample" /></p>
+
+<p>Here you can see that given my average speed of 15 mph over 1 hour with 15 miles remaining, the speed needed to reach goal is calculated to be exactly what we concluded above 19.615.</p>
+
+<p>But the computer shows more. It shows that if I persists at my current pace of 19mph over the next 15 miles, I will need 19 miles (not 15) to reach my goal, and that at the end of the remaining 15 miles I will only have achieved an average of 16.764 mph falling about 0.24 mph short of my goal.</p>
+:ET

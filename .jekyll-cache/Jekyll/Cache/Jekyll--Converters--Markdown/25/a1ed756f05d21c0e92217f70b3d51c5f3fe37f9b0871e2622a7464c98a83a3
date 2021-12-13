@@ -1,0 +1,22 @@
+I"h<p>I just added two new IIIF manifests for witnesses of <em>Sentences</em> commentaries to the SCTA Image Viewer made available through UPenn’s <a href="http://openn.library.upenn.edu/Collections.html">OPenn</a> project and, of course, <a href="http://iiif.io">IIIF</a>.</p>
+
+<p>First, there is codex 1147 which contains Book 3 of Lombard’s Sentences commentary.
+Visit <a href="http://mirador.scta.info">http://mirador.scta.info</a> and search for “1147”, “Lombard” or “Philadelphia” and you’ll be sure to find it.</p>
+
+<p>Now you can see this UPenn manuscript side by side a witness of the same text in the BnF, ms. lat. 15705.</p>
+
+<p>Just paste these manifest links into any IIIF viewer and view the texts:</p>
+
+<ul>
+  <li>http://scta.info/iiif/pl-penn1147/manifest</li>
+  <li>http://scta.info/iiif/pl-bnf15705/manifest</li>
+</ul>
+
+<p>I also added a manifest for an anonymous fragment of a <em>Sentences</em> commentary, UPenn codex 727, IIIF manifest:</p>
+
+<ul>
+  <li>http://scta.info/iiif/anon1-penn727/manifest</li>
+</ul>
+
+<p>On my count, these are the 38 and 39th witnesses in the viewer. Woohoo!!!</p>
+:ET

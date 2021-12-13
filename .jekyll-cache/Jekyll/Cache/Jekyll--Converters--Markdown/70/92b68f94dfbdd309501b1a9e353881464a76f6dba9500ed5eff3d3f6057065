@@ -1,0 +1,69 @@
+I"�<p>In Bezug auf IIIF und Discovery will ich nur einen Gedanken vorbringen und diesen dann illustrieren.</p>
+
+<p>“Discovery of IIIF Resources” (Bildfindung) ist momentan in der IIIF-Gemeinde ein wichtiges Thema. Aber diese Discovery ist normalerweise die Entdeckung eines Buches oder einer Seite innerhalb eines Buches. Ich kenne den Titel ein Buch oder Handschrift, wie kann ich jetzt dieses Buch mit IIIF sehen? Das ist die übliche Frage.</p>
+
+<p>Diese Fokussierung ist nachvollziehbar. Die IIIF Presentation API wurde schließlich für solche physischen Objekte gebaut. Und selbstverständlich zielen die ersten “Viewers” (die IIIF fördert) darauf, diese Objekte im virtuellen Raum zu zeigen. Das ist nicht falsch. Die Entdeckung eines IIIF Manifests bleibt wichtig.</p>
+
+<p>Was ich hier vorbringen möchte, ist allerdings, dass diese Art von Entdeckung begrenzend ist. Sie begrenzt unsere Vorstellung davon, was ein Objekt ist oder sein kann. Und deswegen begrenzt sie unsere Vorstellung davon, was entdeckt werden kann und auf welchem Weg es entdeckt werden kann.</p>
+
+<p>Wenn wir erkennen, dass der Inhalt eines Bildes (ich spreche hier von Bildern, die Texte beinhalten) mit Objekten in der Form von Text-Ideen erfüllt wird, dann werden wir neue Kandidaten für Entdeckungen finden.</p>
+
+<p>Ich will Ihnen das zeigen.</p>
+
+<p>In diesem Fall beginne ich nicht mit Bildern, sondern mit Texten. Diese beinhalten sowohl verborgene Idee-Objekte (wie Zitate, Verweise, Abschnitte) als auch  Verhältnisse (wie Nächstes, Vorheriges, Zitiert von, Beeinflusst von, und so weiter).</p>
+
+<p><img src="https://s3.amazonaws.com/lum-faculty-jcwitt-public/web.jpg" alt="text network" /></p>
+
+<p>Wenn wir unsere Texte in einer Weise herausgeben können, dass diese Text-Objekte erkannt und in “Machine Actionable” Ressourcen verwandelt wurden, dann haben wir ein Text-Netzwerk. Wir können diesem Netzwerk vorwärts und rückwärts folgen.</p>
+
+<p>So zum Beispiel, wenn ein Text “A” auf einen Bibel(f)vers B verweist oder ihn zitiert, wissen wir nicht nur, dass dieser Text diesen Bibelvers zitiert, sondern wir wissen auch, dass dieser Bibelvers B von Text A zitiert wurde. Das bedeutet, dass wir einen “bi (bee) direktionalen Link” haben. Und von dem Bibelvers B können wir alle Zitate dieses Verses in ihren historischen Verwendung sehen.</p>
+
+<p>Nicht das:</p>
+
+<p><img src="https://s3.amazonaws.com/lum-faculty-jcwitt-public/links/Folie1.png" alt="text network" /></p>
+
+<p>Aber das:</p>
+
+<p><img src="https://s3.amazonaws.com/lum-faculty-jcwitt-public/links/Folie2.png" alt="text network" /></p>
+
+<p>Aus diesen bidirektionalen Links entsteht ein Text-Netzwerk. Hier fragen wir beispielsweise nach jedem Zitat von einem Vers aus dem ersten Korintherbrief, Kapitel 13.</p>
+
+<p><img src="https://s3.amazonaws.com/lum-faculty-jcwitt-public/Icor13Network.gif" alt="ICor13 Netzwerk" /></p>
+
+<p>Aber wir sind noch nicht fertig.</p>
+
+<p>In der Textkritik ist es ein Ziel des Herausgebers, Transparenz zu erreichen. Der Herausgeber sucht nach den Zeugen für einen Text und arbeitet darauf hin, diesen Beweis dem Leser transparent zu machen. IIIF ist hierbei eine erhebliche Hilfe. Denn es gibt uns die Chance, mit Bildern diese Transparenz zu erhöhen.</p>
+
+<p><img src="https://s3.amazonaws.com/lum-faculty-jcwitt-public/PeterOfSpainBerlin-2019-09-20/PlaoulImageComparison.gif" alt="Text Image Transparency" /></p>
+
+<p>Aber was sind die Text-Zeugen? Aus einem historischen Blickwinkel ist die Bibel nicht nur der einzige Zeuge für einen Bibelvers. Jedes Zitat ist eine Art von Zeuge. Das Zitat ist ein Fenster dahin, wie ein Vers in einer spezifischen Zeit gesehen und gelesen wurde.</p>
+
+<p>Aber wie können wir diese Zitate in einen kritischen Text bringen, und wie können wir die Bilder von diesen kleinen Zitaten, verborgen in vielen großen Bänden, entdecken?</p>
+
+<p>Wenn wir uns vorstellen, dass ein Bild von einer Seite nicht ein einziges Bild ist, sondern eigentlich ein Behälter von einer unbegrenzten Menge von überlappenden, kleineren Bildern, dann haben wir neue Möglichkeiten: neue Ressourcen zu entdecken und neue Verbindungen zu schaffen.</p>
+
+<p>Hier wird die IIIF Image API unumgänglich. Die IIIF Image API gibt uns die Möglichkeit, kleine Teile von einem großen Bild auszuwählen und viele verschiedene kleine Bilder zu schaffen.</p>
+
+<p>Dann ist es möglich, mit unseren Text-Objekten und unserem Text-Netzwerk Verhältnisse zwischen einer Text-Idee und den entsprechenden kleinen Bildern, die diese Idee beinhalten, zu erschaffen.</p>
+
+<p>Eine Eigenschaft von einem Text-Objekt (Zitat) ist die Zeile innerhalb einer Seite, wo das Text- Objekt steht. Diese Information genügt, um automatisch kleine Bilder “on the fly” zu erschaffen.</p>
+
+<p>Man kann diese Verbindung in dieser Folie sehen.</p>
+
+<p><img src="https://s3.amazonaws.com/lum-faculty-jcwitt-public/textExpansion/Folie8.png" alt="text-line-alignment" />
+<img src="https://s3.amazonaws.com/lum-faculty-jcwitt-public/textExpansion/Folie9.png" alt="text-line-alignment" /></p>
+
+<p>Mit diesen Verbindungen können wir unsere Kenntnis vom Text-Zitat Netzwerk nutzen, um all die Bilder-Zeugen von einem Bibelvers in einem Bild-Netzwerk zusammenzubringen, die durch die jahrhundertelange Geschichte von wissenschaftlichem Diskurs überall verstreut sind.</p>
+
+<p>Und das kann man hier sehen.</p>
+
+<p><img src="https://s3.amazonaws.com/lum-faculty-jcwitt-public/Icor13pictures.gif" alt="Icor13Pictures" /></p>
+
+<p>Das Gif oben zeigt mehr als 67 Zitate von mehr als 16 verschiedenen Autoren mit Bildern, die von mindestens 10 verschiedenen Institutionen stammen.</p>
+
+<p>Jetzt, wenn man die Bibel liest, kann man automatisch jedes Zitat in der Zukunft der Textgeschichte sehen, vergleichen, und dann mit perfekter Transparenz die Bilder hinter jeder Transkription von einer IIIF Institutionen abrufen und direkt sehen.</p>
+
+<p>Und gewiss können wir diesen Entdeckungsprozess in entgegensetzter Richtung nachvollziehen. Von dem Text jedes Bibelvers können wir zu den Bild-Fragment gehen, und davon zu der Seite (oder IIIF Canvas), wo das Fragment steht, und dann weiter zu dem Buch (oder IIIF Manifest), das die Seite beinhaltet.</p>
+
+<p><img src="https://s3.amazonaws.com/lum-faculty-jcwitt-public/Icor13FragmentToBook.gif" alt="Icor13 to Book" /></p>
+:ET

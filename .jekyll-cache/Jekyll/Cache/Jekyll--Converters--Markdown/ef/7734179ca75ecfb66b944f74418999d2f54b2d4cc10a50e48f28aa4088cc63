@@ -1,0 +1,587 @@
+I"�<h1 id="introduction">Introduction</h1>
+
+<p>What follows is an attempt to describe the movement from an abstract data model and a semantically meaningful ontology to a serialization of that information that a generic web application can consume and display.</p>
+
+<p>I will first provide a general overview of the abstract data model (visually represented here: <a href="https://raw.githubusercontent.com/scta/scta-ontology/master/SCTASCHEMA3.png">https://raw.githubusercontent.com/scta/scta-ontology/master/SCTASCHEMA3.png</a>) and how this model can be translated into a set of classes and subclasses that take on a logical and predictable set of properties suited to their class type (described here<a href="https://github.com/scta/scta-ontology/blob/master/SCTAOntologySpec.md">https://github.com/scta/scta-ontology/blob/master/SCTAOntologySpec.md</a>)</p>
+
+<p>Second, I will turn to a mock serialization of this same information that will illustrate how a web application could efficiently consume and display this information while minimizing HTTP requests.</p>
+
+<p>In the end, I’ll demonstrate this entire movement from data model to serialization to web application consumption for a number of common resource types.</p>
+
+<h1 id="1--data-model-and-semantic-properties">1.  Data Model and Semantic Properties</h1>
+
+<h2 id="a--workgroups-and-works">A.  WorkGroups and Works</h2>
+
+<p>The model begins from the concept of a top level <strong>WorkGroup</strong>. A top level <strong>WorkGroup</strong> can contain nested <strong>WorkGroups</strong> as well as a FRBR <strong>Work</strong>. I understand a FRBR <strong>Work</strong> to be an instance of the lowest level <strong>WorkGroup</strong>. This means that it has all the characteristics and properties of any other <strong>WorkGroup</strong> except that it is the lowest level and therefore cannot contain any other <strong>WorkGroups</strong> or <strong>Works</strong>. It can only contain FRBR <strong>Expressions</strong>.</p>
+
+<h3 id="digression-on-frbr-cts-realignment">Digression on FRBR CTS realignment</h3>
+
+<p>Right away, it should be noted that this is a departure from the way CTS (Canonical Text Services) has understood the term <strong>Work</strong> (see: <a href="http://www.homermultitext.org/hmt-docs/specifications/ctsurn/specification.html">http://www.homermultitext.org/hmt-docs/specifications/ctsurn/specification.html</a>. While CTS has claimed an equivalence between a FRBR <strong>Work</strong> and a CTS <strong>Work</strong>, I have opted for a different approach.</p>
+
+<p>CTS states:</p>
+
+<blockquote>
+  <p>Within a text group, a CTS URN’s work is a conceptual entity, like the FRBR work: it is an abstract idea of the content expressed in all versions of a work, in the original language or in translation. <a href="http://www.homermultitext.org/hmt-docs/specifications/ctsurn/specification.html_">http://www.homermultitext.org/hmt-docs/specifications/ctsurn/specification.html</a></p>
+</blockquote>
+
+<p>CTS moves directly from CTS <strong>Work</strong> to CTS <strong>Version</strong> which it identifies with a FRBR <strong>Expression</strong>, and from CTS <strong>Versions</strong> to CTS <strong>Exemplars</strong> which it identifies with FRBR <strong>Items</strong>. Missing from this, as CTS notes, is the concept of FRBR <strong>Manifestation</strong>.</p>
+
+<p>Thus, we have the following alignment:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>FRBR Work</td>
+      <td>CTS Work</td>
+    </tr>
+    <tr>
+      <td>FRBR Expression</td>
+      <td>CTS Version</td>
+    </tr>
+    <tr>
+      <td>FRBR Manifestation</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>FRBR Item</td>
+      <td>CTS Exemplar</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This close, but not exact, alignment of the two models seems to be the source of great confusion, and I think we need to create a remapping and then revert to the FRBR language.</p>
+
+<p>In brief, I think the deep abstractness of the FRBR <strong>Work</strong> is under appreciated. Likewise, our familiarity with the colloquial use of the word “work” to refer to an artistic creation that appears in a certain form (i.e. a book), inclines us to identify FRBR <strong>Work</strong> with what CTS means by <strong>Work</strong>. But in actual fact what CTS usually means by <strong>Work</strong> more closely parallels what FRBR means by <strong>Expression</strong>.</p>
+
+<p>Below are the brief descriptions that FRBR gives for a FRBR <strong>Work</strong> and FRBR <strong>Expression</strong>:</p>
+
+<blockquote>
+  <p>Work is a “distinct intellectual or artistic creation.” For example, Beethoven’s Ninth Symphony apart from all ways of expressing it is a work. When we say, “Beethoven’s Ninth is magnificent!” we generally are referring to the work.
+Expression is “the specific intellectual or artistic form that a work takes each time it is ‘realized.’“[1] An expression of Beethoven’s Ninth might be each draft of the musical score he writes down (not the paper itself, but the music thereby expressed). <a href="https://en.wikipedia.org/wiki/Functional_Requirements_for_Bibliographic_Records">https://en.wikipedia.org/wiki/Functional_Requirements_for_Bibliographic_Records</a></p>
+</blockquote>
+
+<p>Critical in the definition of a FRBR <strong>Work</strong> is the phrase: considered “apart from all ways of expressing it.” Here we are very far from any notion of a text (a FRBR <strong>Expression</strong>) much less the idea of a typeset book (a FRBR <strong>Manifestation</strong>) and even further from the notion of a particular instance of a FRBR <strong>Manifestation</strong> in a library or bookshop somewhere in the world (a FRBR <strong>Item</strong>).</p>
+
+<p>The idea of <em>Moby Dick</em> can be expressed in multiple ways. It can be expressed as a novel or as a screen-play. Each of these are separate FRBR <strong>Expressions</strong> that, as of yet, have made no reference to a particular edition or version. They are still just ideas. Each of these <strong>Expressions</strong> can then manifest themselves in different ways.</p>
+
+<p>Thus from the outset I think we need a realignment of the two models that contradicts that alignment proposed by CTS.</p>
+
+<p>Instead of:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>FRBR Work</td>
+      <td>CTS Work</td>
+    </tr>
+    <tr>
+      <td>FRBR Expression</td>
+      <td>CTS Version</td>
+    </tr>
+    <tr>
+      <td>FRBR Manifestation</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>FRBR Item</td>
+      <td>CTS Exemplar</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>we should adopt the following alignment:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>FRBR Work</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>FRBR Expression</td>
+      <td>CTS Work</td>
+    </tr>
+    <tr>
+      <td>FRBR Manifestation</td>
+      <td>CTS Version</td>
+    </tr>
+    <tr>
+      <td>FRBR Item</td>
+      <td>CTS Exemplar</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>I pause here to provide one last real world justification for this correction:</p>
+
+<p>Adam Wodeham’s Oxford Ordinatio Commentary on the Sentences of Peter Lombard is a FRBR <strong>Work</strong> as I understand it.</p>
+
+<p>But this <strong>Work</strong> was expressed by Wodeham in the 1330’s as his own written expression. For moment let us call this Adam Wodeham’s “Original Expression.”</p>
+
+<p>But this same <strong>Work</strong> was expressed as an “Abbrevation” by Henry Totting of Oyta some 60 years later. Let’s call this the “Abbreviated Expression.” Henry Totting of Oyta took the same abstract <strong>Work</strong> and created a shorter abbreviated <strong>Expression</strong>, in a manner similar to the way a screen play might shorten or cut out sections left in a longer novel <strong>Expression</strong>. The screen play, like the “Abbreviated Expression” is a not a new CTS <strong>Version</strong> or FRBR <strong>Manifestation</strong> of the <strong>Work</strong>. It is a new <strong>Expression</strong> of the same idea that the “Original Expression” expresses.</p>
+
+<p>In short, despite differences, the “Original Expression” and “Abbreviated Expression” are linked because they are two different <strong>Expressions</strong> of the same FRBR <strong>Work</strong>. Adam Wodeham is the author in both cases and they contain the same abstract content. But the content is expressed differently. The “Original Expression” was expressed by Wodeham himself while the “Abbreviated Expression” was expressed by Henry Totting of Oyta.</p>
+
+<p>We cannot simply call these CTS <strong>Versions</strong> or FRBR <strong>Manifestations</strong> because each of these FRBR <strong>Expressions</strong> will have their own CTS <strong>Versions</strong> / FRBR <strong>Manifestations</strong>. For example, in 1516 John Mair produced the 1516 printed edition (FRBR <strong>Manifestation</strong>) of the “Abbreviated Expression”. This 1516 FRBR <strong>Manifestation</strong> was printed several times such that there are now several FRBR <strong>Items</strong> or <strong>CTS Exemplars</strong> of this particular <strong>Manifestation</strong> in different libraries throughout the world.</p>
+
+<h2 id="b--expressions-and-ohco">B.  Expressions and OHCO</h2>
+
+<p>Once at the FRBR <strong>Expression</strong>, we have reached what we most commonly think of as the abstract text without yet specifying a particular material instantiation, version, or edition of that text. A good indicator that one has reached the FRBR <strong>Expression</strong> level is that the “text” can be broken down into a hierarchy. No such hierarchy is possible when discussing a FRBR <strong>Work</strong> because the idea has not been expressed in any form. A hierarchy only forms, when an author tries to express that idea. Accordingly, the hierarchies will likely differ in two different <strong>Expressions</strong> of the same <strong>Work</strong>.</p>
+
+<p>Once at the <strong>Expression</strong> level, the existing text hierarchy makes it possible to construct a matrix, where FRBR concepts continue to run along the X axis and the hierarchy division runs down the
+Y axis. Thus, each unit within the FRBR <strong>Expression</strong> hierarchy can have FRBR <strong>Manifestations</strong> and FRBR <strong>Items</strong>.</p>
+
+<p>While the hierarchy of a text is often unique to the <strong>Expression</strong> or to <strong>Expressions</strong> within a similar <strong>WorkGroup</strong>, it is possible to abstract from the details of the hierarchy and identify common patterns within any given hierarchy. Two obvious examples of this are the top level of the <strong>Expression</strong> hierarchy and the bottom level of the hierarchy. Every hierarchy, no matter how big or small, simple or complicated, will have a top level <strong>Expression</strong> and a bottom level <strong>Expression</strong>. Moreover, we can expect that these kinds of <strong>Expressions</strong> will have features or properties unique to their type. For example, a top level <strong>Expression</strong> will, by definition, never have a <em>isPartOfTopLevelExpression</em> property because there are no <strong>Expressions</strong> containing it. Likewise, a bottom level <strong>Expression</strong> will never have a <em>hasPart</em> property because it is the lowest level of the hierarchy and therefore there are no more parts to be contained.</p>
+
+<h3 id="expression-structure-types-and-expression-levels">Expression Structure Types and Expression Levels</h3>
+
+<p>The desire to identify general classes of resources within an <strong>Expression</strong> hierarchy while remaining agnostic about the actual hierarchy of any given <strong>Expression</strong> is the impetus behind the associated properties I refer to as <em>structureTypes</em> and <em>levels</em>.</p>
+
+<p>The <em>structureType</em> property is used to divide a hierarchy, no matter its actual structure, into three privileged parts. A top level Expression (as we will see below, normally a top level <em>structureCollection</em>), a <em>structureItem</em> level, and <em>structureBlock</em> level.</p>
+
+<p>Let’s consider first the <em>structureItem</em> division. This division, perhaps despite appearances, actually follows an established and traditional practice of dividing an <strong>Expression</strong> into a privileged set of units. In most books, this is the chapter division level. Consider the formatting of most monographs. Though there may be sections within books that contain chapters, and though chapters may contain many subdivisions, the chapter division is privileged. The chapter division gets a new page and a grand heading in a way that subdivisions do not. Likewise, if paragraph numbers, line numbers, or note numbers, get counted the numbering usually restarts at these privileged points in the <strong>Expression</strong> hierarchy. This seems to be clear evidence that this division within the hierarchy is being privileged. This privileging is not without good reason. It allows us, no matter how complicated the hierarchy of a text, to quickly jump from the top level <strong>Expression</strong> to exhaustively access all of the discrete sections within a text without having to loop through an unknown number of nested divisions.</p>
+
+<p>The <em>structureBlock</em> performs a similar function. The <em>structureBlock</em> designation refers to the lowest exhaustive unit of text within the hierarchy. It is not possibly to identify the lowest unit in the <strong>Expression</strong> hierarchy simple by its level alone. <strong>Expression</strong> hierarchies may vary drastically in the number of levels within the hierarchy. So in order to easily identify the lowest exhaustive unit of a text (normally paragraphs or lines), we can designate each of these units as <em>structureType=structureBlock</em>.</p>
+
+<p>Thus in two steps, no matter how complicated the hierarchy or how large the text, we can request every paragraph or every line in a text. We simply ask the top level <strong>Expression</strong> for every <em>structureItem</em> and every <em>structureItem</em> for every <em>structureBlock</em>.</p>
+
+<p>Besides <em>structureItem</em> and <em>structureBlock</em>, we also use the notion of a <em>structureCollection</em> and <em>structureDivision</em> to classify other sections of the <strong>Expression</strong> hierarchy that are not otherwise designated.</p>
+
+<p>A <em>structureCollection</em> is any section that stands above the <em>structureItem</em> level. These types help create predictable properties. Any <strong>Expression</strong> designated as a <em>structureCollection</em> would be expected to list all the <em>structureItems</em> it contains.</p>
+
+<p>In this case, a top level <strong>Expression</strong> would also be a <em>structureCollection</em>. It would be differentiated from any other sub sections that are also <em>structureCollections</em> because it alone has a level property whose value equals “1”.</p>
+
+<p>Any <em>structureCollection</em> whose level property does not equal 1 would be expect to also have a property <em>isPartOfTopLevelExpression</em>.</p>
+
+<p>A <em>structureDivision</em> is similar. It represents a section in the hierarchy that is contained by a <em>structureItem</em> section, but is not a <em>structureBlock</em> section. Any <em>structureDivision</em> <strong>Expression</strong> should be expected to have the properties <em>isPartOfStructureItem</em> and <em>hasStructureBlock</em>.</p>
+
+<h2 id="c--manifestations">C.  Manifestations</h2>
+
+<p>FRBR <strong>Manifestations</strong> should now exist at every level of the <strong>Expression</strong> hierarchy. They can be associated through predictable properties. Each <strong>Expression</strong> can take a <em>hasManifestation</em> property and each <strong>Manifestation</strong> can take an <em>isManifestationOf</em> property.</p>
+
+<p><strong>Manifestations</strong> now bring us closer to the familiar CTS <strong>Version</strong>, but these versions vary in type. A <strong>Manifestation</strong> could be a manuscript, an early modern printing, a modern critical edition, or even a born digital critical edition.</p>
+
+<p>It’s important to remember that even though a <strong>Manifestation</strong> is beginning to point to a physical or material representation of an <strong>Expression</strong>, it is nevertheless still an idea and not a physical object. We are referring here to the idea of the physical representation of an <strong>Expression</strong>. Thus when we talk about the 1512 printing of a given <strong>Expression</strong>, we are not talking about the <strong>Item</strong> of the 1512 printing in the British Library or in the Harvard University Library.</p>
+
+<p>This is easier to see in the case of printed books, but harder to see in the case of a manuscript, which by definition will have only one material instantiation (or FRBR <strong>Item</strong>). Nevertheless, the conceptual distinction is important. The <strong>Manifestation</strong> that has the <em>manifestationType</em> manuscript will have one and only one material instantiation, whereas the <strong>Manifestation</strong> that has the <em>manifestationType</em> of a printed book will have several, if not thousands, of material instantiations.</p>
+
+<p>Finally, we must also include a space here for born digital <strong>Manifestations</strong> of an <strong>Expression</strong>. The new practice of building born-digital critical editions of <strong>Expressions</strong> is a good example. This means that we have a <strong>Manifestation</strong> that corresponds to no physical material object. And it is of course tempting here associate this <strong>Manifestation</strong> with the actual digital file. But we must resist this temptation and continue to remember that the <strong>Manifestation</strong> is still an idea of how to materially represent (in this case, encode) a given <strong>Expression</strong>. It is the idea of a particular edition that may either have a material object or digital transcriptions standing as an instantiations of that idea.</p>
+
+<p>In concrete, a <strong>Manifestation</strong> should inherit the <em>structureType</em> of the <strong>Expression</strong> it <em>isManifestationOf</em>. Moreover, a <strong>Manifestation</strong> should take on properties specific to a <strong>Manifestation</strong>. A <strong>Manifestation</strong> should have a <em>manifestationType</em> that indicates whether it is a manuscript, early printing, modern critical edition, or born digital critical edition. Other properties and constraints specific to each type of <strong>Manifestation</strong> could then be added.</p>
+
+<p>Finally, a <strong>Manifestation</strong> should also point to FRBR <strong>Items</strong>. For reasons to be explained below we divide these associations into two types, <em>hasMaterialObject</em> and <em>hasTranscription</em>.</p>
+
+<h2 id="d--items-materialobjects-and-transcriptions">D.  Items: MaterialObjects and Transcriptions</h2>
+
+<p>There seems to be something conceptually correct about identifying a digital transcription (by which I mean a semantically encoded text that can be serialized and distributed in multiple ways, and thus we do not yet mean the raw TEI file, or another other format) with a FRBR <strong>Item</strong>. Just like an individual printed books, it aims to be an instantiation of a <strong>Manifestation</strong>. However, instead of instantiating that idea with ink on a page, it does so with electronic signals on a disk drive.</p>
+
+<p>Nevertheless, the digital transcription is also so different from the material instantiation that we felt it best to split the FRBR <strong>Item</strong> class into two subclasses: the <strong>MaterialObject</strong> and the <strong>Transcription</strong>.</p>
+
+<p>The <strong>MaterialObject</strong> should be a record that has the appropriate properties to locate and describe the material book in this or that particular library.</p>
+
+<p>My focus here will be on the <strong>Transcription</strong> subclass.</p>
+
+<p>As mentioned above, the <strong>Transcription</strong> resource is not an actual digital file. Rather it is a resource that contains properties that can direct a client to the raw text representing this transcription in various file formats, the most obvious being XML. The <em>hasXML</em> property should point directly to the raw TEI file, which when requested through a traditional HTTP request returns exactly that: a TEI file.</p>
+
+<p>Keep in mind that the the <strong>Transcription</strong> resource continues to inherit its hierarchical position from the <strong>Expression</strong> to which it is connected. It will rarely be the case then that separate source TEI XML files are produced for every <strong>Expression</strong> level. Rather, a <strong>Document</strong> or file will exist corresponding to some level of the <strong>Expression</strong> hierarchy. I find that it generally makes the most sense to divide my <strong>Documents</strong> at the <em>structureItem level</em>. This mean that the raw XML for a <strong>Transcription</strong> corresponding to <em>structureCollection</em> level will actually be composed from several documents. I expect that the <em>hasXML</em> property would point to a XML TEI document that is composed dynamically from the <strong>Documents</strong> required for its composition. Thus the <em>hasDocument</em> property should point to the XML <strong>Documents</strong> from which this <strong>Transcription’s</strong> raw XML TEI document was dynamically composed.</p>
+
+<p>The same situation occurs for a <em>structureDivision</em> and <em>structureBlock</em>. The <em>hasXML</em> property should point to a raw XML file that is dynamically constructed from selecting a part of the <strong>Document</strong> in which the raw source XML is contained. In this case, there should only be one <em>hasDocument</em> property and it should point to the XML <strong>Document</strong> from which the raw XML for this <strong>Transcription</strong> was pulled and dynamically reconstructed.</p>
+
+<p>The <strong>Transcription</strong> resource could also point to a number of other encoding serializations such as HTML or JSON or PlainText with parallel properties like <em>hasHTML</em>, <em>hasJSON</em>, or <em>hasPlainText</em>.</p>
+
+<h1 id="2--serialization-for-a-api-consuming-client">2.  Serialization for a API consuming client</h1>
+
+<p>In this section, I’m going to propose some basic <em>mock</em> jsonld serializations of different resources. The expected properties and values returned in the serialization will reflect the data model described above and the nature of the resource in question. In connection with each serialization, I’ll provide a screen shot of a generic web application that could make use of this information.</p>
+
+<p>Let’s start with a top level <strong>WorkGroup</strong>. A simple request for a top level <strong>WorkGroup</strong> would return the following jsonld data.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "@id": "http://scta.info/resource/scta",
+  "@type": "workGroup",
+  "title": "Sentences Commentary Text Archive",
+  "description": "The top level work group",
+  "level": "1",
+  "parts": [
+    {
+        "@id": "http://scta.info/resource/sententia",
+        "@type": "workGroup",
+        "description": "A Work Group for all commentaries on the Sentences of Peter Lombard",
+        "title": "Sentences Work Group"
+    },
+    {
+        "@id": "http://scta.info/resource/deanima",
+        "@type": "workGroup",
+        "description": "A Work Group for all commentaries on Aristotle's De Anima",
+        "title": "De anima commentaries work group"
+    }
+  ],
+  "expressions": [
+    {
+        "@id": "http://scta.info/resource/plaoulcommentary",
+        "@type": "expression",
+        "description": "Commentary on the Sentences by Peter Plaoul",
+        "title": "Plaoul Commentary",
+        "author": "Peter Plaoul"
+    },
+    {
+        "@id": "http://scta.info/resource/wodehamordinatio",
+        "@type": "expression",
+        "description": "Commentary on the Sentences by Adam Wodeham",
+        "title": "Wodeham Ordinatio",
+        "author": "Adam Wodeham"
+    },
+    {
+        "@id": "http://scta.info/resource/wodehamabbreviatio",
+        "@type": "expression",
+        "description": "Commentary on the Sentences by Adam Wodeham",
+        "title": "Wodoeham Abbreviatio",
+        "author": "Adam Wodeham"
+    },
+    {
+        "@id": "http://scta.info/resource/rothwellcommentary",
+        "@type": "expression",
+        "description": "Commentary on the Sentences by William Rothwell",
+        "title": "Rothwell Commentary",
+        "author": "William de Rothwell"
+    },
+    {
+        "@id": "http://scta.info/resource/meleandercommentary",
+        "@type": "expression",
+        "title": "Meleander de anima commentary",
+        "author": "Placidus Aegidius Meleander"
+    }
+  ]
+}
+</code></pre></div></div>
+
+<p>This can be displayed as follows:</p>
+
+<p><img src="https://s3.amazonaws.com/lum-faculty-jcwitt-public/top-level-workGroup.png" alt="top level work group" /></p>
+
+<p>In the next serialization, we show a sample from the next (or second) level <strong>WorkGroup</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "@id": "http://scta.info/resources/sententia",
+  "@type": "workGroup",
+  "title": "Sententia",
+  "description": "A work group of Sentences Commentaries",
+  "level": "2",
+  "isPartOf": "http://scta.info/resources/scta",
+  "parts": [
+    {
+        "@id": "http://scta.info/resources/plaoulcommentary",
+        "@type": "expression",
+        "title": "Plaoul Commentary",
+        "author": "Peter Plaoul"
+    },
+    {
+        "@id": "http://scta.info/resources/wodehamordinatio",
+        "@type": "expression",
+        "title": "Wodeham Ordinatio",
+        "author": "Adam Wodeham"
+    },
+    {
+        "@id": "http://scta.info/resources/wodehamabbreviatio",
+        "@type": "expression",
+        "title": "Wodoeham Abbreviatio",
+        "author": "Adam Wodeham"
+    },
+    {
+        "@id": "http://scta.info/resources/rothwellcommentary",
+        "@type": "expression",
+        "title": "Rothwell Commentary",
+        "author": "William de Rothwell"
+    }
+    ],
+  "expressions": [
+    {
+        "@id": "http://scta.info/resources/plaoulcommentary",
+        "@type": "expression",
+        "title": "Plaoul Commentary",
+        "author": "Peter Plaoul"
+    },
+    {
+        "@id": "http://scta.info/resourcees/wodehamordinatio",
+        "@type": "expression",
+        "title": "Wodeham Ordinatio",
+        "author": "Adam Wodeham"
+    },
+    {
+        "@id": "http://scta.info/resources/wodehamabbreviatio",
+        "@type": "expression",
+        "title": "Wodoeham Abbreviatio",
+        "author": "Adam Wodeham"
+    },
+    {
+        "@id": "http://scta.info/resources/rothwellcommentary",
+        "@type": "expression",
+        "title": "Rothwell Commentary",
+        "author": "William de Rothwell"
+    }
+  ]
+}
+</code></pre></div></div>
+
+<p>The following image, shows a rendering of the above <strong>WorkGroup</strong>, where the client has chosen to show all the <strong>Expressions</strong> contained by a <strong>WorkGroup</strong>.</p>
+
+<p><img src="https://s3.amazonaws.com/lum-faculty-jcwitt-public/workGroup-with-expressions.png" alt="top level work group" /></p>
+
+<p>The next serialization shows the jsonld response for a top level <strong>Expression</strong>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "@id": "http://scta.info/resource/plaoulcommentary",
+  "@type": "expression",
+  "title": "Plaoulcommentary",
+  "author": "Peter Plaoul",
+  "description": "Commentary on the Sentences by Peter Plaoul",
+  "structureType": "collection",
+  "level": "1",
+  "isPartOf": "http://scta.info/resource/sententia",
+  "canonicalManifestation":
+    {
+        "@id": "http://scta.info/resource/plaoulcommentary/critical",
+        "title": "Critical Edition for Plaoul Commentary",
+        "type": "critical",
+        "status": "Draft",
+        "editor": "Jeffrey C. Witt",
+        "canonicalTranscription":
+        {
+            "@id": "http://scta.info/resource/plaoulcommentary/critical/transcription",
+            "title": "Critical Edition Transcription for Plaoul Commentary",
+            "type": "critical",
+            "status": "Draft",
+            "editor": "Jeffrey C. Witt",
+            "xml": "http://scta.info/text/plaoulcommentary.xml"
+        }
+    },
+    "manifestations": [
+    {
+        "@id": "http://scta.info/resource/plaoulcommentary/reims",
+        "title": "Reims Manuscript for Plaoul Commentary",
+        "type": "manuscript"
+    },
+    {
+        "@id": "http://scta.info/resource/plaoulcommentary/vat",
+        "title": "Vatican Manuscript for Plaoul Commentary",
+        "type": "manuscript"
+    },
+    {
+        "@id": "http://scta.info/resource/plaoulcommentary/svict",
+        "title": "St. Victor Manuscript for Plaoul Commentary",
+        "type": "manuscript"
+    },
+    {
+        "@id": "http://scta.info/resource/plaoulcommentary/sorb",
+        "title": "Sorbonne Manuscript for Plaoul Commentary",
+        "type": "manuscript"
+    },
+    {
+        "@id": "http://scta.info/resource/plaoulcommentary/critical",
+        "title": "Critical Edition for Plaoul Commentary",
+        "type": "critical"
+    }
+  ],
+  "parts": [
+    {
+        "@id": "http://scta.info/resource/deFide",
+        "title": "De Fide"
+    },
+    {
+        "@id": "http://scta.info/resource/deNotitia",
+        "title": "De Notitia"
+    },
+    {
+        "@id": "http://scta.info/resource/deFruitione",
+        "title": "De Fruitione"
+    },
+    {
+        "@id": "http://scta.info/resource/deTrinitate",
+        "title": "De Trinitate"
+    },
+    {
+        "@id": "http://scta.info/resource/deCaritate",
+        "title": "De Caritate"
+    },
+    {
+        "@id": "http://scta.info/resource/deCaritate",
+        "title": "De Caritate"
+    },
+    {
+        "@id": "http://scta.info/resource/deLibertate",
+        "title": "De Libertate"
+    },
+    {
+        "@id": "http://scta.info/resource/deIncarnatione",
+        "title": "De Incarnatione"
+    }
+  ],
+  "items": [
+    {
+        "@id": "http://scta.info/resource/lectio1",
+        "title": "Lectio 1",
+        "status": "Draft",
+        "gitRepo": "http://bitbucket.org/jeffreycwitt/lectio1"
+    },
+    {
+        "@id": "http://scta.info/resource/lectio2",
+        "title": "Lectio 2",
+        "status": "Draft",
+        "gitRepo": "http://bitbucket.org/jeffreycwitt/lectio2"
+    },
+    {
+        "@id": "http://scta.info/resource/lectio3",
+        "title": "Lectio 3",
+        "status": "Draft",
+        "gitRepo": "http://bitbucket.org/jeffreycwitt/lectio3"
+    },
+    {
+        "@id": "http://scta.info/resource/lectio4",
+        "title": "Lectio 4",
+        "status": "Draft",
+        "gitRepo": "http://bitbucket.org/jeffreycwitt/lectio4"
+    },
+    {
+        "@id": "http://scta.info/resource/lectio5",
+        "title": "Lectio 5",
+        "status": "Draft",
+        "gitRepo": "http://bitbucket.org/jeffreycwitt/lectio5"
+    },
+    {
+        "@id": "http://scta.info/resource/lectio6",
+        "title": "Lectio 6",
+        "status": "Draft",
+        "gitRepo": "http://bitbucket.org/jeffreycwitt/lectio6"
+    },
+    {
+        "@id": "http://scta.info/resource/lectio7",
+        "title": "Lectio 7",
+        "status": "Draft",
+        "gitRepo": "http://bitbucket.org/jeffreycwitt/lectio7"
+    },
+    {
+        "@id": "http://scta.info/resource/lectio8",
+        "title": "Lectio 8",
+        "status": "Draft",
+        "gitRepo": "http://bitbucket.org/jeffreycwitt/lectio8"
+    }
+  ]
+}
+</code></pre></div></div>
+
+<p>Here’s how a client might consume that information to provide information about nested parts:</p>
+
+<p><img src="https://s3.amazonaws.com/lum-faculty-jcwitt-public/expression-with-items.png" alt="top level work group" /></p>
+
+<p>Finally, we can illustrate what the jsonld might look like for a non top-level <strong>Expression</strong>, such as an <strong>Expression</strong> with a <em>structureType=structureItem</em></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "@id": "http://scta.info/resource/lectio1",
+  "@type": "expression",
+  "title": "Lectio 1",
+  "author": "Peter Plaoul",
+  "description": "Lectio 1 from Plaoul's Commentary",
+  "structureType": "item",
+  "level": "3",
+  "isPartOf": "http://scta.info/resource/deFide",
+  "topLevelExpression": "http://scta.info/resource/plaoulcommentary",
+  "next": "http://scta.info/resource/lectio2",
+  "canonicalManifestation":
+    {
+        "@id": "http://scta.info/resource/lectio1/critical",
+        "title": "Critical edition for lectio 1 in Plaoul Commentary",
+        "type": "critical",
+        "status": "Draft",
+        "editor": "Jeffrey C. Witt",
+        "canonicalTranscription":
+        {
+            "@id": "http://scta.info/resource/lectio1/critical/transcription",
+            "title": "Critical Edition Transcription for lectio 1 in Plaoul Commentary",
+            "status": "Draft",
+            "editor": "Jeffrey C. Witt",
+            "xml": "http://bitbucket.org/jeffreycwitt/raw/master/lectio1.xml"
+        }
+    },
+  "manifestations": [
+    {
+        "@id": "http://scta.info/resource/lectio1/reims",
+        "title": "Reims Manuscript for lectio 1 in Plaoul Commentary",
+        "type": "manuscript"
+    },
+    {
+        "@id": "http://scta.info/resource/lectio1/vat",
+        "title": "Vatican Manuscript for lectio 1 in Plaoul Commentary",
+        "type": "manuscript"
+    },
+    {
+        "@id": "http://scta.info/resource/lectio1/svict",
+        "title": "St. Victor Manuscript for lectio 1 in Plaoul Commentary",
+        "type": "manuscript"
+    },
+    {
+        "@id": "http://scta.info/resource/lectio1/sorb",
+        "title": "Sorbonne Manuscript ffor lectio 1 in Plaoul Commentary",
+        "type": "manuscript"
+    },
+    {
+        "@id": "http://scta.info/resource/lectio1/critical",
+        "title": "Critical Edition for lectio 1 in Plaoul Commentary",
+        "type": "critical"
+    }
+  ],
+  "parts": [],
+  "blocks": [
+    {
+        "@id": "http://scta.info/resource/p1",
+        "title": "paragraph 1"
+    },
+    {
+        "@id": "http://scta.info/resource/p2",
+        "title": "paragraph 2"
+    },
+    {
+        "@id": "http://scta.info/resource/p3",
+        "title": "Paragraph 3"
+    },
+    {
+        "@id": "http://scta.info/resource/p4",
+        "title": "Paragraph 4"
+    }
+  ]
+}
+</code></pre></div></div>
+
+<p>And this information can be used as follows:</p>
+
+<p><img src="https://s3.amazonaws.com/lum-faculty-jcwitt-public/item-text-view.png" alt="item text view" /></p>
+
+<p>But this same information can be used for a different view, such as a view of available <strong>Manifestations</strong>:</p>
+
+<p><img src="https://s3.amazonaws.com/lum-faculty-jcwitt-public/available-manifestations-at-item-level.png" alt="available manifestations" /></p>
+
+<p>Likewise, the client should be able to treat every <strong>Expression</strong>, at any level in the hierarchy, the same way while adjusting for properties unique to that <em>structureType</em>. So if the resource id points to a <em>structureBlock</em> (or paragraph) instead of a <em>structureItem</em>, we get a display that automatically adjusts.</p>
+
+<p><img src="https://s3.amazonaws.com/lum-faculty-jcwitt-public/block-expression-display.png" alt="block level display" /></p>
+
+<h1 id="3-appendices">3. Appendices</h1>
+
+<h2 id="appendix-a-data-model-visualization">Appendix A: Data Model Visualization</h2>
+
+<p><img src="https://raw.githubusercontent.com/scta/scta-ontology/master/SCTASCHEMA3.png" alt="https://raw.githubusercontent.com/scta/scta-ontology/master/SCTASCHEMA3.png" /></p>
+
+<p><a href="https://raw.githubusercontent.com/scta/scta-ontology/master/SCTASCHEMA3.png">https://raw.githubusercontent.com/scta/scta-ontology/master/SCTASCHEMA3.png</a></p>
+
+<h2 id="appendix-b-resource-types-and-properties-list">Appendix B: Resource Types and Properties List</h2>
+
+<p><a href="https://github.com/scta/scta-ontology/blob/master/SCTAOntologySpec.md">https://github.com/scta/scta-ontology/blob/master/SCTAOntologySpec.md</a></p>
+
+<h2 id="appendix-c-links">Appendix C: Links</h2>
+
+<ul>
+  <li>Live client listing workGroups: <a href="http://scta.lombardpress.org/text/questions/?resourceid=http://scta.info/resource/scta">http://scta.lombardpress.org/text/questions/?resourceid=http://scta.info/resource/scta</a></li>
+  <li>
+    <p>Live DB visualization for the same resource <a href="http://scta.info/resource/scta">http://scta.info/resource/scta</a></p>
+  </li>
+  <li>Live client listing available top Level expressions <a href="http://scta.lombardpress.org/text/questions/?resourceid=http://scta.info/resource/plaoulcommentary">http://scta.lombardpress.org/text/questions/?resourceid=http://scta.info/resource/plaoulcommentary</a></li>
+  <li>Live DB visualization for the same resource <a href="http://scta.info/resource/plaoulcommentary">http://scta.info/resource/plaoulcommentary</a></li>
+</ul>
+:ET
