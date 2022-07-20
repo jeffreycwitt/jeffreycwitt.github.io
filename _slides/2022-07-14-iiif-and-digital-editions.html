@@ -9,6 +9,31 @@ tags: scta iiif
 size: full
 ---
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+
+//See https://stackoverflow.com/a/21933740/731085
+
+$(document).ready(function(){
+// Creating custom :external selector
+  $.expr[':'].external = function(obj){
+    console.log("test2")
+      return (obj.hostname != location.hostname);
+  };
+
+  $(function(){
+    console.log("test")
+    // Add 'external' CSS class to all external links
+    $('a:external').addClass('external');
+
+    // turn target into target=_blank for elements w external class
+    $(".external").attr('target','_blank');
+
+  })
+})
+
+</script>
+
 <section>
   <h3>IIIF and Digital Editions
   </h3>
@@ -29,77 +54,429 @@ size: full
 
   1. Reflection
   1. IIIF: a bird's eye view
-  1. Activities and Exploration
+  1. Exploration and Discussion
   1. Examples
-  1. Questions and Discussion
+  1. Questions
 
 </section>
 <section>
   <section data-markdown>
     ## Reflection
+
+    * What are the theoretical reasons we might care about images when constructing an edition?
+    * What are the goals of the edition? 
+    * What are we trying to accomplish? 
+    * How do we image would relate to all the other data we are curating as part of the edition construction?
+  </section>
+  <section data-markdown>
+    ### Transparency and Repeatability 
+
+"[W]hen I talk about a critical text, I am not referring to the reconstruction
+of a lost archetype, but to the construction of a new,
+well-informed text that can help readers understand the relationships
+between extant witnesses; a text that functions as a gateway
+to the others."
+
+Bordalejo, B., “Well-Behaved Variants Seldom Make the Apparatus: Stemmata and Apparatus in Digital Research”. Digital Medievalist, 14:2 (2021): https://doi.org/10.16995/dm.8065, section 68
+
+  </section>
+  <section data-markdown>
+    ### Transparency and Repeatability 
+    
+    "The printed book has a tendency to be image-hostile. The printing of a typographic interpretation
+was, for economical reasons, originally favored over a facsimile. The book printing encourages
+the selection and limitation over the desire for the widest and most complete edition...."
+
+"...The elements of the Apparatus, for
+example, that in the edition are also placed on the page, [p. 26], should document its relation to
+tradition and its critical execution and make the editorial decisions transparent. It is
+fundamentally an aspiration for completeness. A more precise examination of editorial practices
+reveals, however, that this aspiration often becomes sacrificed, when the apparatus threatens to
+'overgrow' the text...."
+
+(continued on next slide)
+
+
+
+  </section>
+  <section data-markdown>
+    ### Transparency and Repeatability 
+
+    "...The printed
+edition all in all -- even in the scientific discussion of its presentation -- always exists in a tense
+relationship between the "clear text" and the suggestive program of the critical, or: A critque
+demonstrating a 'tangled mass'...."
+
+"...Digital media are image-friendly. They reward the primary visual rendering of the tradition. Digital editions can limit themselves to typographical text rendering. But since this runs counter to an obvious growing expectation of the user, each digital edition must with a scientific aspiration given reasons, when applicable, why they avoid their fundamental promise of transparency by not providing visual evidence...."
+
+Sahle, Patrick, “Zwischen Mediengebundenheit Und Transmedialisierung.” Editio 24 (2010): 23–36. https://doi.org/10.1515/9783110223163.0.23.
+
+
+  </section>
+  <section>
+    <h3>The Critical Edition as Rolodex or Layered Onion</h3>
+<div style="display: flex; justify-content: space-around;">
+    <img src="https://static.grainger.com/rp/s/is/image/Grainger/2NRL3_AS01" width="500px">
+    <img src="https://www.tastingtable.com/img/gallery/the-most-popular-types-of-onions-explained/yellow-onion-1649945533.jpg" width="500px">
+    
+</div>
+
+  </section>
+  <section data-markdown>
+    ### Thinking about UX design:
+    #### Recognizing Friction 
+    
+    <br/>
+    What are some examples of transparency "friction"?
+    <br/>
+    What are some ways you can imagine displaying companion images that reduce transparency "friction"?
+  </section>
+  <section data-markdown>
+    ### Reducing Friction
+    <br/>
+    <br/>
+    ---
+    #### Immediacy of access
+
+    Reducing clicks, page loads, environment shifts
+    
+    ---
+    
+    #### Granularity of focus
+    
+    Be able to recognize the users specific area of focus and be able to deliver them related images at equally granular levels. 
   </section>
 </section>
 <section>
   <section data-markdown>
     ## IIIF: a bird's eye view
   </section>
-  <section>
-    API as a Contract
-  </section>
-  <section>
-    IIIF Image Api
-  </section>
-  <section>
-    IIIF Presentation API
-  </section>
-  <section>
-    Putting the IIIF Image Api and Presentation API Together
+  
+  <section data-markdown>
+    ### API as a Contract
 
-    ![https://iiif.io/assets/uploads/presentation-api-filler.png](https://iiif.io/assets/uploads/presentation-api-filler.png)
+    A contract 
+
+    between 
+
+    image data **suppliers** 
+
+    and 
+
+    UI **implementors** 
+
+    who "present" image data to 
+    
+    downstream **users/readers**
+
+  </section>
+  <section data-background-iframe="https://iiif.io/">
+  </section>
+  <section data-markdown>
+    ### IIIF Image API
+  </section>
+  <section data-markdown>
+
+  #### Lack of standards prevents interoperability 
+
+  What does 10,20,300,500 mean?
+
+  Does it mean 10 pixels wide and 20 pixels high, starting at x=300 and y=500?
+
+  Or does it mean 300 pixels wide, 500 pixels high, starting at x=10 and y=20?
+
   </section>
   <section>
-    * Search API
-    * Discovery API
-    * Authentication API
-    * Content State API
+    <h4>There is no "IIIF Image Server"</h4>
+
+  <h4>There are <strong>MANY</strong> IIIF compliant servers</h4>
+    
+    <iframe src="https://iiif.io/get-started/image-servers/" width="100%" height="700px"></iframe>
   </section>
+  <section>
+    <h3>IIIF Image API</h3>
+    {scheme}://{server}{/prefix}/{identifier}/{region}/{size}/{rotation}/{quality}.{format}
+    <a href="https://iiif.io/api/image/3.0/#4-image-requests">https://iiif.io/api/image/3.0/#4-image-requests</a>
+    <iframe src="https://iiif.io/api/image/3.0/#4-image-requests" width="100%" height="800px"></iframe>
+  </section>
+  
+  <section data-markdown>
+    ### Activity 1
+
+    Let's take the following base url: https://ids.lib.harvard.edu/ids/iiif/47174896/ 
+
+    ![image](https://ids.lib.harvard.edu/ids/iiif/47174896/full/,100/0/default.jpg)
+    ![image](https://ids.lib.harvard.edu/ids/iiif/47174896/full/,100/0/gray.jpg)
+    ![image](https://ids.lib.harvard.edu/ids/iiif/47174896/full/,100/0/bitonal.jpg)
+
+    How could we modify this url so that it shows us a picture that is...
+
+    ...is 512px wide...is upside down...gray scale...has a format of png
+
+    For help, consult the [IIIF Image API documentation](https://iiif.io/api/image/3.0/)
+
+    You can also play around with a controlled experience [here](https://www.learniiif.org/image-api/playground): 
+    
+    
+  
+  </section>  
+  <section data-markdown>
+    ### IIIF Presentation API (version 2.1.0)
+  </section>
+  <section data-background="https://iiif.io/assets/uploads/presentation-api-filler.png" data-background-size="contain">
+  </section>
+  <section>
+    <div style="display: flex; justify-content: space-around;">
+      <div>
+    <h3>The Manifest</h3>
+    <a href="https://iiif.io/api/presentation/2.1/#manifest">https://iiif.io/api/presentation/2.1/#manifest</a>
+    <iframe src="https://iiif.io/api/presentation/2.1/#manifest" width="100%" height="800px"></iframe>
+  </div>
+    
+    <img src="https://iiif.io/api/presentation/2.1/img/objects.webp" height="900px"/>
+    </div>
+  
+  </section>
+  
+  
+  <section>
+    <div style="display: flex; justify-content: space-around;">
+      <div>
+    <h3>The Canvas</h3>
+    <a href="https://iiif.io/api/presentation/2.1/#canvas">https://iiif.io/api/presentation/2.1/#canvas</a>
+    <iframe src="https://iiif.io/api/presentation/2.1/#canvas" width="100%" height="800px"></iframe>
+  </div>
+    
+    <img src="https://iiif.io/api/presentation/2.1/img/objects.webp" height="900px"/>
+    </div>
+  
+  </section>
+  <section>
+    <div style="display: flex; justify-content: space-around;">
+      <div>
+    <h3>Image Resources</h3>
+    <a href="https://iiif.io/api/presentation/2.1/#image-resources">https://iiif.io/api/presentation/2.1/#image-resources</a>
+    <iframe src="https://iiif.io/api/presentation/2.1/#image-resources" width="100%" height="800px"></iframe>
+  </div>
+    
+    <img src="https://iiif.io/api/presentation/2.1/img/objects-all.webp" width="500px" />
+    </div>
+  
+  </section>
+  <section>
+    <div style="display: flex; justify-content: space-around;">
+      <div>
+    <h3>Ranges</h3>
+    <a href="https://iiif.io/api/presentation/2.1/#range">https://iiif.io/api/presentation/2.1/#range</a>
+    <iframe src="https://iiif.io/api/presentation/2.1/#range" width="100%" height="800px"></iframe>
+  </div>
+    
+    <img src="https://iiif.io/api/presentation/2.1/img/objects-all.webp"  width="500px"/>
+    </div>
+  
+  </section>
+  
+  <section>
+    <h3>Video Overview of the Manifest and Canvas</h3>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/98z9YNFiUqU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </section>
+  <section data-markdown>
+    ### Activity 2: Inspect a Manifest
+    
+    Open this manifest
+    [https://iiif.biblissima.fr/chateauroux/B360446201_MS0005/manifest.json](https://iiif.biblissima.fr/chateauroux/B360446201_MS0005/manifest.json)
+
+    If your browser doesn't already have a json formatter, consider installing [this extension](https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh)
+    
+    1. Can you find the label of the entire "manifest"
+    2. Can you find the first label of the first "canvas"?
+    3. Can you find the image identifier of the 2nd canvas (used by the viewer to construct and IIIF Url and display the image)
+    4. Does it have any ranges? Can you find the first "canvas" listed in the first range?
+
+    If needed, use the [API docs](https://iiif.io/api/presentation/2.1/) to help yourself navigate the manifest.
+  </section>
+  <section data-markdown>
+    ## In Sum
+  </section>
+  <section data-background="{{ site.assets_url }}Pitt-2022-07-21/BasicIIIFEcosystem.png" data-background-size="contain">
+    <!-- ### Requirements for a Basic IIIF ecosystem -->
+  </section>
+  <section data-markdown>
+  ### Lots of existing training material
+  
+  https://iiif.io/guides/
+  
+  https://training.iiif.io/
+  </section>
+  
 </section>
 <section>
   <section data-markdown>
-    ## Activities and Exploration
-  </section>
-  <section data-markdown>
-    ### Activity 1
-  </section>
-  <section data-markdown>
-    ### Activity 2
+    ## Exploration and Discussion: 
+    ### Using IIIF as part of your digital edition
   </section>
   <section data-markdown>
     ### Activity 3
-    Code Pen Example
-    [https://codepen.io/jeffreycwitt/pen/mdXNdRR](https://codepen.io/jeffreycwitt/pen/mdXNdRR)
+    #### Creating a path through a text with connected images
+
+    <!-- exhibit edit link: https://www.exhibit.so/exhibits/edit/BpxGY3pDAirJ8ABtOmXX -->
+    1. Explore the "Exhibit" I made: https://www.exhibit.so/exhibits/YL8tIbs1EmqWFl4c5zW1
+      * Could this be a useful way to pair text and images together?
+    2. Duplicate the "Exhibit" I made to experiment with your own "Exhibit"
+    
+    3. Or make your own "Exhibit"
+    
+    4. Find a manifest (perhaps with a text you care about)
+      * See the next slide for example manifests and places to find additional manifests
+    5. Make an "Exhibit", guiding the user though parts of the manuscript or text
+      * https://www.exhibit.so/exhibits/create
+  
+    </section>
+    <section data-markdown style="font-size: 30px";>
+
+  * List of Demo Manifests
+    * https://iiif.bodleian.ox.ac.uk/iiif/manifest/e32a277e-91e2-4a6d-8ba6-cc4bad230410.json
+    * https://iiif.harvardartmuseums.org/manifests/object/299843
+    * https://media.nga.gov/public/manifests/nga_highlights.json
+    * https://data.ucd.ie/api/img/manifests/ucdlib:33064
+    * https://wellcomelibrary.org/iiif/b18035723/manifest
+    * https://demos.biblissima.fr/iiif/metadata/florus-dispersus/manifest.json
+    * https://www.e-codices.unifr.ch/metadata/iiif/gau-Fragment/manifest.json
+    * https://wellcomelibrary.org/iiif/collection/b18031511
+    * https://gallica.bnf.fr/iiif/ark:/12148/btv1b10022508f/manifest.json
+    * https://manifests.britishart.yale.edu/Osbornfa1
+    * https://iiif.biblissima.fr/chateauroux/B360446201_MS0005/manifest.json
+    * https://iiif.durham.ac.uk/manifests/trifle/32150/t1/m4/q7/t1m4q77fr328/manifest
+    * https://scta.info/iiif/graciliscommentary/lon/manifest
+    * https://scta.info/iiif/plaoulcommentary/sorb/manifest
+    * https://scta.info/iiif/plaoulcommentary/svict/manifest
+
+  * Good places to search for manifests: 
+    * https://e-codices.unifr.ch/en
+    * https://portail.biblissima.fr/en/
+    </section>
+  <section data-markdown>
+    ### Activity 3: Discussion
+
+    * What works well here?
+    * What are the limitations?
+
+  </section>
+  <section data-markdown style="font-size: 36px">
+    ### Activity 4
+    #### Create parallel views of related witnesses
+
+    1. Find two or more manifests you want to compare (perhaps with texts you care about)
+    2. Load them into the IIIF Viewer known as Mirador and open to the places you want to compare. 
+      * You can load them here: https://mirador.scta.info  or https://mirador-dev.netlify.app/__tests__/integration/mirador/
+      * For more on Mirador see: https://projectmirador.org/
+    3. Experiment with some manifests that use "ranges" to help you navigate and bring users to the same point in two witnesses.
+      * For example:
+      * https://scta.info/iiif/graciliscommentary/sorb/manifest
+      * https://scta.info/iiif/graciliscommentary/svict/manifest
+      * or
+      * https://scta.info/iiif/rothwellcommentary/gks1363/manifest
+      * https://scta.info/iiif/rothwellcommentary/penn/manifest
+      * https://scta.info/iiif/rothwellcommentary/wettf15/manifest
+
+    (Continued on next slide)
+
+    </section>
+    <section data-markdown>
+    ### Activity 4 
+    
+    4) Look into customizing Mirador so that it automatically constructs the "view" you want to present to end users
+      * Consider this set up: https://codepen.io/jeffreycwitt/pen/vYRGdeL
+      * Let's try to make a couple of simple changes.
+      * Try changing the manifests and canvases that Mirador automatically opens up to
+      * Try customizing Mirador to auto-open a third or fourth canvas in the same or another manifest
+      * Can you change the "theme" of the Mirador instance?
+        * https://github.com/ProjectMirador/mirador/wiki/M3-Theming-Mirador
+      * See full list of customization properties: https://github.com/ProjectMirador/mirador/blob/master/src/config/settings.js
+  </section>
+  <section data-markdown>
+    ### Activity 4: Discussion
+    
+    * What works well here?
+    * What are the limitations?
+  
+  </section>
+  <section data-markdown>
+    ### Activity 5
+    #### View parallel witnesses at granular levels
+    
+    * Explore the following code-pen
+      * [https://codepen.io/jeffreycwitt/pen/mdXNdRR](https://codepen.io/jeffreycwitt/pen/mdXNdRR)
+    * Click on the images to toggle between manuscript witnesses at granular coordinate regions
+    * Inspect the javascript
+      * What kind of data needs to be collected to create this view?
+      * What kind of data structure is being used here?
+      * How is that information being transformed to be used in a IIIF Image URL?
+    * Can you change the images and coordinates with other IIIF compliant images?
+      * Try inspecting a manifest, find the a iiif image url, and then modify the json data object accordingly.
+
+    
+  </section>
+  
+  <section data-markdown>
+    ### Activity 5: Discussion
+
+    * What works well here?
+    * What are the limitations?
+
   </section>
 </section>
 <section>
   <section data-markdown>
     ## Examples
   </section>
-  <section data-markdown>
-    ### Example 1
-  </section>
-  <section data-markdown>
-    ### Example 2
-  </section>
-  <section data-markdown>
-    ### Example 3
-  </section>
-  <section data-markdown>
-    ### Example 4
-  </section>
-  <section data-markdown>
-    ### Example 5
-  </section>
 </section>
 <section>
-  Questions/Discussion
+  <section data-markdown>
+    ### Example 1
+    #### Variations Integrating Line Coordinates with Text
+  </section>
+  <section data-background="{{ site.assets_url }}Pitt-2022-07-21/appToImageLine.png" data-background-size="contain"></section>
+  <section data-background="{{ site.assets_url }}Pitt-2022-07-21/diplomaticToImageLine.png" data-background-size="contain"></section>
+  <section data-background="{{ site.assets_url }}Pitt-2022-07-21/MiradorWithLineCoords.png" data-background-size="contain"></section>
+  <section data-background="{{ site.assets_url }}Pitt-2022-07-21/linkedAnnotationList.png" data-background-size="contain"></section>
+  <section data-background="{{ site.assets_url }}Pitt-2022-07-21/AnnotationList.png" data-background-size="contain"></section>
+  <section data-background="{{ site.assets_url }}Pitt-2022-07-21/PageLineDerivativeText.png" data-background-size="contain"></section>
+  <section data-background="{{ site.assets_url }}Pitt-2022-07-21/getFragment.png" data-background-size="contain"></section>
+  <section data-background="{{ site.assets_url }}Pitt-2022-07-21/CatView.png" data-background-size="contain"></section>
+  <section data-background="{{ site.assets_url }}Pitt-2022-07-21/WordLinePositionLookup.png" data-background-size="contain"></section>
+</section>
+<section>
+  <section data-markdown>
+    ### Example 2
+    #### Text Entity (e.g. paragraph, quotation, reference, etc) image display across witnesses and the corpus
+  </section>
+  <section data-background="{{ site.assets_url }}Pitt-2022-07-21/parallelParagraphs.gif" data-background-size="contain"></section>
+  <section data-background="{{ site.assets_url }}Pitt-2022-07-21/parallelParagraphsInMirador.gif" data-background-size="contain"></section>
+  <section data-markdown>
+    #### Data Modelling
+  </section>
+  <section data-background="{{ site.assets_url }}textExpansion/Folie1.png" data-background-size="contain">
+  </section>
+  <section data-background="{{ site.assets_url }}textExpansion/Folie2.png" data-background-size="contain">
+  </section>
+  <section data-background="{{ site.assets_url }}Pitt-2022-07-21/ParagraphZoneMapping.png"></section>
+  <section data-background="{{ site.assets_url }}textExpansion/Folie3.png" data-background-size="contain">
+  </section>
+  <section data-background="{{ site.assets_url }}textExpansion/Folie4.png" data-background-size="contain">
+  </section>
+  <section data-background="{{ site.assets_url }}textExpansion/Folie5.png" data-background-size="contain">
+  </section>
+  <section data-background="{{ site.assets_url }}textExpansion/Folie6.png" data-background-size="contain">
+  </section>
+  <section data-background="{{ site.assets_url }}textExpansion/Folie7.png" data-background-size="contain">
+  </section>
+  <section data-background="{{ site.assets_url }}textExpansion/Folie9.png" data-background-size="contain"></section>
+  <section data-background="{{ site.assets_url }}2021-10-29-Nijmegen/12.gif" data-background-size="contain"></section>
+</section>
+
+
+</section>
+<section data-markdown>
+  # Questions/Discussion
 </section>
