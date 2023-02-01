@@ -1,0 +1,167 @@
+---
+layout: slide
+title: "Text Re-Use Detection mit Ngrams und Graphen"
+description:
+date: 2023-02-01
+theme: white
+transition: slide
+tags: scta iiif
+size: full
+---
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<section>
+  <h3>Text Re-Use Detection mit Ngrams und Graphen.</h3>
+  <h4>Zur Analyse von Intertextualität in den Texten und Kommentaren der mittelalterlichen Scholastik</h4>
+  <hr />
+  <p>Jeffrey C. Witt (Loyola University Maryland) <br/> <a href="https://jeffreycwitt.com/">https://jeffreycwitt.com</a> | jcwitt@loyola.edu <br/> @jeffreycwitt</p>
+  <hr />
+  <p></p>
+  <p>February 01, 2023</p> 
+  <p>Digital History-Forschungskolloquium, Humboldt-Universität zu Berlin, Berlin</p>
+  <div style="font-size: 20px;">
+    <p>Slide Deck: <a
+        href="http://jeffreycwitt.com/slides/2023-02-01-ngrams">http://jeffreycwitt.com/slides/2023-02-01-ngrams</a>
+    </p>
+    <p style="font-size: 14px;"><a>https://creativecommons.org/licenses/by-nc-sa/4.0/</a></p>
+  </div>
+</section>
+<section data-markdown># 1. Einleitung</section>
+<section>
+  <section data-markdown># 2. Aspiration für Zitatsnetwork mit dem traditionellen Apparatus Fontium</section>
+  <section data-background="{{ site.assets_url }}2023-02-01/image12.png" data-background-size="contain"></section>
+  <section data-background="{{ site.assets_url }}2023-02-01/image4.png" data-background-size="contain"></section>
+  <section data-background="{{ site.assets_url }}2023-02-01/image3.png" data-background-size="contain"></section>
+  <section data-background="{{ site.assets_url }}2023-02-01/image15.png" data-background-size="contain"></section>
+  <section data-background="{{ site.assets_url }}2023-02-01/image9.png" data-background-size="contain"></section>
+  <section data-background="{{ site.assets_url }}2023-02-01/image3.png" data-background-size="contain"></section>
+  <section data-background="{{ site.assets_url }}2023-02-01/image21.png" data-background-size="contain"></section>
+</section>
+<section>
+<section data-markdown># 3. Entdeckung der Änlichkeit mit N-Grams</section>
+<section data-markdown>
+
+"Die Katze ist auf der Matte" hat drei 4-grams
+
+1. Die Katze ist auf
+2. Katze ist auf der
+3. ist auf der Matte
+
+</section>
+<section data-markdown>
+  
+  In “description” Logik, haben wir die Folgende: “Ngram.isFoundIn.Paragraph”
+
+  z.B. 
+
+  Sctar:videturquodnonsic sctap:isFoundIn sctar:para1; sctar:para5; sctar:para10; sctar:para21 
+
+</section>
+<section data-markdown>
+  ![intersection]({{ site.assets_url }}2023-02-01/image5.png)
+
+  X is related to Y, if and only if 
+
+  $$ \\#\\{ a | \forall{n}\forall{x}\forall{y}(IsFoundIn(n,x) \land IsFoundIn(n,y) \land x \neq y \\} >= 6 $$
+  
+  </section>
+<section>
+  
+  Document Vectors A * B = DotProductVector = Intersection Vector (V) 
+  
+  $$Intersection Vector Summation = \sum_{i=1}^{n} v_i$$
+  
+  If Intersection Vector Summation  >= 6, then Doc Vectors A and B are "similar"
+
+  <hr/>
+  "Bag of N-Grams Model"
+  <table class="c18" style="font-size: 16px"><tbody><tr class="c5"><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">Paragraph</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram2</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram3</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram4</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram5</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram6</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram7</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram8</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram9</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram10</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram11</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram12</span></p></td></tr><tr class="c5"><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">Doc A</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td></tr><tr class="c5"><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">Doc B</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td></tr><tr class="c5"><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">Dot Product Vector </span></p></td><td class="c4 c15" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x1=1</span></p></td><td class="c4 c15" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x1=1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0x1=0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x0=0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0x1=0</span></p></td><td class="c4 c15" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x1=1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0x0=1</span></p></td><td class="c4 c15" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x1=1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0x0=0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0x1=0</span></p></td><td class="c4 c15" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x1=1</span></p></td><td class="c4 c15" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x1=1</span></p></td></tr></tbody></table>
+</section>
+<section data-markdown>
+```
+  SELECT (COUNT(*) as ?count) ?start ?target
+  WHERE {
+    ?ngram <http://scta.info/property/isFoundIn> ?start .
+    ?ngram <http://scta.info/property/isFoundIn> ?target .
+    FILTER(?start != ?target) .
+  }
+  GROUP BY ?start ?target 
+  HAVING (?count >= 6)
+ ``` 
+</section>
+</section>
+<section>
+<section data-markdown># 4. N-gram Visualisierung: Erster Versuch</section>
+<section data-background="{{ site.assets_url }}2023-02-01/image11.png" data-background-size="contain"></section>
+</section>
+<section>
+<section data-markdown># 5. N-gram Visualization: Zweiter Versuch</section>
+<section data-background="{{ site.assets_url }}2023-02-01/image10.png" data-background-size="contain"></section>
+<section data-markdown>## 5.1. Beispiel 1: Zitatsmuster-Entdeckung in der Tradition von den Sentenzen Kommentaren</section>
+<section data-background="{{ site.assets_url }}2023-02-01/image28.png" data-background-size="contain"></section>
+<section data-background="{{ site.assets_url }}2023-02-01/image6.png" data-background-size="contain"></section>
+<section data-background="{{ site.assets_url }}2023-02-01/image27.png" data-background-size="contain"></section>
+<section data-background="{{ site.assets_url }}2023-02-01/image20.png" data-background-size="contain"></section>
+<section data-background="{{ site.assets_url }}2023-02-01/image23.png" data-background-size="contain"></section>
+<section data-background="{{ site.assets_url }}2023-02-01/image16.png" data-background-size="contain"></section>
+<section data-background="{{ site.assets_url }}2023-02-01/image22.png" data-background-size="contain"></section>
+<section data-background="{{ site.assets_url }}2023-02-01/image17.png" data-background-size="contain"></section>
+<section data-background="{{ site.assets_url }}2023-02-01/image18.png" data-background-size="contain"></section>
+<section data-background="{{ site.assets_url }}2023-02-01/image32.png" data-background-size="contain"></section>
+<section data-markdown>## 5.2. Beispiel 2: "Uncited Successive Passage Re-Use"</section>
+<section data-background="{{ site.assets_url }}2023-02-01/image14.png" data-background-size="contain"></section>
+<section data-background="{{ site.assets_url }}2023-02-01/image2.png" data-background-size="contain"></section>
+<section data-markdown>
+  “Petrus Gracilis...followed not only the footsteps but the very phrases of Hiltalingen in a way so deceptive that it does not cast the best light on Gracilis. He read secundum Hiltalingen without ever mentioning him. Only by a **lucky coincidence** [emphasis mine] was I enabled to "unmask" Gracilis' dubious literary honesty. (See Trapp, Damasus, "Augustinian Theology of the 14th Century," Augustiniana 6 (1956): 147-274, p. 254.)
+</section>
+<!-- <section data-background="{{ site.assets_url }}2023-02-01/image8.png" data-background-size="contain"></section>
+<section data-background="{{ site.assets_url }}2023-02-01/image29.png" data-background-size="contain"></section> -->
+<section data-background="{{ site.assets_url }}2023-02-01/image7.png" data-background-size="contain"></section>
+<section data-background="{{ site.assets_url }}2023-02-01/image14.png" data-background-size="contain"></section>
+<section data-background="{{ site.assets_url }}2023-02-01/image1.png" data-background-size="contain"></section>
+<section data-background="{{ site.assets_url }}2023-02-01/image19.png" data-background-size="contain"></section>
+<section data-background="{{ site.assets_url }}2023-02-01/image24.png" data-background-size="contain"></section>
+<section data-markdown>
+
+
+  ||5|6|7|8|9|10|11|12|
+  |---|---|---|---|---|---|---|---|---|---|
+  |2|||||||||
+  |3|||||||||
+  |4||||x|||||
+  |5|||||x||||
+  |6||||||x|||
+  |7|||||||||
+  |8|||||||||
+  |9|||||||||
+
+</section>
+<section>
+  $$ SuccessiveReuse(t) = $$
+
+  $$ \forall{x_n}\forall{y_m}(R(x_{n}, y_{m}) \land R(x_{n+1}, y_{m+1}) \land R(x_{n+2},y_{m+2})) $$
+</section>
+<section>
+  $$ SuccessiveReuse(t) = $$
+  <br/>
+  $$ \forall{x_n}\forall{y_m}(R(x_n,y_m) $$
+  $$ \land (R(x_{n+1},y_{m+1}) \lor R(x_{n+2},y_{m+2})) $$
+  $$ \land (R(x_{n+3},y_{m+2}) \lor (R(x_{n+4},y_{m+3})) $$
+  $$ \land (R(x_{n+3},y_{m+3}) \lor (R(x_{n+4},y_{m+4})) $$
+</section>
+<section data-markdown>
+  SubstantialSuccessiveReuse(t) =
+  $$ \\#\\{ a | \forall{t}(SuccessveReuse(t)\\} >= 10 $$
+  where t = Question or Chapter
+</section>
+<section data-background="{{ site.assets_url }}2023-02-01/image26.png" data-background-size="contain"></section>
+<section data-background="{{ site.assets_url }}2023-02-01/image30.png" data-background-size="contain"></section>
+<section data-background="{{ site.assets_url }}2023-02-01/image25.png" data-background-size="contain"></section>
+<section data-background="{{ site.assets_url }}2023-02-01/image31.png" data-background-size="contain"></section>
+<section data-background="{{ site.assets_url }}2023-02-01/image13.png" data-background-size="contain"></section>
+</section>
+<section data-markdown>
+  # Fragen und Diskussion
+</section>
