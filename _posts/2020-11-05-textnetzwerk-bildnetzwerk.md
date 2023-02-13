@@ -3,7 +3,7 @@ layout: post
 title:  "Suchen und Finden von Bildern: Wie ein Text-Netzwerk ein Bild-Netzwerk werden kann"
 date:   2020-11-05
 comments: true
-tags: scta iiif
+tags: scta iiif deutsch
 ---
 
 In Bezug auf IIIF und Discovery will ich nur einen Gedanken vorbringen und diesen dann illustrieren.
