@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "The Greek Fathers in Late Medieval Philosophy and Theology - Oxford Patritics 2023"
+title:  "The Greek Fathers in Late Medieval Philosophy and Theology - Oxford Patritics 2024"
 subtitle: "a call for papers"
 date:   2021-12-11
 comments: true
-description: A call for papers for a 2023 workshop at the Oxford Patristics Conference on the Patristic Legacy in the Middle Ages - The Greek Fathers in Late Medieval Philosophy and Theology.
+description: A call for papers for a 2024 workshop at the Oxford Patristics Conference on the Patristic Legacy in the Middle Ages - The Greek Fathers in Late Medieval Philosophy and Theology.
 tags: cfp
 ---
 
