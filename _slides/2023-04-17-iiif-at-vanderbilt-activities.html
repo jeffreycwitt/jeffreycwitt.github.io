@@ -1,0 +1,160 @@
+
+<section>
+  <h3>IIIF at Vanderbilt: Hands on Activities</h3>
+  <hr />
+  <p>Jeffrey C. Witt (Loyola University Maryland) <br/> <a href="https://jeffreycwitt.com/">https://jeffreycwitt.com</a> | jcwitt@loyola.edu <br/> @jeffreycwitt</p>
+  <hr />
+  <p></p>
+  <p>April 17, 2023, Vanderbilt University, Nashville, TN</p>
+  <div style="font-size: 20px;">
+    <p>Slide Deck: <a
+        href="http://jeffreycwitt.com/slides/2023-04-17-iiif-at-vanderbilt-activities">http://jeffreycwitt.com/slides/2023-04-17-iiif-at-vanderbilt-activities</a>
+    </p>
+    <p style="font-size: 14px;"><a>https://creativecommons.org/licenses/by-nc-sa/4.0/</a></p>
+  </div>
+</section>
+
+<section data-markdown>
+  ### Activity 1
+
+  Let's take the following base url: https://ids.lib.harvard.edu/ids/iiif/47174896/ 
+
+  ![image](https://ids.lib.harvard.edu/ids/iiif/47174896/full/,100/0/default.jpg)
+  ![image](https://ids.lib.harvard.edu/ids/iiif/47174896/full/,100/0/gray.jpg)
+  ![image](https://ids.lib.harvard.edu/ids/iiif/47174896/full/,100/0/bitonal.jpg)
+
+  How could we modify this url so that it shows us a picture that is...
+
+  ...is 512px wide...is upside down...gray scale...has a format of png
+
+  For help, consult the [IIIF Image API documentation](https://iiif.io/api/image/3.0/)
+
+  You can also play around with a controlled experience [here](https://www.learniiif.org/image-api/playground): 
+
+</section>  
+<section data-markdown>
+  ### Activity 2: Inspect a Manifest
+  
+  Open this manifest
+  [https://iiif.biblissima.fr/chateauroux/B360446201_MS0005/manifest.json](https://iiif.biblissima.fr/chateauroux/B360446201_MS0005/manifest.json)
+
+  If your browser doesn't already have a json formatter, consider installing [this extension](https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh)
+  
+  1. Can you find the label of the entire "manifest"
+  2. Can you find the first label of the first "canvas"?
+  3. Can you find the image identifier of the 2nd canvas (used by the viewer to construct a IIIF Url and display the image)
+  4. Does it have any ranges? Can you find the first "canvas" listed in the first range?
+
+  If needed, use the [API docs](https://iiif.io/api/presentation/2.1/) to help yourself navigate the manifest.
+</section>
+
+<section data-markdown>
+  ### Activity 3
+  #### Creating a path through a text with connected images
+
+  <!-- exhibit edit link: https://www.exhibit.so/exhibits/edit/BpxGY3pDAirJ8ABtOmXX -->
+  1. Explore the "Exhibit" I made: https://www.exhibit.so/exhibits/YL8tIbs1EmqWFl4c5zW1
+    * Could this be a useful way to pair text and images together?
+  2. Duplicate the "Exhibit" I made to experiment with your own "Exhibit"
+  
+  3. Or make your own "Exhibit"
+  
+  4. Find a manifest (perhaps with a text you care about)
+    * See the next slide for example manifests and places to find additional manifests
+  5. Make an "Exhibit", guiding the user though parts of the manuscript or text
+    * https://www.exhibit.so/exhibits/create
+
+  </section>
+  <section data-markdown style="font-size: 30px";>
+
+* List of Demo Manifests
+  * https://iiif.bodleian.ox.ac.uk/iiif/manifest/e32a277e-91e2-4a6d-8ba6-cc4bad230410.json
+  * https://iiif.harvardartmuseums.org/manifests/object/299843
+  * https://media.nga.gov/public/manifests/nga_highlights.json
+  * https://data.ucd.ie/api/img/manifests/ucdlib:33064
+  * https://wellcomelibrary.org/iiif/b18035723/manifest
+  * https://demos.biblissima.fr/iiif/metadata/florus-dispersus/manifest.json
+  * https://www.e-codices.unifr.ch/metadata/iiif/gau-Fragment/manifest.json
+  * https://wellcomelibrary.org/iiif/collection/b18031511
+  * https://gallica.bnf.fr/iiif/ark:/12148/btv1b10022508f/manifest.json
+  * https://manifests.britishart.yale.edu/Osbornfa1
+  * https://iiif.biblissima.fr/chateauroux/B360446201_MS0005/manifest.json
+  * https://iiif.durham.ac.uk/manifests/trifle/32150/t1/m4/q7/t1m4q77fr328/manifest
+  * https://scta.info/iiif/graciliscommentary/lon/manifest
+  * https://scta.info/iiif/plaoulcommentary/sorb/manifest
+  * https://scta.info/iiif/plaoulcommentary/svict/manifest
+
+* Good places to search for manifests: 
+  * https://e-codices.unifr.ch/en
+  * https://portail.biblissima.fr/en/
+  </section>
+<section data-markdown>
+  ### Activity 3: Discussion
+
+  * What works well here?
+  * What are the limitations?
+
+</section>
+<section data-markdown style="font-size: 36px">
+  ### Activity 4
+  #### Create parallel views of related witnesses
+
+  1. Find two or more manifests you want to compare (perhaps with texts you care about)
+  2. Load them into the IIIF Viewer known as Mirador and open to the places you want to compare. 
+    * You can load them here: https://mirador.scta.info  or https://mirador-dev.netlify.app/__tests__/integration/mirador/
+    * For more on Mirador see: https://projectmirador.org/
+  3. Experiment with some manifests that use "ranges" to help you navigate and bring users to the same point in two witnesses.
+    * For example:
+    * https://scta.info/iiif/graciliscommentary/sorb/manifest
+    * https://scta.info/iiif/graciliscommentary/svict/manifest
+    * or
+    * https://scta.info/iiif/rothwellcommentary/gks1363/manifest
+    * https://scta.info/iiif/rothwellcommentary/penn/manifest
+    * https://scta.info/iiif/rothwellcommentary/wettf15/manifest
+
+  (Continued on next slide)
+
+  </section>
+  <section data-markdown>
+  ### Activity 4 
+  
+  4) Look into customizing Mirador so that it automatically constructs the "view" you want to present to end users
+    * Consider this set up: https://codepen.io/jeffreycwitt/pen/vYRGdeL
+    * Let's try to make a couple of simple changes.
+    * Try changing the manifests and canvases that Mirador automatically opens up to
+    * Try customizing Mirador to auto-open a third or fourth canvas in the same or another manifest
+    * Can you change the "theme" of the Mirador instance?
+      * https://github.com/ProjectMirador/mirador/wiki/M3-Theming-Mirador
+    * See full list of customization properties: https://github.com/ProjectMirador/mirador/blob/master/src/config/settings.js
+</section>
+<section data-markdown>
+  ### Activity 4: Discussion
+  
+  * What works well here?
+  * What are the limitations?
+
+</section>
+<section data-markdown>
+  ### Activity 5
+  #### View parallel witnesses at granular levels
+  
+  * Explore the following code-pen
+    * [https://codepen.io/jeffreycwitt/pen/mdXNdRR](https://codepen.io/jeffreycwitt/pen/mdXNdRR)
+  * Click on the images to toggle between manuscript witnesses at granular coordinate regions
+  * Inspect the javascript
+    * What kind of data needs to be collected to create this view?
+    * What kind of data structure is being used here?
+    * How is that information being transformed to be used in a IIIF Image URL?
+  * Can you change the images and coordinates with other IIIF compliant images?
+    * Try inspecting a manifest, find a iiif image url, and then modify the json data object accordingly.
+
+  
+</section>
+
+<section data-markdown>
+  ### Activity 5: Discussion
+
+  * What works well here?
+  * What are the limitations?
+
+</section>

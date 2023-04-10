@@ -1,0 +1,152 @@
+---
+layout: slide
+title: "Intertextuality Analysis of Medieval Scholastic Texts using Ngrams and Graphs"
+description:
+date: 2023-04-12
+theme: white
+transition: slide
+tags: scta text-reuse ml ai
+size: full
+---
+
+<section>
+  <h3>Intertextuality Analysis of Medieval Scholastic Texts using Ngrams and Graphs</h3>
+  <hr />
+  <p>Jeffrey C. Witt (Loyola University Maryland) <br/> <a href="https://jeffreycwitt.com/">https://jeffreycwitt.com</a> | jcwitt@loyola.edu <br/> @jeffreycwitt</p>
+  <hr />
+  <p></p>
+  <p>April 14, 2023, Institute for Medieval Research, Austrian Academy of Sciences, </p>
+  <div style="font-size: 20px;">
+    <p>Slide Deck: <a
+        href="http://jeffreycwitt.com/slides/2023-04-12-text-reuse">http://jeffreycwitt.com/slides/2023-04-12-text-reuse</a>
+    </p>
+    <p style="font-size: 14px;"><a>https://creativecommons.org/licenses/by-nc-sa/4.0/</a></p>
+  </div>
+</section>
+<section>
+scta image
+</section>
+<section>
+  Outline
+  1. Similarity (N-Grams)
+  2. Visualization (N-Grams and Graphs)
+  3. Cluster Detection (N-Grams, Graphs, and Convolution Filters and Document Embeddings)
+</section>
+<section>
+  Similarity
+</section>
+<section>
+  Paragraph N-Gram Feature Vector
+
+  <table class="c18" style="font-size: 16px"><tbody>
+    <tr class="c5"><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">Paragraph</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram2</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram3</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram4</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram5</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram6</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram7</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram8</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram9</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram10</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram11</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram12</span></p></td></tr>
+    <tr class="c5"><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">Doc A</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td>
+    </tr>
+  </tbody>
+</table>
+</section>
+<section>
+  
+  Document Vectors A * B = DotProductVector = Intersection Vector (V) 
+  
+  $$Intersection Vector Summation = \sum_{i=1}^{n} v_i$$
+  
+  If Intersection Vector Summation  >= 6, then Doc Vectors A and B are "similar"
+
+  <hr/>
+  "Bag of N-Grams Model"
+  <table class="c18" style="font-size: 16px"><tbody><tr class="c5"><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">Paragraph</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram2</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram3</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram4</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram5</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram6</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram7</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram8</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram9</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram10</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram11</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram12</span></p></td></tr><tr class="c5"><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">Doc A</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td></tr><tr class="c5"><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">Doc B</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td></tr><tr class="c5"><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">Dot Product Vector </span></p></td><td class="c4 c15" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x1=1</span></p></td><td class="c4 c15" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x1=1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0x1=0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x0=0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0x1=0</span></p></td><td class="c4 c15" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x1=1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0x0=1</span></p></td><td class="c4 c15" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x1=1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0x0=0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0x1=0</span></p></td><td class="c4 c15" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x1=1</span></p></td><td class="c4 c15" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x1=1</span></p></td></tr></tbody></table>
+</section>
+<section data-markdown>
+  ![intersection]({{ site.assets_url }}2023-02-01/image5.png)
+
+  Similarity = X is similar to Y, if and only if 
+
+  $$ \\#\\{ a | \forall{n}\forall{x}\forall{y}(IsFoundIn(n,x) \land IsFoundIn(n,y) \land x \neq y \\} >= 6 $$
+  
+</section>
+<section>
+  Visualization (Ngrams and Graphs)
+</section>
+<section>
+  Picture of Paragraph with Similarity List
+  https://s3.amazonaws.com/lum-faculty-jcwitt-public/2023-02-01/image11.png
+</section>
+<section>
+  Sparql query graph
+
+  SELECT (COUNT(*) as ?count) ?start ?target
+WHERE {
+              ?ngram <http://scta.info/property/isFoundIn> ?start .
+              ?ngram <http://scta.info/property/isFoundIn> ?target .
+              FILTER(?start != ?target) .
+  }
+  GROUP BY ?start ?target 
+              HAVING (?count >= 6)
+</section>
+<section>
+  Picture of Augustine De Trin
+  https://s3.amazonaws.com/lum-faculty-jcwitt-public/2023-02-01/image28.png
+  https://s3.amazonaws.com/lum-faculty-jcwitt-public/2023-02-01/image6.png
+</section>
+<section>
+  Picture of Color sorted groupings
+  https://s3.amazonaws.com/lum-faculty-jcwitt-public/2023-02-01/image22.png
+</section>
+<section>
+  Picture of Gracilis visualization without annotations
+  https://s3.amazonaws.com/lum-faculty-jcwitt-public/2023-02-01/image14.png
+</section>
+<section>
+  Successive Passage Similiarity = 
+  ∀xn∀ym(R(xn,ym)∧R(xn+1,ym+1)∧R(xn+2,ym+2))
+</section>
+<section>
+  Picture of Gracilis visualization With Annotations.
+  https://s3.amazonaws.com/lum-faculty-jcwitt-public/2023-02-01/image24.png
+</section>
+<section>
+  Albert ST book 1 text
+  https://s3.amazonaws.com/lum-faculty-jcwitt-public/2023-02-01/image26.png
+</section>
+<section data-markdown>
+
+
+||5|6|7|8|9|10|11|12|
+|---|---|---|---|---|---|---|---|---|---|
+|2|||||||||
+|3|||||||||
+|4||||1|||||
+|5|||||1||||
+|6||||||1|||
+|7|||||||||
+|8|||||||||
+|9|||||||||
+
+X
+
+|1|1|1|
+|1|1|1|
+|1|1|1|
+</section>
+<section>
+  Substantial Successive Text Similiarity = Successive Text Similarity X 10
+</section>
+<section>
+  Albert ST book 1 text with report
+  https://s3.amazonaws.com/lum-faculty-jcwitt-public/2023-02-01/image30.png
+</section>
+<section>
+  [click to focused view of lambertus de monte and albert ]
+  https://s3.amazonaws.com/lum-faculty-jcwitt-public/2023-02-01/image25.png
+</section>
+<section>
+  Doc Embedding
+</section>
+<section>
+  1) Gracilis Book 2 Dionysius of Montina and Thomas of Strasbourg
+  2) Examples of Summa Halensis and Albert, continued successive re-use of authorities. 
+  3) Continued Reuse of Summa Halensis by Albert, hinting a need for an expanded but isolated view
+  4) Polanus and Whitaker and Bullinger. 
+
+</section>

@@ -1,0 +1,342 @@
+---
+layout: slide
+title: "IIIF at Vanderbilt: Enhancing Faculty Teaching and Research"
+description:
+date: 2023-04-17
+theme: white
+transition: slide
+tags: iiif
+size: full
+---
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+
+$(document).ready(function(){
+  // Creating custom :external selector
+    $.expr[':'].external = function(obj){
+      console.log("test2")
+        return (obj.hostname != location.hostname);
+    };
+  
+    $(function(){
+      console.log("test")
+      // Add 'external' CSS class to all external links
+      $('a:external').addClass('external');
+  
+      // turn target into target=_blank for elements w external class
+      $(".external").attr('target','_blank');
+  
+    })
+  })
+  
+  </script>
+  
+  <section>
+    <h3>IIIF at Vanderbilt: Enhancing Faculty Teaching and Research</h3>
+    <hr />
+    <p>Jeffrey C. Witt (Loyola University Maryland) <br/> <a href="https://jeffreycwitt.com/">https://jeffreycwitt.com</a> | jcwitt@loyola.edu <br/> @jeffreycwitt</p>
+    <hr />
+    <p></p>
+    <p>April 17, 2023, Vanderbilt University, Nashville, TN</p>
+    <div style="font-size: 20px;">
+      <p>Slide Deck: <a
+          href="http://jeffreycwitt.com/slides/2023-04-17-iiif-at-vanderbilt">http://jeffreycwitt.com/slides/2023-04-17-iiif-at-vanderbilt</a>
+      </p>
+      <p style="font-size: 14px;"><a>https://creativecommons.org/licenses/by-nc-sa/4.0/</a></p>
+    </div>
+  </section>
+  <section data-markdown>
+    # Outline
+  
+    1. Introduction
+    
+  </section>
+  <section>
+    Visually Encoded Data
+
+    Power point with images and labels
+  </section>
+  <section>
+    Virtuous spiral
+
+    image data --> faster auxilary data creation (re-use and automated annotation) --> transparent data presentation --> data annotation that anchors to data not presentations --> re-use of data to create new transparent data presentations --> and so on
+  </section>
+  <section>
+    1. IIIF: a bird's eye view
+    1. Immediate Presentations of Separated Image Data
+    1. A virtuous spiral (data->data-annotations->presentations->data-annotations->new-presentations-etc
+    1. Questions
+  </section>
+  <section>
+    <section data-markdown>
+      ## IIIF: a bird's eye view
+    </section>
+    
+    <section data-markdown>
+      ### API as a Contract
+  
+      A contract 
+  
+      between 
+  
+      image data **suppliers** 
+  
+      and 
+  
+      UI **implementors** 
+  
+      who "present" image data to 
+      
+      downstream **users/readers**
+  
+    </section>
+    <section data-background-iframe="https://iiif.io/">
+    </section>
+    <section data-markdown>
+      ### IIIF Image API
+    </section>
+    <section data-markdown>
+  
+    #### Lack of standards prevents interoperability 
+  
+    What does 10,20,300,500 mean?
+  
+    Does it mean 10 pixels wide and 20 pixels high, starting at x=300 and y=500?
+  
+    Or does it mean 300 pixels wide, 500 pixels high, starting at x=10 and y=20?
+  
+    </section>
+    <section>
+      <h4>There is no "IIIF Image Server"</h4>
+  
+    <h4>There are <strong>MANY</strong> IIIF compliant servers</h4>
+      
+      <iframe src="https://iiif.io/get-started/image-servers/" width="100%" height="700px"></iframe>
+    </section>
+    <section>
+      <h3>IIIF Image API</h3>
+      {scheme}://{server}{/prefix}/{identifier}/{region}/{size}/{rotation}/{quality}.{format}
+      <a href="https://iiif.io/api/image/3.0/#4-image-requests">https://iiif.io/api/image/3.0/#4-image-requests</a>
+      <iframe src="https://iiif.io/api/image/3.0/#4-image-requests" width="100%" height="800px"></iframe>
+    </section>
+    <section data-background-iframe="https://www.learniiif.org/image-api/playground">
+      <!-- IIIF playground:  -->
+      
+    </section>
+    <section data-background-iframe="https://wellcometrust.github.io/annotation-viewer/quilt/">
+
+    </section>
+    <section data-background-iframe="http://www.appliediiif.org.uk/launch/launchVPSFractalSD.htm?item=M36D">
+      <!-- fractals: 
+      http://www.appliediiif.org.uk/live/fractalshome.htm
+      http://www.appliediiif.org.uk/launch/launchVPSFractalSD.htm?item=M36D -->
+    </section>
+    
+    <section data-markdown>
+      ### IIIF Presentation API (version 2.1.0)
+    </section>
+    <section data-background="https://iiif.io/assets/uploads/presentation-api-filler.png" data-background-size="contain">
+    </section>
+    <section>
+      <div style="display: flex; justify-content: space-around;">
+        <div>
+      <h3>The Manifest</h3>
+      <a href="https://iiif.io/api/presentation/2.1/#manifest">https://iiif.io/api/presentation/2.1/#manifest</a>
+      <iframe src="https://iiif.io/api/presentation/2.1/#manifest" width="100%" height="800px"></iframe>
+    </div>
+      
+      <img src="https://iiif.io/api/presentation/2.1/img/objects.webp" height="900px"/>
+      </div>
+    
+    </section>
+    
+    
+    <section>
+      <div style="display: flex; justify-content: space-around;">
+        <div>
+      <h3>The Canvas</h3>
+      <a href="https://iiif.io/api/presentation/2.1/#canvas">https://iiif.io/api/presentation/2.1/#canvas</a>
+      <iframe src="https://iiif.io/api/presentation/2.1/#canvas" width="100%" height="800px"></iframe>
+    </div>
+      
+      <img src="https://iiif.io/api/presentation/2.1/img/objects.webp" height="900px"/>
+      </div>
+    
+    </section>
+    <section>
+      <div style="display: flex; justify-content: space-around;">
+        <div>
+      <h3>Image Resources</h3>
+      <a href="https://iiif.io/api/presentation/2.1/#image-resources">https://iiif.io/api/presentation/2.1/#image-resources</a>
+      <iframe src="https://iiif.io/api/presentation/2.1/#image-resources" width="100%" height="800px"></iframe>
+    </div>
+      
+      <img src="https://iiif.io/api/presentation/2.1/img/objects-all.webp" width="500px" />
+      </div>
+    
+    </section>
+    <section>
+      <div style="display: flex; justify-content: space-around;">
+        <div>
+      <h3>Ranges</h3>
+      <a href="https://iiif.io/api/presentation/2.1/#range">https://iiif.io/api/presentation/2.1/#range</a>
+      <iframe src="https://iiif.io/api/presentation/2.1/#range" width="100%" height="800px"></iframe>
+    </div>
+      
+      <img src="https://iiif.io/api/presentation/2.1/img/objects-all.webp"  width="500px"/>
+      </div>
+    
+    </section>
+    
+    <section>
+      <h3>Video Overview of the Manifest and Canvas</h3>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/98z9YNFiUqU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </section>
+   
+    <section data-markdown>
+      ## In Sum
+    </section>
+    <section data-background="{{ site.assets_url }}Pitt-2022-07-21/BasicIIIFEcosystem.png" data-background-size="contain">
+      <!-- ### Requirements for a Basic IIIF ecosystem -->
+    </section>
+    <section data-markdown>
+    ### Lots of existing training material
+    
+    https://iiif.io/guides/
+    
+    https://training.iiif.io/
+    </section>
+    
+  </section>
+  <section>
+    <section data-markdown>
+      ## Examples of Data Re-Use in Multiple Presentations
+    </section>
+    <section>
+      #### Annotations as Tour Through Image (Images)
+    </section>
+    <!-- painting -->
+    <section data-background-iframe="https://storiiies.cogapp.com/basic?manifest=https://storiiies.cogapp.com/holbein/manifest.json"></section>
+    <section data-background-iframe="https://storiiies.cogapp.com/viewer?manifest=https://storiiies.cogapp.com/holbein/manifest.json"></section>
+    <!-- wasp -->
+    <section data-background-iframe="https://storiiies.cogapp.com/basic?manifest=https://storiiies.cogapp.com/wasp/manifest.json"></section>
+    <section data-background-iframe="https://storiiies.cogapp.com/viewer?manifest=https://storiiies.cogapp.com/wasp/manifest.json"></section>
+    <!--- quilt -->
+    <section data-background-iframe="https://wellcometrust.github.io/annotation-viewer/quilt/"></section>
+    <section>
+      #### Compare and Inspect Distributed Images (And Save Your View) (Mirador 3)
+    </section>
+    <section>
+      <iframe src="https://mirador-image-tools.netlify.app" width="100%" height="600px"></iframe>
+
+      
+      <div style="font-size: 14px">
+        <p>Nashville 1895 Manifest https://www.davidrumsey.com/luna/servlet/iiif/m/RUMSEY~8~1~26902~1100201/manifest</p>
+        <p>Nashville 1901 Manifest https://www.davidrumsey.com/luna/servlet/iiif/m/RUMSEY~8~1~273811~90047347/manifest</p>
+        <p>Nashville 1929 Manifest https://www.davidrumsey.com/luna/servlet/iiif/m/RUMSEY~8~1~310514~90080184/manifest</p>
+    </div>
+      
+
+      <!-- If we think of geo-coordinates as "annotations". We can use those annotations to make new views and new discoveries -->
+
+      
+    </section>
+    <section data-background-iframe="https://davidrumsey.oldmapsonline.org/compare#950093461424">
+      <!-- Compare maps with google maps overlay  Nashville maps: https://davidrumsey.oldmapsonline.org/compare#950093461424 -->
+    </section>
+    <section>
+      #### Socially and Collaboratively Annotate
+      (Simple annotation servicer or Mirador 2)
+
+      <!-- Biology cell example not really working. https://courses.edx.org/courses/course-v1:HarvardX+MCB64.1x+2T2016/d16e07a5cec442eeb7cd9dfcb695dce0/ -->
+    </section>
+    <section data-background="{{ site.assets_url }}2023-04-17-vanderbilt/makeAnnotationExample.gif"></section>
+    <section data-background-iframe="http://localhost:8080"></section>
+    <section data-markdown>
+      Slide Deck built from social annotations
+
+      http://localhost:8080/slides.html
+    </section>
+    </section>
+  </section>
+  <section>
+    <section data-markdown>
+      ## Longer Term Possibilities (Imagination)
+    </section>
+  </section>
+  <section data-background="{{ site.assets_url}}2023-04-17-vanderbilt/transkribus-iiif-import.png">
+    <!-- auto import and auto segmentation (picture of transkribus auto load and segmentation)
+    other examples Google Vision
+    GPT-4 auto segmenting -->
+  </section>
+  <section>
+    <iframe src="https://mirador.scta.info/?resourceid=plaoulcommentary" width="100%" height="800px"></iframe>
+  </section>
+  <section data-background-iframe="https://lombardpress.org/paleographinator"></section>
+  <section data-background="{{ site.assets_url }}Pitt-2022-07-21/appToImageLine.png" data-background-size="contain"></section>
+  <!-- annotations connection to annotations -->
+  <section data-background="{{ site.assets_url }}textExpansion/Folie1.png" data-background-size="contain">
+  </section>
+  <section data-background="{{ site.assets_url }}textExpansion/Folie2.png" data-background-size="contain">
+  </section>
+  <section data-background="{{ site.assets_url }}Pitt-2022-07-21/ParagraphZoneMapping.png"></section>
+  <section data-background="{{ site.assets_url }}textExpansion/Folie3.png" data-background-size="contain">
+  </section>
+  <section data-background="{{ site.assets_url }}textExpansion/Folie4.png" data-background-size="contain">
+  </section>
+  <section data-background="{{ site.assets_url }}textExpansion/Folie5.png" data-background-size="contain">
+  </section>
+  <section data-background="{{ site.assets_url }}textExpansion/Folie6.png" data-background-size="contain">
+  </section>
+  <section data-background="{{ site.assets_url }}textExpansion/Folie7.png" data-background-size="contain">
+  </section>
+  <section data-background="{{ site.assets_url }}textExpansion/Folie9.png" data-background-size="contain"></section>
+  <section data-background="{{ site.assets_url }}2021-10-29-Nijmegen/12.gif" data-background-size="contain"></section>
+  <section data-background="{{ site.assets_url }}Pitt-2022-07-21/parallelParagraphs.gif" data-background-size="contain"></section>
+  <section data-background="{{ site.assets_url }}Pitt-2022-07-21/parallelParagraphsInMirador.gif" data-background-size="contain"></section>
+  <section data-background="{{ site.assets_url}}2023-04-17-vanderbilt/networkWithImages.gif"></section>
+  
+
+
+
+  <!-- <section>
+    <section data-markdown>
+      ### Data as Annotations; Images as Annotations
+      #### Variations Integrating Line Coordinates with Text
+    </section>
+    
+    <section data-background="{{ site.assets_url }}Pitt-2022-07-21/diplomaticToImageLine.png" data-background-size="contain"></section>
+    <section data-background="{{ site.assets_url }}Pitt-2022-07-21/MiradorWithLineCoords.png" data-background-size="contain"></section>
+    <section data-background="{{ site.assets_url }}Pitt-2022-07-21/linkedAnnotationList.png" data-background-size="contain"></section>
+    <section data-background="{{ site.assets_url }}Pitt-2022-07-21/AnnotationList.png" data-background-size="contain"></section>
+    <section data-background="{{ site.assets_url }}Pitt-2022-07-21/PageLineDerivativeText.png" data-background-size="contain"></section>
+    <section data-background="{{ site.assets_url }}Pitt-2022-07-21/getFragment.png" data-background-size="contain"></section>
+    <section data-background="{{ site.assets_url }}Pitt-2022-07-21/CatView.png" data-background-size="contain"></section>
+    <section data-background="{{ site.assets_url }}Pitt-2022-07-21/WordLinePositionLookup.png" data-background-size="contain"></section>
+  </section>
+  
+  <section>
+    <section data-markdown>
+      ### Connecting Images through Connected Annotations 
+      (for example making a slide deck of images for students to annotate, not by hand, but automatically)
+      Paleographinator, scientific images load
+      #### Text Entity (e.g. paragraph, quotation, reference, etc) image display across witnesses and the corpus
+    </section>
+    
+    
+    <section data-markdown>
+      #### Connecting Annotations On Annotations On Annotations
+    </section>
+    
+    
+    network explorer with images -->
+    <!-- intersections explorer with images
+  </section> 
+-->
+  
+  
+  </section>
+  <section data-markdown>
+    # Questions/Discussion
+  </section>
