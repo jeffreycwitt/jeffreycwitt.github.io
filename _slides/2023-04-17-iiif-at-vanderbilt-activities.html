@@ -1,4 +1,15 @@
 
+---
+layout: slide
+title: "IIIF at Vanderbilt: Activities"
+description:
+date: 2023-04-17
+theme: white
+transition: slide
+tags: iiif
+size: full
+---
+
 <section>
   <h3>IIIF at Vanderbilt: Hands on Activities</h3>
   <hr />
@@ -16,6 +27,8 @@
 
 <section data-markdown>
   ### Activity 1
+  
+  #### Manipulate a IIIF using the Image API
 
   Let's take the following base url: https://ids.lib.harvard.edu/ids/iiif/47174896/ 
 
@@ -33,7 +46,8 @@
 
 </section>  
 <section data-markdown>
-  ### Activity 2: Inspect a Manifest
+  ### Activity 2
+  #### Inspect a Manifest
   
   Open this manifest
   [https://iiif.biblissima.fr/chateauroux/B360446201_MS0005/manifest.json](https://iiif.biblissima.fr/chateauroux/B360446201_MS0005/manifest.json)
@@ -47,8 +61,20 @@
 
   If needed, use the [API docs](https://iiif.io/api/presentation/2.1/) to help yourself navigate the manifest.
 </section>
-
 <section data-markdown>
+  ### Activity 3
+  #### Create or Modify a Manifest Using the Bodleian Manifest Editor
+
+  [https://digital.bodleian.ox.ac.uk/manifest-editor/#/?_k=h94nb0](https://digital.bodleian.ox.ac.uk/manifest-editor/#/?_k=h94nb0)
+
+  * Select "Open manifest"
+  * Select "Discover manifest"
+  * Then Browse for a manifest from listed institutions
+
+</section>
+<section>
+<section data-markdown>
+
   ### Activity 3
   #### Creating a path through a text with connected images
 
@@ -60,7 +86,8 @@
   3. Or make your own "Exhibit"
   
   4. Find a manifest (perhaps with a text you care about)
-    * See the next slide for example manifests and places to find additional manifests
+    * See the slide below for example manifests and places to find additional manifests
+    * Or use a manifest you found or manipulated in the "Manifest Editor"
   5. Make an "Exhibit", guiding the user though parts of the manuscript or text
     * https://www.exhibit.so/exhibits/create
 
@@ -88,12 +115,6 @@
   * https://e-codices.unifr.ch/en
   * https://portail.biblissima.fr/en/
   </section>
-<section data-markdown>
-  ### Activity 3: Discussion
-
-  * What works well here?
-  * What are the limitations?
-
 </section>
 <section data-markdown style="font-size: 36px">
   ### Activity 4
@@ -105,20 +126,21 @@
     * For more on Mirador see: https://projectmirador.org/
   3. Experiment with some manifests that use "ranges" to help you navigate and bring users to the same point in two witnesses.
     * For example:
-    * https://scta.info/iiif/graciliscommentary/sorb/manifest
-    * https://scta.info/iiif/graciliscommentary/svict/manifest
+    * https://scta.info/iiif/plaoulcommentary/sorb/manifest
+    * https://scta.info/iiif/plaoulcommentary/svict/manifest
     * or
     * https://scta.info/iiif/rothwellcommentary/gks1363/manifest
     * https://scta.info/iiif/rothwellcommentary/penn/manifest
     * https://scta.info/iiif/rothwellcommentary/wettf15/manifest
 
-  (Continued on next slide)
 
   </section>
   <section data-markdown>
-  ### Activity 4 
+  ### Activity 5
+  #### Customizing Mirador
+
   
-  4) Look into customizing Mirador so that it automatically constructs the "view" you want to present to end users
+  1) Look into customizing Mirador so that it automatically constructs the "view" you want to present to end users
     * Consider this set up: https://codepen.io/jeffreycwitt/pen/vYRGdeL
     * Let's try to make a couple of simple changes.
     * Try changing the manifests and canvases that Mirador automatically opens up to
@@ -127,34 +149,27 @@
       * https://github.com/ProjectMirador/mirador/wiki/M3-Theming-Mirador
     * See full list of customization properties: https://github.com/ProjectMirador/mirador/blob/master/src/config/settings.js
 </section>
-<section data-markdown>
-  ### Activity 4: Discussion
-  
-  * What works well here?
-  * What are the limitations?
+<section>
+  ### Activity 6
+  #### Explore Geo-Referenced IIIF Maps
+
+  [https://www.davidrumsey.com/view/georeferencer](https://www.davidrumsey.com/view/georeferencer)
 
 </section>
-<section data-markdown>
-  ### Activity 5
-  #### View parallel witnesses at granular levels
-  
-  * Explore the following code-pen
-    * [https://codepen.io/jeffreycwitt/pen/mdXNdRR](https://codepen.io/jeffreycwitt/pen/mdXNdRR)
-  * Click on the images to toggle between manuscript witnesses at granular coordinate regions
-  * Inspect the javascript
-    * What kind of data needs to be collected to create this view?
-    * What kind of data structure is being used here?
-    * How is that information being transformed to be used in a IIIF Image URL?
-  * Can you change the images and coordinates with other IIIF compliant images?
-    * Try inspecting a manifest, find a iiif image url, and then modify the json data object accordingly.
+<section>
+  ### Activity 7
+  #### Explore Deep Zoom
 
-  
+  [http://www.appliediiif.org.uk/live/index.html](http://www.appliediiif.org.uk/live/index.html)
 </section>
+<section>
+  ### Activity 8
+  #### Explore the IIIF Awesome list
 
-<section data-markdown>
-  ### Activity 5: Discussion
+  [https://github.com/IIIF/awesome-iiif](https://github.com/IIIF/awesome-iiif)
 
-  * What works well here?
-  * What are the limitations?
+  * Explore this list of tools and demos
+  * What questions do you have about the software and demos listed here?
+  * Did you find anything cool and worth sharing?
 
 </section>
