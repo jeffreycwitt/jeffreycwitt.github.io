@@ -46,27 +46,47 @@ $(document).ready(function(){
       <p style="font-size: 14px;"><a>https://creativecommons.org/licenses/by-nc-sa/4.0/</a></p>
     </div>
   </section>
-  <section data-markdown>
-    # Outline
+  <section>
+    <section data-markdown>
+      
+  The Value of IIIF Comes into Focus  When we see the Value of Separating...
   
-    1. Introduction
+  ---
+  
+  **Data** and **Presentation**
+    </section>
+  
+  <section data-background="{{ site.assets_url}}2023-04-17-vanderbilt/exampleSlide.png" data-background-size="contain">
+    <!-- Visually Encoded Data
+
+    Power point with images and labels -->
+  </section>
+  <section data-background="{{ site.assets_url}}2023-04-17-vanderbilt/Spiral.png" data-background-size="contain">
+    <!-- Virtuous spiral-->
+  </section>
+  <section >
+    
+    <div style="display: flex; justify-content: space-around;">
+    
+    
+    <div data-markdown>
+      ## Benefits over time
+
+      1. Expanded Scale
+      2. Increased Transparency
+      3. New Discoveries
+    </div>
+    <img width="700px" src="{{ site.assets_url}}2023-04-17-vanderbilt/Spiral.png"/>
+    </div>
     
   </section>
-  <section>
-    Visually Encoded Data
-
-    Power point with images and labels
   </section>
-  <section>
-    Virtuous spiral
-
-    image data --> faster auxilary data creation (re-use and automated annotation) --> transparent data presentation --> data annotation that anchors to data not presentations --> re-use of data to create new transparent data presentations --> and so on
-  </section>
-  <section>
+  <section data-markdown>
+    # Outline
     1. IIIF: a bird's eye view
-    1. Immediate Presentations of Separated Image Data
-    1. A virtuous spiral (data->data-annotations->presentations->data-annotations->new-presentations-etc
-    1. Questions
+    1. Examples
+    2. Advanced Examples
+  </section>
   </section>
   <section>
     <section data-markdown>
@@ -98,13 +118,13 @@ $(document).ready(function(){
     </section>
     <section data-markdown>
   
-    #### Lack of standards prevents interoperability 
-  
-    What does 10,20,300,500 mean?
-  
-    Does it mean 10 pixels wide and 20 pixels high, starting at x=300 and y=500?
-  
-    Or does it mean 300 pixels wide, 500 pixels high, starting at x=10 and y=20?
+  #### Lack of standards prevents interoperability 
+
+  What does 10,20,300,500 mean?
+
+  Does it mean 10 pixels wide and 20 pixels high, starting at x=300 and y=500?
+
+  Or does it mean 300 pixels wide, 500 pixels high, starting at x=10 and y=20?
   
     </section>
     <section>
@@ -122,12 +142,13 @@ $(document).ready(function(){
     </section>
     <section data-background-iframe="https://www.learniiif.org/image-api/playground">
       <!-- IIIF playground:  -->
+      <!-- Let's try it with this image of St. Cloud Hill https://www.davidrumsey.com/luna/servlet/iiif/RUMSEY~8~1~26953~1100252/info.json -->
       
     </section>
     <section data-background-iframe="https://wellcometrust.github.io/annotation-viewer/quilt/">
 
     </section>
-    <section data-background-iframe="http://www.appliediiif.org.uk/launch/launchVPSFractalSD.htm?item=M36D">
+    <section data-background-iframe="http://www.appliediiif.org.uk/live/index.html">
       <!-- fractals: 
       http://www.appliediiif.org.uk/live/fractalshome.htm
       http://www.appliediiif.org.uk/launch/launchVPSFractalSD.htm?item=M36D -->
@@ -174,9 +195,9 @@ $(document).ready(function(){
       
       <img src="https://iiif.io/api/presentation/2.1/img/objects-all.webp" width="500px" />
       </div>
-    
     </section>
-    <section>
+    <section data-background-iframe="{{ site.assets_url}}2023-04-17-vanderbilt/canvas2ImageOverlay.gif"></section>
+    <!-- <section>
       <div style="display: flex; justify-content: space-around;">
         <div>
       <h3>Ranges</h3>
@@ -187,7 +208,7 @@ $(document).ready(function(){
       <img src="https://iiif.io/api/presentation/2.1/img/objects-all.webp"  width="500px"/>
       </div>
     
-    </section>
+    </section> -->
     
     <section>
       <h3>Video Overview of the Manifest and Canvas</h3>
@@ -213,8 +234,8 @@ $(document).ready(function(){
     <section data-markdown>
       ## Examples of Data Re-Use in Multiple Presentations
     </section>
-    <section>
-      #### Annotations as Tour Through Image (Images)
+    <section data-markdown>
+      ### Annotations as a Guided Tour Through an Image
     </section>
     <!-- painting -->
     <section data-background-iframe="https://storiiies.cogapp.com/basic?manifest=https://storiiies.cogapp.com/holbein/manifest.json"></section>
@@ -224,17 +245,18 @@ $(document).ready(function(){
     <section data-background-iframe="https://storiiies.cogapp.com/viewer?manifest=https://storiiies.cogapp.com/wasp/manifest.json"></section>
     <!--- quilt -->
     <section data-background-iframe="https://wellcometrust.github.io/annotation-viewer/quilt/"></section>
-    <section>
-      #### Compare and Inspect Distributed Images (And Save Your View) (Mirador 3)
+    <section data-markdown>
+      #### Compare and Inspect Distributed Images
     </section>
     <section>
-      <iframe src="https://mirador-image-tools.netlify.app" width="100%" height="600px"></iframe>
+      <iframe src="https://mirador.scta.info" width="100%" height="600px"></iframe>
 
       
       <div style="font-size: 14px">
         <p>Nashville 1895 Manifest https://www.davidrumsey.com/luna/servlet/iiif/m/RUMSEY~8~1~26902~1100201/manifest</p>
         <p>Nashville 1901 Manifest https://www.davidrumsey.com/luna/servlet/iiif/m/RUMSEY~8~1~273811~90047347/manifest</p>
         <p>Nashville 1929 Manifest https://www.davidrumsey.com/luna/servlet/iiif/m/RUMSEY~8~1~310514~90080184/manifest</p>
+        <p>Manifest for Image with Fort on St. Could Hill https://www.davidrumsey.com/luna/servlet/iiif/m/RUMSEY~8~1~26953~1100252/manifest</p>
     </div>
       
 
@@ -242,19 +264,20 @@ $(document).ready(function(){
 
       
     </section>
-    <section data-background-iframe="https://davidrumsey.oldmapsonline.org/compare#950093461424">
+    <section data-background-iframe="https://davidrumsey.oldmapsonline.org/compare#950093461424" data-background-size="contain">
       <!-- Compare maps with google maps overlay  Nashville maps: https://davidrumsey.oldmapsonline.org/compare#950093461424 -->
     </section>
-    <section>
-      #### Socially and Collaboratively Annotate
-      (Simple annotation servicer or Mirador 2)
+    <section data-markdown>
+      #### Collaboratively Annotate and Re-Present
 
       <!-- Biology cell example not really working. https://courses.edx.org/courses/course-v1:HarvardX+MCB64.1x+2T2016/d16e07a5cec442eeb7cd9dfcb695dce0/ -->
     </section>
-    <section data-background="{{ site.assets_url }}2023-04-17-vanderbilt/makeAnnotationExample.gif"></section>
+    <section data-background="{{ site.assets_url }}2023-04-17-vanderbilt/makeAnnotationExample.gif" data-background-size="contain"></section>
     <section data-background-iframe="http://localhost:8080"></section>
     <section data-markdown>
       Slide Deck built from social annotations
+
+      http://localhost:8080/slidesWeb.html
 
       http://localhost:8080/slides.html
     </section>
@@ -262,9 +285,9 @@ $(document).ready(function(){
   </section>
   <section>
     <section data-markdown>
-      ## Longer Term Possibilities (Imagination)
+      ## A case study: 
+      ### using IIIF to help create and publish "transparent" digital editions
     </section>
-  </section>
   <section data-background="{{ site.assets_url}}2023-04-17-vanderbilt/transkribus-iiif-import.png">
     <!-- auto import and auto segmentation (picture of transkribus auto load and segmentation)
     other examples Google Vision
@@ -273,14 +296,14 @@ $(document).ready(function(){
   <section>
     <iframe src="https://mirador.scta.info/?resourceid=plaoulcommentary" width="100%" height="800px"></iframe>
   </section>
-  <section data-background-iframe="https://lombardpress.org/paleographinator"></section>
-  <section data-background="{{ site.assets_url }}Pitt-2022-07-21/appToImageLine.png" data-background-size="contain"></section>
+  
+  <!-- s<section data-background="{{ site.assets_url }}Pitt-2022-07-21/appToImageLine.png" data-background-size="contain"></section> -->
   <!-- annotations connection to annotations -->
   <section data-background="{{ site.assets_url }}textExpansion/Folie1.png" data-background-size="contain">
   </section>
   <section data-background="{{ site.assets_url }}textExpansion/Folie2.png" data-background-size="contain">
   </section>
-  <section data-background="{{ site.assets_url }}Pitt-2022-07-21/ParagraphZoneMapping.png"></section>
+  <!-- <section data-background="{{ site.assets_url }}Pitt-2022-07-21/ParagraphZoneMapping.png"></section> -->
   <section data-background="{{ site.assets_url }}textExpansion/Folie3.png" data-background-size="contain">
   </section>
   <section data-background="{{ site.assets_url }}textExpansion/Folie4.png" data-background-size="contain">
@@ -337,6 +360,7 @@ $(document).ready(function(){
   
   
   </section>
+</section>
   <section data-markdown>
     # Questions/Discussion
   </section>
