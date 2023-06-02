@@ -1,0 +1,189 @@
+---
+layout: slide
+title: "Text Reuse Detection with N-Grams and Graphs in 5 minutes"
+description:
+date: 2023-06-06
+theme: white
+transition: slide
+tags: scta
+size: full
+---
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+<section>
+  <h3>Text Reuse Detection with N-Grams and Graphs 
+    <br/>
+    <em>in 5 minutes</em></h3>
+  <hr />
+  <p>Jeffrey C. Witt (Loyola University Maryland) <br/> <a href="https://jeffreycwitt.com/">https://jeffreycwitt.com</a> | jcwitt@loyola.edu <br/> @jeffreycwitt</p>
+  <hr />
+  <p></p>
+  <p>March 12, 2023, Evergreen Museum & Library, Johns Hopkins University, Baltimore, MA</p>
+  <div style="font-size: 20px;">
+    <p>Slide Deck: <a
+        href="http://jeffreycwitt.com/slides/2023-06-06-dhsi-text-reuse-detection">http://jeffreycwitt.com/slides/2023-06-06-dhsi-text-reuse-detection</a>
+    </p>
+    <p style="font-size: 14px;"><a>https://creativecommons.org/licenses/by-nc-sa/4.0/</a></p>
+  </div>
+</section>
+<section data-markdown>
+
+* Main Claim:
+  * Traditional non-digital research methods can also suffer from confirmation bias 
+  and digital tools (especially those that can helps us view patterns at scale) can be a great way to correct this bias. 
+
+</section>
+<section data-markdown>
+  # Discovery of Successive Textual Reuse
+  ## through n-gram similarity detection
+
+</section>
+<section data-background="{{ site.assets_url }}2023-02-01/image8.png" data-background-size="contain"></section>
+<section data-background="{{ site.assets_url }}2023-02-01/image29.png" data-background-size="contain"></section>
+<section data-markdown>
+  “Petrus Gracilis...followed not only the footsteps but the very phrases of Hiltalingen in a way so deceptive that it does not cast the best light on Gracilis. He read secundum Hiltalingen without ever mentioning him. Only by a **lucky coincidence** [emphasis mine] was I enabled to "unmask" Gracilis' dubious literary honesty. (See Trapp, Damasus, "Augustinian Theology of the 14th Century," Augustiniana 6 (1956): 147-274, p. 254.)
+</section>
+
+<!-- picture of q. 38 gap -->
+<section data-background="{{ site.assets_url }}2023-02-01/image7.png" data-background-size="contain"></section>
+<section data-markdown>
+
+"The cat is on the mat"
+
+---
+
+4-grams
+
+---
+
+"the cat is on"
+
+"cat is on the"
+
+"is on the mat"
+</section>
+<section>
+  <h3>Paragraph (Document) Feature Vector 
+    <br/>
+    as 
+    <br/>
+    Vector recording ngram presence (1) or absence (0)</h3>
+
+  <table class="c18" style="font-size: 16px"><tbody>
+    <tr class="c5"><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">Paragraph</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram2</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram3</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram4</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram5</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram6</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram7</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram8</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram9</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram10</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram11</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram12</span></p></td></tr>
+    <tr class="c5"><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">Doc A</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td>
+    </tr>
+  </tbody>
+</table>
+</section>
+<section>
+  Intersection of shared ngrams in Docs A and B 
+  <br/>
+  as 
+  <br/>
+  Dot Product of Document Feature Vectors
+
+  $$ A \cdot B = \sum\limits_{i=1}^{n}{A_i  B_i} $$
+  
+  If Dot Product of A and B >= 6, then Doc Vectors A and B are "similar"
+
+  <hr/>
+  <div>
+    <table class="c18" style="font-size: 16px">
+      <tbody>
+        <tr class="c5">
+          <td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">Paragraph</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram2</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram3</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram4</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram5</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram6</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram7</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram8</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram9</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram10</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram11</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram12</span></p></td>
+          <td class="c4 c15" colspan="1" rowspan="1">sum</td>
+        </tr><tr class="c5"><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">Doc A</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td>
+            
+            <td class="c4 c15" colspan="1" rowspan="1">8</td>
+          
+          </tr><tr class="c5"><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">Doc B</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td>
+          
+            <td class="c4 c15" colspan="1" rowspan="1">10</td>
+
+          </tr><tr class="c5"><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">A * B (Dot Product Vector) </span></p></td><td class="c4 c15" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x1=1</span></p></td><td class="c4 c15" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x1=1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0x1=0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x0=0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0x1=0</span></p></td><td class="c4 c15" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x1=1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0x0=0</span></p></td><td class="c4 c15" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x1=1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0x0=0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0x1=0</span></p></td><td class="c4 c15" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x1=1</span></p></td><td class="c4 c15" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x1=1</span></p></td>
+            <td class="c4 c15" colspan="1" rowspan="1"><p class="c14"><span class="c1">6</span></p></td>
+            </tr>
+      </tbody>
+    </table>
+    </div>
+</section>
+<section data-markdown>
+
+  ![intersection]({{ site.assets_url }}2023-02-01/image5.png)
+  
+  Similarity = X is similar to Y, if and only if 
+  
+  $$ \\#\\{ a | \forall{ng}\forall{x}\forall{y}(IsFoundIn(ng,x) \land IsFoundIn(ng,y) \land x \neq y \\} >= n $$
+  
+  where n = 6
+    
+  </section>
+<section data-background="{{ site.assets_url }}2023-02-01/image14.png" data-background-size="contain"></section>
+<section data-background="{{ site.assets_url }}2023-02-01/image24.png" data-background-size="contain"></section>
+
+<!-- albert and lambertus -->
+<section data-background="{{ site.assets_url }}2023-02-01/image26.png" data-background-size="contain"></section>
+
+ <section>
+  <p>SuccessiveReuse = Windows with Convolution Score >= 3</p>
+   <table>
+    <tbody>
+      <tr>
+        <td data-markdown>
+  ||5|6|7|8|9|10|11|12|
+  |---|---|---|---|---|---|---|---|---|---|
+  |2|0|0|0|0|0|0|0|0|
+ |3|0|0|**1**|**0**|**0**|**0**|0|0|
+ |4|0|0|**0**|**0**|**0**|**0**|0|0|
+ |5|0|0|**0**|**0**|**1**|**0**|0|0|
+ |6|0|0|**0**|**1**|**0**|**1**|0|0|
+ |7|0|0|0|0|0|0|0|0|
+ |8|0|0|0|0|0|0|0|0|
+ |9|0|0|0|0|0|0|0|0|
+        </td>
+        <td><p>X</p></td>
+  <td data-markdown>
+  |||||
+  |---|---|---|
+  |1|0|0|0|
+  |0|1|0|0|
+  |0|0|1|0|
+  |0|0|0|1|
+  </td>
+  <td><p>=</p></td>
+  <td data-markdown>
+   |||||
+   |---|---|---|
+   |1|0|0|0|
+   |0|0|0|0|
+   |0|0|1|0|
+   |0|0|0|1|
+    </td>
+    <td><p>=</p></td>
+    <td><p>3</p></td>
+  </tr>
+  </tbody>
+  </table>   
+  
+  </section>
+  <section data-markdown>
+   SubstantialSuccessiveTextSimilarity(t) =
+   $$ \\#\\{ a | \forall{t}(SuccessveReuse(t)\\} >= 10 $$
+   where t = Question or Chapter
+ </section>
+
+ <section data-background="{{ site.assets_url }}2023-06-06-dhsi/ConvolutionExample.png" data-background-size="contain"></section>
+
+
+<section data-background="{{ site.assets_url }}2023-02-01/image30.png" data-background-size="contain"></section>
+<section data-background="{{ site.assets_url }}2023-02-01/image25.png" data-background-size="contain"></section>
+
+<section data-background="{{ site.assets_url }}2023-04-12-vienna/combinedReport.png" data-background-size="contain">
+  <!-- Combined report -->
+</section>
+<section data-markdown>
+  ## Questions/Discussion
+</section>
