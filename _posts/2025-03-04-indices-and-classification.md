@@ -68,7 +68,7 @@ The index also excels at the lookup task that we first associate with any index.
 
 If we select "show citations", then, as seen below, we can explore the actual text of each citations and view these quotations compared against the source text.
 
-![lombard-with-citation]({{ site.assets_url }}2025-03-04-indices-and-classification/lombard-with-citaiton.png)
+![lombard-with-citation]({{ site.assets_url }}2025-03-04-indices-and-classification/lombard-with-citation.png)
 
 Finally, let me just point to one advanced form of grouping that I'm excited about. In the case of a commentary tradition like the tradition of commenting on the Sentences of Peter Lombard, since each distinction is is own topic, I might want treat the entire sum of what was written on distinction 1 as a distinct text and compare it other distinctions. 
 
