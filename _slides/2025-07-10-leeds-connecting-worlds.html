@@ -1,0 +1,413 @@
+---
+layout: slide
+title: "Worlds of Learning - Re-Connecting Scholastic Worlds"
+description:
+date: 2025-07-10
+theme: white
+transition: slide
+tags: scta
+size: full
+---
+
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<section>
+  <h3>Connecting Worlds</h3>
+
+  <hr />
+  <p>Jeffrey C. Witt (Loyola University Maryland) <br /> <a
+      href="https://jeffreycwitt.com/">https://jeffreycwitt.com</a> | jcwitt@loyola.edu <br /> @jeffreycwitt</p>
+  <hr />
+  <p></p>
+  <p>July 10, 2025, University of Leeds, Leeds, UK</p>
+  <div style="font-size: 20px;">
+    <p>Slide Deck: <a
+        href="http://jeffreycwitt.com/slides/2025-07-10-leeds-connecting-worlds">http://jeffreycwitt.com/slides/2025-07-10-leeds-connecting-worlds</a>
+    </p>
+    <p style="font-size: 14px;"><a>https://creativecommons.org/licenses/by-nc-sa/4.0/</a></p>
+  </div>
+</section>
+<section>
+  <section data-markdown>
+    ## Example 1 
+    
+    ### Doc2Vec Similiarity
+
+  </section>
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/AquinasScholion.png" data-background-size="contain">
+    <!-- Picture of Aquinas Scholion -->
+  </section>
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/ScotusScholion.png" data-background-size="contain">
+    <!-- Picture of Scotus Scholion -->
+  </section>
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/StrasburgScholion.png" data-background-size="contain">
+    <!-- Picture of Thomas of Strasburg Scholion -->
+  </section>
+  <section>
+    Issues of bias and limitation 
+    (Compare Strasburg listing to ExpressionType liber1-prologus)
+    There are a lot more relevant text here than those listed
+
+    But the Leonine editors of the Aquinas scholion also show with considerable skill that related discussions 
+    occur in questions article that defy our expectations or don't have an obvious connection based on the question title. 
+
+    Consider:
+
+    * Utrum lex naturalis contineat plura praecepta vel unum tantum / Whether the natural law contains many commands or only one (Summa Theologiae, I-II, q. 94, a. 2; TAca84-d1e1158-Dd1e347)
+
+    * Utrum habere plures uxores sit contra legem naturae / Whether having may wives is against the law of nature (Sent. IV, d. 33, q. 1, a. 1; ta-l4d33q1-Dd1e131)
+
+  </section>
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/AquinasDoc2VecResults.png" data-background-size="contain">
+    <!-- Picture of Thomas of Strasburg Scholion -->
+  </section>
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/AquinasSTtoScriptumMatch.png" data-background-size="contain">
+    <!-- We can see here that the section of the Scriptum is quickly (and with zero human labor) brought to the readers attention
+    in the top 10 results. 
+    
+     But given the accuracy here, it also highlights what the manual method may be leaving out. 
+     Certainly the editors have drawn our attention to real and important parallel
+
+     But what about the other 6 sections with 71%-68% similarity? -->
+
+  </section>
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/AquinasMatches.gif" data-background-size="contain">
+    <!-- And why should our attention be limited to Aquinas alone? Why not filter out text by Aquinas 
+    and create a Scholion of other related sections. 
+
+    It's not hard to imagine how with the help of other filter parameters 
+    users dyanamically generate useful Scholion based on interests (authors from a particular time period, geographical region, or who are members of a particular order or tradition) -->
+  </section>
+  
+  
+  
+</section>
+<section>
+  <section data-markdown>
+    ## Example 2 
+    
+    ### Ngram Similarity and Convolution
+  </section>
+  <section data-markdown>
+    Limitations of the doc2vec similarity
+
+  </section>
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/GracilsB1Q1-VectorSimilarities.png" data-background-size="contain">
+    <!-- Image of Doc2Vec results list for Gracilis q1 -->
+     
+     
+  </section>
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/GracilisB1Q1-VectorDurandus.png" data-background-size="contain">
+    <!-- image show Durandus connection at number 486-->
+     
+  </section>
+  <section>
+  
+  Document Vectors A * B = DotProductVector = Intersection Vector (V) 
+  
+  $$ Intersection Vector Summation = \sum\limits_{i=1}^{n}{A_i  B_i} $$
+  
+  If Intersection Vector Summation  >= 6, then Doc Vectors A and B are "similar"
+
+  <hr/>
+
+  "Bag of N-Grams Model"
+  
+  <div>
+    <table class="c18" style="font-size: 16px">
+      <tbody>
+        <tr class="c5">
+          <td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">Paragraph</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram2</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram3</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram4</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram5</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram6</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram7</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram8</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram9</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram10</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram11</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram12</span></p></td></tr><tr class="c5"><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">Doc A</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td></tr><tr class="c5"><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">Doc B</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td></tr><tr class="c5"><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">Dot Product Vector </span></p></td><td class="c4 c15" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x1=1</span></p></td><td class="c4 c15" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x1=1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0x1=0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x0=0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0x1=0</span></p></td><td class="c4 c15" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x1=1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0x0=1</span></p></td><td class="c4 c15" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x1=1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0x0=0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0x1=0</span></p></td><td class="c4 c15" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x1=1</span></p></td><td class="c4 c15" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x1=1</span></p></td>
+            </tr>
+      </tbody>
+    </table>
+    </div>
+</section>
+  <section data-background="{{ site.assets_url }}2023-02-01/image14.png" data-background-size="contain">
+    <!-- Image of ngram viz for gracilis book 1 without annotation -->
+  </section>
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/GracilisMarcolinoQ1.png" data-background-size="contain">
+    <!-- image of gracilis marcolino q1 -->
+     <div class="fragment fade-in">
+      <img src="{{ site.assets_url }}2025-07-10-leeds/GracilisBasilParagraphCompare.png" style="width: 70%; height: auto; text-align: right">
+     </div>
+  </section>
+  <section data-markdown>
+    “Petrus Gracilis...followed not only the footsteps but the very phrases of Hiltalingen in a way so deceptive that it does not cast the best light on Gracilis. He read secundum Hiltalingen without ever mentioning him. Only by a **lucky coincidence** [emphasis mine] was I enabled to "unmask" Gracilis' dubious literary honesty. (See Trapp, Damasus, "Augustinian Theology of the 14th Century," Augustiniana 6 (1956): 147-274, p. 254.)
+  </section>
+  <section data-background="{{ site.assets_url }}2023-02-01/image7.png" data-background-size="contain">
+    <!-- Image of marcolino article -->
+  </section>
+  <section data-background="{{ site.assets_url }}2023-02-01/image24.png" data-background-size="contain">
+    <!-- ngram viz for gracilis with Annotation -->
+  </section>
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/GracilsB1Q38-ConvolutionSimilarities.png" data-background-size="contain">
+    <!-- ngram viz for gracilis with Annotation -->
+  </section>
+  <!-- <section data-background="{{ site.assets_url }}2023-02-01/image26.png" data-background-size="contain">
+    Now that we know what we're looking for, we have the potential to repeat this for every make discoveries about people we already expect are compilers, 
+    but use the computer to discover the patterns that we would otherwise not suspect
+
+    Here's a viz from the Sentences Commentary of Albert the Great. Clearly there are lots of cases of re-use, 
+
+    but we can't just go about cataloguing this with our eyes for each text, we need to enable to computer to move through each matrix, 
+  </section> -->
+  <section>
+    Detecting Successive Text Re-use 
+    
+    at Scale 
+    
+    with Convolution
+    
+    <div class="fragment fade-in">
+      <table>
+  <tbody>
+    <tr>
+      <td data-markdown>
+||5|6|7|8|9|10|11|12|
+|---|---|---|---|---|---|---|---|---|---|
+|2|0|0|0|0|0|0|0|0|
+|3|0|0|**0**|**0**|**0**|**0**|0|0|
+|4|0|0|**0**|**1**|**0**|**0**|0|0|
+|5|0|0|**0**|**0**|**1**|**0**|0|0|
+|6|0|0|**0**|**0**|**0**|**1**|0|0|
+|7|0|0|0|0|0|0|0|0|
+|8|0|0|0|0|0|0|0|0|
+|9|0|0|0|0|0|0|0|0|
+      </td>
+      </tr>
+      </tbody>
+      </table>
+    </div>
+  </section>
+  <section>
+ <table>
+  <tbody>
+    <tr>
+      <td data-markdown>
+||5|6|7|8|9|10|11|12|
+|---|---|---|---|---|---|---|---|---|---|
+|2|0|0|0|0|0|0|0|0|
+|3|0|0|**0**|**0**|**0**|**0**|0|0|
+|4|0|0|**0**|**1**|**0**|**0**|0|0|
+|5|0|0|**0**|**0**|**1**|**0**|0|0|
+|6|0|0|**0**|**0**|**0**|**1**|0|0|
+|7|0|0|0|0|0|0|0|0|
+|8|0|0|0|0|0|0|0|0|
+|9|0|0|0|0|0|0|0|0|
+      </td>
+      <td><p>X</p></td>
+<td data-markdown>
+|||||
+|---|---|---|
+|1|0|0|0|
+|0|1|0|0|
+|0|0|1|0|
+|0|0|0|1|
+</td>
+<td><p>=</p></td>
+<td data-markdown>
+  |||||
+  |---|---|---|---|
+  |0|0|0|0|
+  |0|1|0|0|
+  |0|0|1|0|
+  |0|0|0|1|
+  </td>
+  <td><p>=</p></td>
+  <td><p>3</p></td>
+</tr>
+</tbody>
+</table>   
+
+</section>
+<section data-background="{{ site.assets_url }}2025-07-10-leeds/ConvolutionReportExplore.gif" data-background-size="contain">
+  <!-- Gif of exploring Convolution Report -->
+</section>
+<section data-background="{{ site.assets_url }}2025-07-10-leeds/GracilisB1Q1-DurandusConvolutionMatchReport.png" data-background-size="contain">
+  
+</section>
+<section data-background="{{ site.assets_url }}2025-07-10-leeds/GracilisB1Q1-ConvolutionDurandus.png" data-background-size="contain">
+    <!-- And coming back to our earlier example, we can see that what vector similarity ranked as 486, convolution singled out as 1 or 2 relevant results.    -->
+    <!-- ngram viz for gracilis with Annotation -->
+  </section>
+<section data-background="{{ site.assets_url }}2025-07-10-leeds/ConvolutionReportExplore2.gif" data-background-size="contain">
+  <!-- Gif of exploring Convolution Report -->
+</section>
+<section data-background="{{ site.assets_url }}2025-07-10-leeds/SuarezNgramAgainstAll.png" data-background-size="contain">
+ 
+</section>
+<section data-background="{{ site.assets_url }}2025-07-10-leeds/SuarezVsYavorsky.png" data-background-size="contain">
+ <!-- suarez vs yavorsky -->
+</section>
+<!-- <section data-background="{{ site.assets_url }}2025-07-10-leeds/YavorskyVsAll.png" data-background-size="contain">
+ Yavorsky vs All
+</section> -->
+<!-- <section data-background="{{ site.assets_url }}2025-07-10-leeds/YavorskyVsSuarez.png" data-background-size="contain">
+ Yavorsky vs Suarez
+</section> -->
+<section data-background="{{ site.assets_url }}2025-07-10-leeds/YavorskyVsSuarez.png" data-background-size="contain">
+ <!-- Yavorsky vs Suarez -->
+</section>
+<!-- <section data-background="{{ site.assets_url }}2025-07-10-leeds/YavorskyVsSuarezWithComparison.png" data-background-size="contain">
+ Yavorsky vs Suarez with Comparison 
+</section> -->
+<section data-background="{{ site.assets_url }}2025-07-10-leeds/YavorskyVsAquinas.png" data-background-size="contain">
+ <!-- Yavorsky vs Aquinas -->
+</section>
+</section>
+<section>
+  <section data-markdown>
+    ## Example 3 
+    
+    ### Apparatus Fontium and Citation Similarity
+
+  </section>
+  <section data-background="{{ site.assets_url }}2025-06-18-seville/apologia8missingAquinasRef.png" data-background-size="contain">
+    <!-- Picture of traditional footnotes and index from edition for Apologia  -->
+  </section>
+  <section data-background="{{ site.assets_url }}2025-06-18-seville/apologiaAutoDiscoveryOfAquinasConnection.gif" data-background-size="contain">
+    <!-- Picture of using N-grams to discover sources and mark them 
+    Aquinas Las Casas mair and Las casas quotation example. (this is realy connection of worlds that is hard to discover alone. And even with assistance required close attention. The question is now how do we record that knowledge so that it not only doesn't have to be discovered again, but is assisting others in their own discoveries. ) -->
+  </section>
+  <section data-background="{{ site.assets_url }}ref-diagram-unidirectional.png" data-background-size="contain">
+    <!-- Uni-directional link slide -->
+  </section>
+  <section data-background="{{ site.assets_url }}ref-diagram-bidirectional.png" data-background-size="contain">
+    <!-- Bi-directional link slide -->
+  </section>
+  <section data-background="{{ site.assets_url }}2025-06-18-seville/AquinasTextQuotedByLasCasas.png" data-background-size="contain">
+    <!-- Aquinas text cited by las Casas  -->
+  </section>
+  <!-- <section data-background="{{ site.assets_url }}2025-07-10-leeds/AugustineBook1-ForwardHighlights.gif" data-background-size="contain">
+    Highlights of forward usages (augustine de trin book 1)
+  </section> -->
+  <section data-background="{{ site.assets_url }}2025-06-18-seville/connectedGraph.gif" data-background-size="contain">
+    <!-- Cosmograph of all texts 
+    The compound effect of this the full network  -->
+  </section>
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/CitationTableAllAgainstAll.png" data-background-size="contain">
+    <!-- Image of Citation Table all against all  -->
+  </section>
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/CitationTable-LombardDistVsAugDeTrin.png" data-background-size="contain">
+    <!-- Lombard by distinction against augustine -->
+  </section>
+  <!-- <section data-background="{{ site.assets_url }}2025-07-10-leeds/ExpressionList-L1D16.png" data-background-size="contain">
+    Expression List to illustrate the commentary tradition on each topical distinction
+    How does the discussion of that topic change or persist over time?
+    How does the use of authorities change or persist over time
+  </section> -->
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/CitationTable-AllDistRolledVsAugDeTrin.png" data-background-size="contain">
+    <!-- Distinctions rolled up vs augustine
+    Highlight outliers -->
+  </section>
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/CitationTable-Dist16UnRolledVsAugDeTrin.png" data-background-size="contain">
+    <!-- Distinction unrolled up vs augustine -->
+  </section>
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/CitationTable-Dist16UnRolledVsAugDeTrin-withPCA.png" data-background-size="contain">
+    <!-- Distinction1 unrolled up vs augustine with PCA with time color coding -->
+  </section>
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/VectorSimilarity-d37.png" data-background-size="contain">
+
+    
+
+  </section>
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/CitationTable-OmnipresenceRelatedAgainstAllWithPCA.png" data-background-size="contain">
+
+  </section>
+  
+  
+  <!-- 
+  <section  data-background="{{ site.assets_url }}2025-07-10-leeds/GracilisChatBotSummary.png" data-background-size="contain">
+
+    And here we can feed the trail of paragraphs into the chat bot to generate a summary -- in this way bringing 
+    the entire contextual discussion to us. And, and having asked the chat to provide links, it offers a way links 
+    to move to the connected nodes to further investigate.
+    LLM Gif Neighborhood relatedness with LLM
+  </section> -->
+  <section  data-background="{{ site.assets_url }}2025-06-18-seville/neighborhoodNetwork.png" data-background-size="contain">
+    
+  </section>
+  <section  data-background="{{ site.assets_url }}2025-06-18-seville/chatBotSummary2.png" data-background-size="contain">
+    <!-- LLM Gif Neighborhood relatedness with LLM -->
+  </section>
+
+<section  data-background="{{ site.assets_url }}2025-07-10-leeds/GracilisNetworkForChatBotSummary.png" data-background-size="contain">
+    <!-- Machine assisted discovery of relevant portions of the entire connected graph is useful 
+    for pulling out small connected discussions that are very common in scholastic thought. 
+
+    The object and response.
+
+    Here the graph is not just showing us the paragraphs direct citation, but the sequence of discussions that preceded it. -->
+
+  </section>
+
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/GracilisToSimilarCitationStructures.png" data-background-size="contain">
+    <!-- Here we have another, more abstract way of finding similarity. 
+
+    By Citation structure similarity. 
+
+    Here the similarity is not measured based on who is citing who, but on the similarity of the structure pattern. 
+
+    The conclusion, object, response would seem to be a typical one. 
+
+    And by asking for any parts of the total connected graph that have this kind of structure I draw out 
+    this very typical scholastic pattern.  -->
+
+  </section>
+  <section  data-background="{{ site.assets_url }}2025-06-18-seville/neighborhoodNetwork.png" data-background-size="contain">
+    
+  </section>
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/LasCasasAquinasMairToSimilarGraphs.png" data-background-size="contain">
+    
+    <!-- And we can do this with the more complicated graph of Las Casas, Aquinas, Cano and Mair.
+
+    A speculative use case for might for on-going discussion about the nature of scholastic practice in general. 
+    How should we definite and distinguish it from other kinds of methods or discourse? 
+    Is it a unique medieval phenomenon? Is it uniquely western european or a global phenemon? 
+
+    certainly some recent literature has tried to call attention to scholasticism a global phenomenon 
+    defined, not by time or region, by its careful use of authorities or its of these authorities in the highly dialectical "quaestio". 
+
+    I think the ability to group citation patterns and categorize them, regardless of who is being cited or in what language, 
+    could be a powerful for testing such a hypothesis and examining whether and to what extent there are essential patterns of 
+    scholastic practice that can help us define said practice and distinguish it from other kinds of discourse. -->
+
+  </section>
+</section>
+<section>
+  <section data-markdown>
+    ## Conclusion
+  </section>
+  <!-- pictures of auto foot notes and indexes to prove that if the new method can 
+   still achiveve all old out comes but old method can only achieve old out comes
+   then there is an scientific urgency to adopt the method the enables both and 
+   rather than leaving with choice between the old and the new-->
+   <section data-background="{{ site.assets_url }}2025-06-18-seville/apologiaPdfEpub.gif" data-background-size="contain">
+    <!-- Printed book -->
+  </section>
+  <section data-background="{{ site.assets_url }}2025-06-18-seville/apologiaAutoGenPrintFootNotes.png" data-background-size="contain">
+    <!-- Printed book auto footnotes -->
+  </section>
+  <section data-background="{{ site.assets_url }}2025-06-18-seville/apologiaAutoIndex.gif" data-background-size="contain">
+    <!-- Printed book index -->
+  </section>
+  <section data-background="{{ site.assets_url }}2025-06-18-seville/lasasasCustomReaderExample.gif" data-background-size="contain">
+    <!-- Shopping cart of texts -->
+  </section>
+  <section data-background-iframe="https://scta.info">
+  </section>
+</section>
+
+
+
+<section data-markdown>
+
+  ### The End
+
+  ### Thank you!
+
+  ### Comments and/or Questions?
+
+</section>
