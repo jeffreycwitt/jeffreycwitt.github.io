@@ -13,7 +13,7 @@ size: full
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 <section>
-  <h3>Connecting Worlds</h3>
+  <h3>Worlds of Learning - Re-Connecting Scholastic Worlds</h3>
 
   <hr />
   <p>Jeffrey C. Witt (Loyola University Maryland) <br /> <a
@@ -32,19 +32,19 @@ size: full
   <section data-markdown>
     ## Example 1 
     
-    ### Doc2Vec Similiarity
+    ### Scholia and Semantic Similarity
 
-  </section>
-  <section data-background="{{ site.assets_url }}2025-07-10-leeds/AquinasScholion.png" data-background-size="contain">
-    <!-- Picture of Aquinas Scholion -->
-  </section>
-  <section data-background="{{ site.assets_url }}2025-07-10-leeds/ScotusScholion.png" data-background-size="contain">
-    <!-- Picture of Scotus Scholion -->
   </section>
   <section data-background="{{ site.assets_url }}2025-07-10-leeds/StrasburgScholion.png" data-background-size="contain">
     <!-- Picture of Thomas of Strasburg Scholion -->
   </section>
-  <section>
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/ScotusScholion.png" data-background-size="contain">
+    <!-- Picture of Scotus Scholion -->
+  </section>
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/AquinasScholion.png" data-background-size="contain">
+    <!-- Picture of Aquinas Scholion -->
+  </section>
+  <!-- <section>
     Issues of bias and limitation 
     (Compare Strasburg listing to ExpressionType liber1-prologus)
     There are a lot more relevant text here than those listed
@@ -58,9 +58,37 @@ size: full
 
     * Utrum habere plures uxores sit contra legem naturae / Whether having may wives is against the law of nature (Sent. IV, d. 33, q. 1, a. 1; ta-l4d33q1-Dd1e131)
 
+  </section> -->
+  <section data-markdown>
+    ### Document Embeddings with Doc2Vec
+
+    See:
+
+    Le, Quoc and Tomas Mikolov, “Distributed Representations of Sentences and Documents,” (2014) https://arxiv.org/pdf/1405.4053v2.pdf.
+
+  </section>
+  <section data-markdown>
+    * For a given article in the Summa Theologiae, I have recorded the article Aquinas's Sentences commentary that was asserted as "related" by the Leonine editors
+    * For the same article in the Summa Theologiae, I have asked for the Vector that represents that article 
+    * For this vector, I have asked for a ranked list of all articles in the Sentences Commentary from most similar to least similar.
+    * For the article asserted as similar by the Leonine editors, I have asked for its rank in the 
+    similarity least
   </section>
   <section data-background="{{ site.assets_url }}2025-07-10-leeds/AquinasDoc2VecResults.png" data-background-size="contain">
     <!-- Picture of Thomas of Strasburg Scholion -->
+  </section>
+  <section data-markdown>
+    * On average, article asserted as parallel by the Leonine editors is the 7th highest recommended document in the auto-generated list.
+    * The median rank of the asserted article in the auto-generated list is 1.
+    * 41% (265 of 641 of the articles) were the computer's top recommendation.
+    * 66% (426 of 641 of the articles) were within its top 5 of recommended matches.
+  </section>
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/AquinasMatches.gif" data-background-size="contain">
+    <!-- And why should our attention be limited to Aquinas alone? Why not filter out text by Aquinas 
+    and create a Scholion of other related sections. 
+
+    It's not hard to imagine how with the help of other filter parameters 
+    users dyanamically generate useful Scholion based on interests (authors from a particular time period, geographical region, or who are members of a particular order or tradition) -->
   </section>
   <section data-background="{{ site.assets_url }}2025-07-10-leeds/AquinasSTtoScriptumMatch.png" data-background-size="contain">
     <!-- We can see here that the section of the Scriptum is quickly (and with zero human labor) brought to the readers attention
@@ -72,13 +100,7 @@ size: full
      But what about the other 6 sections with 71%-68% similarity? -->
 
   </section>
-  <section data-background="{{ site.assets_url }}2025-07-10-leeds/AquinasMatches.gif" data-background-size="contain">
-    <!-- And why should our attention be limited to Aquinas alone? Why not filter out text by Aquinas 
-    and create a Scholion of other related sections. 
-
-    It's not hard to imagine how with the help of other filter parameters 
-    users dyanamically generate useful Scholion based on interests (authors from a particular time period, geographical region, or who are members of a particular order or tradition) -->
-  </section>
+  
   
   
   
@@ -108,7 +130,7 @@ size: full
   
   $$ Intersection Vector Summation = \sum\limits_{i=1}^{n}{A_i  B_i} $$
   
-  If Intersection Vector Summation  >= 6, then Doc Vectors A and B are "similar"
+  If Intersection Vector Summation  >= 4, then Doc Vectors A and B are "similar"
 
   <hr/>
 
@@ -134,7 +156,7 @@ size: full
      </div>
   </section>
   <section data-markdown>
-    “Petrus Gracilis...followed not only the footsteps but the very phrases of Hiltalingen in a way so deceptive that it does not cast the best light on Gracilis. He read secundum Hiltalingen without ever mentioning him. Only by a **lucky coincidence** [emphasis mine] was I enabled to "unmask" Gracilis' dubious literary honesty. (See Trapp, Damasus, "Augustinian Theology of the 14th Century," Augustiniana 6 (1956): 147-274, p. 254.)
+    “...Only by a **lucky coincidence** [emphasis mine] was I enabled to "unmask" Gracilis' dubious literary honesty. (See Trapp, Damasus, "Augustinian Theology of the 14th Century," Augustiniana 6 (1956): 147-274, p. 254.)
   </section>
   <section data-background="{{ site.assets_url }}2023-02-01/image7.png" data-background-size="contain">
     <!-- Image of marcolino article -->
@@ -331,8 +353,22 @@ size: full
   </section>
   <section  data-background="{{ site.assets_url }}2025-06-18-seville/chatBotSummary2.png" data-background-size="contain">
     <!-- LLM Gif Neighborhood relatedness with LLM -->
+     <div class="fragment fade-in" style="background-color: white; padding: 30px;">
+      <p>
+        "However, document Z4Yt34-d1e1156-d1e963, written by Melchor Cano, presents a more nuanced view of infidelity, arguing that it can be understood in three ways: as a pure negation of faith, as a contrary position to faith, or as a middle ground between the two. According to Cano, only the second type of infidelity, which involves a deliberate rejection of faith, is considered as a sin."
+      </p>
+      </div>
   </section>
+<section data-markdown>
+     
+  1) "Close scrutiny of the theory and practice of commentary in Latin medieval Europe and Buddhist India reveals interesting **structural and functional** similarities."
+  
+  (Eltschinger, *From commentary to philosophy*, 271). 
 
+  2) "In the present writer’s opinion, comparative scholasticism **SHOULD NOT**, at least not primarily, aim at comparing doctrinal tenets and philosophical arguments, but rather at considering the intellectual cultures that were responsible for the formation, the development, and the overall physiognomy of law, the sciences, theology, and philosophy in the two contexts. This includes the institutional environment, the teaching and scholarly practices, the many ways in which knowledge was produced, stored, enriched and made to fructify, etc. In other words, **the ambition is to compare, say, structures...rather than intellectual contents**.""
+  
+  (Eltschinger, *From commentary to philosophy*, 275).
+  </section>
 <section  data-background="{{ site.assets_url }}2025-07-10-leeds/GracilisNetworkForChatBotSummary.png" data-background-size="contain">
     <!-- Machine assisted discovery of relevant portions of the entire connected graph is useful 
     for pulling out small connected discussions that are very common in scholastic thought. 
@@ -375,6 +411,10 @@ size: full
     scholastic practice that can help us define said practice and distinguish it from other kinds of discourse. -->
 
   </section>
+  
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/crossReferencesEuclid.png" data-background-size="contain"></section>
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/crossReferencesVazquez.png" data-background-size="contain"></section>
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/crossReferencesGrac.png" data-background-size="contain"></section>
 </section>
 <section>
   <section data-markdown>
@@ -393,9 +433,9 @@ size: full
   <section data-background="{{ site.assets_url }}2025-06-18-seville/apologiaAutoIndex.gif" data-background-size="contain">
     <!-- Printed book index -->
   </section>
-  <section data-background="{{ site.assets_url }}2025-06-18-seville/lasasasCustomReaderExample.gif" data-background-size="contain">
-    <!-- Shopping cart of texts -->
-  </section>
+  <!-- <section data-background="{{ site.assets_url }}2025-06-18-seville/lasasasCustomReaderExample.gif" data-background-size="contain">
+    Shopping cart of texts
+  </section> -->
   <section data-background-iframe="https://scta.info">
   </section>
 </section>
