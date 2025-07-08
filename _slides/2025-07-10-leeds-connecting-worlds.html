@@ -67,23 +67,30 @@ size: full
     Le, Quoc and Tomas Mikolov, “Distributed Representations of Sentences and Documents,” (2014) https://arxiv.org/pdf/1405.4053v2.pdf.
 
   </section>
-  <section data-markdown>
-    * For a given article in the Summa Theologiae, I have recorded the article Aquinas's Sentences commentary that was asserted as "related" by the Leonine editors
-    * For the same article in the Summa Theologiae, I have asked for the Vector that represents that article 
-    * For this vector, I have asked for a ranked list of all articles in the Sentences Commentary from most similar to least similar.
-    * For the article asserted as similar by the Leonine editors, I have asked for its rank in the 
-    similarity least
+  <section>
+    <div style="width: 80%; margin: auto" data-markdown>
+
+  * For a given article in the *Summa Theologiae*, I have recorded the article in Aquinas's *Sentences* Commentary that was asserted as "related" by the Leonine editors
+  * For the same article in the *Summa Theologiae*, I have asked for the Vector that represents this article.
+  * Then, I asked for a ranked list of all Vector represented articles in the *Sentences* Commentary, ordered from most similar to least similar relative to the vector representing the article in the *Summa Theologiae*.
+  * For the article asserted as similar by the Leonine editors, I have asked for its rank in the 
+  similarity list.
+  
+    </div>
+
   </section>
   <section data-background="{{ site.assets_url }}2025-07-10-leeds/AquinasDoc2VecResults.png" data-background-size="contain">
     <!-- Picture of Thomas of Strasburg Scholion -->
   </section>
-  <section data-markdown>
-    * On average, article asserted as parallel by the Leonine editors is the 7th highest recommended document in the auto-generated list.
-    * The median rank of the asserted article in the auto-generated list is 1.
-    * 41% (265 of 641 of the articles) were the computer's top recommendation.
-    * 66% (426 of 641 of the articles) were within its top 5 of recommended matches.
+  <section>
+    <div style="width: 80%; margin: auto" data-markdown>
+  * On average, article asserted as parallel by the Leonine editors is the 7th highest recommended document in the auto-generated list.
+  * The median rank of the asserted article in the auto-generated list is 1.
+  * 41% (265 of 641 of the articles) were the computer's top recommendation.
+  * 66% (426 of 641 of the articles) were within its top 5 of recommended matches.
+    </div>
   </section>
-  <section data-background="{{ site.assets_url }}2025-07-10-leeds/AquinasMatches.gif" data-background-size="contain">
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/AquinasMatches2.gif" data-background-size="contain">
     <!-- And why should our attention be limited to Aquinas alone? Why not filter out text by Aquinas 
     and create a Scholion of other related sections. 
 
@@ -112,10 +119,11 @@ size: full
     ### Ngram Similarity and Convolution
   </section>
   <section data-markdown>
-    Limitations of the doc2vec similarity
+    
+  #### Limitations of the doc2vec similarity
 
   </section>
-  <section data-background="{{ site.assets_url }}2025-07-10-leeds/GracilsB1Q1-VectorSimilarities.png" data-background-size="contain">
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/GracilsB1Q1-VectorSimilarities2.png" data-background-size="contain">
     <!-- Image of Doc2Vec results list for Gracilis q1 -->
      
      
@@ -413,7 +421,7 @@ size: full
   </section>
   
   <section data-background="{{ site.assets_url }}2025-07-10-leeds/crossReferencesEuclid.png" data-background-size="contain"></section>
-  <section data-background="{{ site.assets_url }}2025-07-10-leeds/crossReferencesVazquez.png" data-background-size="contain"></section>
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/crossReferencesVazquez2.png" data-background-size="contain"></section>
   <section data-background="{{ site.assets_url }}2025-07-10-leeds/crossReferencesGrac.png" data-background-size="contain"></section>
 </section>
 <section>
