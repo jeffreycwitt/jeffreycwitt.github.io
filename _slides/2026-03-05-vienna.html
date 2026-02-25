@@ -1,0 +1,265 @@
+---
+layout: slide
+title: "Tackling the Granularity Matching Problem in Hierarchical Texts with Multi-Resolution Embeddings"
+description:
+date: 2026-03-05
+theme: white
+transition: slide
+tags: scta
+size: full
+---
+
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<section>
+  <h3>Tackling the Granularity Matching Problem in Hierarchical Texts with Multi-Resolution Embeddings</h3>
+  <hr />
+  <p>Jeffrey C. Witt (Loyola University Maryland) <br /> <a
+      href="https://jeffreycwitt.com/">https://jeffreycwitt.com</a> | jcwitt@loyola.edu</p>
+  <hr />
+  <p>March 05, 2026, Austrian Academy of Sciences, Vienna, Austria</p>
+  <hr />
+  <p>Slide Deck: <a
+    href="http://jeffreycwitt.com/slides/2026-03-05-vienna">http://jeffreycwitt.com/slides/2026-03-05-vienna</a>
+    </p>
+  
+  <p style="font-size: 14px;"><a>https://creativecommons.org/licenses/by-nc-sa/4.0/</a></p>
+</section>
+<section data-markdown>
+    ## Introduction
+
+    * The Problem of Granularity Matching in Scholastic Texts
+    * Multi-resolution embeddings
+    * UI for exploring multi-resolution embeddings
+
+  </section>
+<section>
+  
+  <section data-markdown>
+    ## Part 1
+    
+    ### The Problem of Granularity Matching in Scholastic Texts
+
+  </section>
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/StrasburgScholion.png" data-background-size="contain">
+    <!-- Picture of Thomas of Strasburg Scholion -->
+  </section>
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/ScotusScholion.png" data-background-size="contain">
+    <!-- Picture of Scotus Scholion -->
+  </section>
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/AquinasScholion.png" data-background-size="contain">
+    <!-- Picture of Aquinas Scholion -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-05-vienna/level1.png" data-background-size="contain">
+    <!-- Slide of Dividing Corpus into Novels -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-05-vienna/level2.png" data-background-size="contain">
+    <!-- Slide of Dividing Corpus of Encyclopedias into Articles -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-05-vienna/scholasticlevels.png" data-background-size="contain">
+    <!-- Slide of Scholastic Level Complexity -->
+  </section>
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/StrasburgScholion.png" data-background-size="contain">
+    <!-- Picture of Thomas of Strasburg Scholion -->
+  </section>
+</section>
+<section>
+<section data-markdown>
+    ## Part 2
+    ### Experimental Solutions
+    #### Multi-resolution embeddings
+
+  </section>
+  <section data-markdown="">
+    ## Initial Division
+
+    * Collection (Toplevel)
+    * Item
+    * Block
+
+  </section>
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/AquinasScholion.png" data-background-size="contain">
+    <!-- Picture of Aquinas Scholion -->
+  </section>
+  <!-- <section data-background="{{ site.assets_url }}2026-03-05-vienna/AquinasRelatedAtArticleLevel.png" data-background-size="contain">
+    Screen shot making it hard to compare look for matches below the question level
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-05-vienna/AquinasNotRelationBelowArticleLevel.png" data-background-size="contain">
+    Screen shot making it hard to compare look for matches below the question level
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-05-vienna/AquinasScriptumSummaBibleLevel2.png" data-background-size="contain">
+    Screen shot of looking for citation similarity below the question level
+  </section> -->
+  <section>
+
+    <pre style="font-size:15px;"><code class="language-python" style="max-height: 1000px;">
+    def createDocsDict(block_text_dict):
+      #Step 1 get map of all items and their descendant blocks
+      maptable = pd.read_csv("data/block-item-toplevel-map-2023-11-28.csv")
+      maptable[["block", "item", "toplevel"]] = maptable[["block", "item", "toplevel"]].apply(lambda x: x.str.strip())
+      block_item_dict = dict(zip(maptable['block'], maptable['item']))
+
+      # Step 2 (Hack) get map of all articles in Aquinas ST and Scriptum and their descendant blocks
+      aamaptable = pd.read_csv("data/aquinasSTandScriptumArticleBlocks-2023-11-28.csv")
+      aamaptable[["block", "article", "toplevel"]] = aamaptable[["block", "article", "toplevel"]].apply(lambda x: x.str.strip())
+      aablock_item_dict = dict(zip(aamaptable['block'], aamaptable['article']))
+      
+      # Step 3 construct the documents dictionary
+      documents_dict = {}
+      ## Step 3b Loop through every paragraph and concat it to the document for the item it belongs to
+      for key, value in block_text_dict.items():
+          ## Step 3c (Hack) for just those blocks that belong to Aquinas ST and Scriptum, 
+          ## create a document at the article level rather than the item level
+          if (key.startswith("TAca84-") or key.startswith("ta-")):
+              if aablock_item_dict.get(key):
+                  itemid = aablock_item_dict.get(key)
+                  current_value = documents_dict.get(itemid)
+                  if current_value:
+                      documents_dict[itemid] = current_value + ' ' + value
+                  else:
+                      documents_dict[itemid] = value
+          else:
+          ## Step 3d If block is not part of Aquinas ST or Scriptum, create document at the item level as normal
+              if block_item_dict.get(key):
+                  itemid = block_item_dict.get(key)
+                  current_value = documents_dict.get(itemid)
+                  if current_value:
+                      documents_dict[itemid] = current_value + ' ' + value
+                  else:
+                      documents_dict[itemid] = value
+      return documents_dict
+    </code></pre>
+  </section>
+  
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/AquinasDoc2VecResults.png" data-background-size="contain">
+    <!-- slide of initial results 
+    * On average, the article asserted as parallel by the Leonine editors is the 7th highest recommended document in the auto-generated list.
+    * The median rank of the asserted article in the auto-generated list is 1.
+    * 41% (265 of 641 of the articles) were the computer's top recommendation.
+    * 66% (426 of 641 of the articles) were within its top 5 of recommended matches. 
+    -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-05-vienna/AquinasScriptumSummaBibleLevel2.png" data-background-size="contain">
+    <!-- Screen shot of looking for citation similarity below the question level -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-05-vienna/AquinasScriptumSummaBibleLevel4b.png" data-background-size="contain">
+    <!-- Screen shot of looking for citation similarity below the question level -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-05-vienna/AquinasScriptumSummaBibleLevel4Mismatch.png" data-background-size="contain">
+    <!-- Screen shot of looking for citation similarity below the question level -->
+  </section>
+  
+  
+  <section data-background="{{ site.assets_url }}2026-03-05-vienna/alllevels.png" data-background-size="contain">
+    <!-- Slide of docs with different levels -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-05-vienna/alllevels_flat.png" data-background-size="contain">
+    <!-- Slide of placing all overlapping texts at each level side by side
+    Indicate expansion of document size from X number to 800,000 -->
+  </section>
+  <section>
+    <!-- SCTA-SCIKIT code to construct document at all levels. -->
+    <pre style="font-size:25px;">
+      <code class="language-python" style="max-height: 1000px;">
+      # get all levels within each toplevel document
+      mapping = collect_unique_levels()
+      # save a key value dictionary of docs ids, and doc text at the specified level
+      for k, v in mapping.items():
+        for level in v:
+          docsDict = saveToDiskFullDocList(k, level=level)
+    </code>
+    </pre>
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-05-vienna/eval_results_flat2.png" data-background-size="contain">
+    <!-- Slide of evaluation with results in flat list (results don't look very good ) -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-05-vienna/eval_results_grouped2.png" data-background-size="contain">
+    <!-- Slide of evaluation with grouped family results -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-05-vienna/eval_results_grouped_lemmatized.png" data-background-size="contain">
+    <!-- Slide of evaluation of grouped results with text lemmatized -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-05-vienna/eval_results_grouped_lemmatized_qtandcitation.png" data-background-size="contain">
+    <!-- Slide of evaluation of grouped results with text lemmatized
+    Add in additional multi-modal embedding models and sim matrices (question title similarity and citation similarity)
+    results look as good or better (mean of 9 and median of 0) than the results with a prior select division into items and aquinas articles.  -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-05-vienna/improvementWithCitationOverSemantic.png" data-background-size="contain">
+    <!-- Example of rank improvement when looking for citation similarity  -->
+  </section>
+  <section data-markdown>
+    #### Example of where question title similarity can boost results 
+
+    > Utrum deus sit in omnibus rebus (Thomas Aquinas, Summa theologiae, Pars 1, Quaestio 8, Articulus 1) (http://scta.info/resource/TAca84-d1e87-Dd1e143 )
+
+    > An Deus sit aequaliter in rebus (Petrus de Tarantasia, Commentarius in libros Sententiarum, Liber 1, Distinctio 37, Quaestio 1, Articulus 2) (http://scta.info/resource/ta-l1d37q1a2-Dd1e131)
+     (Rank 10 in semantic content becomes Rank 1 in question title similarity)
+
+  </section>
+  <section data-markdown>
+    #### Example of why semantic similarity should still be done first and then question title similarity and citation similarity used as a boost to the results rather than the other way around.
+
+    > Utrum lex naturalis contineat plura praecepta vel unum tantum (Thomas Aquinas, Summa Theologiae, I-II, q. 94, a. 2; TAca84-d1e1158-Dd1e347)
+
+    > Utrum habere plures uxores sit contra legem naturae (Thomas Aquinas, Sent., IV, d. 33, q. 1, a. 1; ta-l4d33q1-Dd1e131)
+  </section>
+  
+  
+</section>
+<section>
+  <section data-markdown>
+    ## Part 3
+    ### UI for exploring multi-resolution embeddings, 
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-05-vienna/compare_api.png" data-background-size="contain">
+    <!-- Picture of vector service compare slide, with family scores (recorded) -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-05-vienna/AquinasSummaToLombard1d37-a.png" data-background-size="contain">
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-05-vienna/AquinasSummaToLombard1d37-b.png" data-background-size="contain">
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-05-vienna/AquinasSummaToLombard1d37-c.png" data-background-size="contain">
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-05-vienna/AquinasSummaToLombard1d37-gif.gif" data-background-size="contain">
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-05-vienna/recommendation_api.png" data-background-size="contain">
+    <!-- Picture of API ranking (recorded) -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-05-vienna/recommendation_list_flat.png" data-background-size="contain">
+    <!-- Picture of Lombard Press Flat list Results (recorded) -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-05-vienna/recommendation_list_grouped.png" data-background-size="contain">
+    <!-- Picture of Lombard Press Grouped by Hierarchy (recorded) -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-05-vienna/recommendation_list_grouped_sorted_citation.png" data-background-size="contain">
+    <!-- Picture of Lombard Press Grouped by Hierarchy (recorded) -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-05-vienna/recommendation_list_grouped_sorted_questiontitle.png" data-background-size="contain">
+    <!-- Picture of Lombard Press Grouped by Hierarchy (recorded) -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-05-vienna/SearchResultsList.gif" data-background-size="contain">
+    <!-- Picture of Lombard Press Grouped by Hierarchy (recorded) -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-05-vienna/GerardOfSienaBelowCivilLawPosition.png" data-background-size="contain">
+    <!-- Picture of Lombard Press Grouped by Hierarchy (recorded) -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-05-vienna/GerardOfSienaElevationWithQuestionTitleSort.png" data-background-size="contain">
+    <!-- Picture of Lombard Press Grouped by Hierarchy (recorded) -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-05-vienna/GerardOfSienaElevationWithSyntheticParent.png" data-background-size="contain">
+    <!-- Picture of Lombard Press Grouped by Hierarchy (recorded) -->
+  </section>
+  
+</section>
+  
+
+<section data-markdown>
+
+  ### The End
+
+  ### Thank you!
+
+  ### Comments and/or Questions?
+
+</section>

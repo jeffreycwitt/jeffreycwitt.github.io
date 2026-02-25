@@ -20,7 +20,7 @@ gem "jekyll"
 # gem "github-pages", group: :jekyll_plugins
 
 #gem "jekyll-last-modified-at", "~> 1.0.0"
-gem "jekyll-last-modified-at"
+#gem "jekyll-last-modified-at"
 # If you have any plugins, put them here!
 group :jekyll_plugins do
    #gem "jekyll-feed", "~> 0.6"
