@@ -1,0 +1,359 @@
+---
+layout: slide
+title: "Digital Tools for Scholastic Exploration"
+description:
+date: 2026-03-19
+theme: white
+transition: slide
+tags: scta
+size: full
+---
+
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<section>
+  <h3>Digital Tools for Scholastic Exploration</h3>
+  <hr />
+  <p>Jeffrey C. Witt (Loyola University Maryland) <br /> <a
+      href="https://jeffreycwitt.com/">https://jeffreycwitt.com</a> | jcwitt@loyola.edu</p>
+  <hr />
+  <p>March 19, 2026, Providence College, Providence, RI</p>
+  <hr />
+  <p>Slide Deck: <a
+    href="http://jeffreycwitt.com/slides/2026-03-19-providence">http://jeffreycwitt.com/slides/2026-03-19-providence</a>
+    </p>
+  
+  <p style="font-size: 14px;"><a>https://creativecommons.org/licenses/by-nc-sa/4.0/</a></p>
+</section>
+<section data-markdown>
+    ## Outline
+
+    * Introduction
+    * Part 1: Marking Sources in Scholastic Texts
+    * Part 2: Using Marked Sources for Discovery and Exploration
+
+</section>
+<section>
+<section data-markdown="">
+  ## Introduction
+</section>
+<section data-markdown>
+  ## Thesis 1
+
+  My thesis today is simple: if we continue to treat critical editions as isolated, fixed presentations of texts—books or standalone websites—we will not be able to scale our access to the historical record.
+
+  To take full advantage of modern computational and AI tools, we need to move away from thinking editions as finished, static presentations to treating them as **shared layers of structured data** that are continuously open to use, reuse, and extension.
+
+</section>
+<section data-markdown>
+  ## Thesis 2
+
+  This task is too big because **we are thinking too small**.
+  
+</section>
+<section  data-background="{{ site.assets_url }}2026-03-19-providence/atomic.png" data-background-size="contain">
+  <!-- atom workflow diagram slide-->
+</section>
+<section  data-background="{{ site.assets_url }}2026-03-19-providence/sediment.png" data-background-size="contain">
+  <!-- Sediment layer workflow slide -->
+</section>
+<section data-markdown>
+  ## Field Standards
+
+  * How do we name files
+  * Where do files live
+  * how do we organize files
+  * How do we structure the contents of files
+
+---
+  
+These banal and boring questions are crucial. It is this organization that allows us to apply automated tools. If they are not answered, then we miss out on the ability to automate workflows and scale our work.
+
+---
+
+The specific answer we give is not that important. 
+  
+What is important is that we have the **same** answer.
+
+</section>
+<section  data-background="{{ site.assets_url }}2026-03-19-providence/atomic-sediment-compare.png" data-background-size="contain">
+  <!-- atomic workflow and sediment workflow side by side -->
+</section>
+<section data-background="{{ site.assets_url }}2021-10-29-Nijmegen/Payoff.png" data-background-size="contain"></section>
+  <!-- slide of effort to time ratio -->
+</section>
+</section>
+<section>
+  <section data-markdown="">
+    ## Creating the Apparatus Fontium: 
+    ### Marking Sources in Scholastic Texts
+  </section>
+  <section data-background="{{ site.assets_url }}2025-06-18-seville/apologia8missingAquinasRef.png" data-background-size="contain">
+    <!-- las casas c. 8 with missing Aquinas ref  -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/workflow.png" data-background-size="contain">
+    <!-- Basic Workflow image 
+    OCR/HTR -> Line Text and Coordinate capture -> TEI/XML Text Segmentation -> File splitting, organization -> Github publication -> Down stream Visualization and/or Analysis -->
+</section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/GithubFileOrgAndSegmentation.png" data-background-size="contain">
+    <!-- Segmentation of Structure of Canon Law Text
+    Slide of github publication and file organization -->
+  </section>
+  <section data-markdown=""> 
+  ### Example of Las Casas Canon Law Reference
+
+  "ff., De reg. iur, cum inquit" <!-- TODO add real reference -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/IncipitPrintIndex.png" data-background-size="contain">
+     <!--
+    Screen shot of Canon law indices-->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/incipitCaptureGratian.png" data-background-size="contain">
+     <!-- slide of incipit triples -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/IncipitGui.png" data-background-size="contain">
+    <!-- Slide (GIF) of incipit GUI interface -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/ClaudeReferenceMarking.gif" data-background-size="contain">
+    <!-- (Slide of Gif of individually added ref markings) -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/markedCanonLawRefBoundaries.png" data-background-size="contain">
+    <!-- Slide of marked references -->
+  </section>
+  <section data-markdown>
+    Steps of source identification: 
+
+    * Parse reference into components (author, work, book, chapter, etc.)
+    * Add components to query
+    * Query database
+    * Filter results for best candidate
+    * Insert Reference
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/lawRefManualLookupAndMarking.png" data-background-size="contain">
+    <!-- Repeat of Slide of split screen with ref identification and GUI incipit tool -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/lawRefMcpDescription.png" data-background-size="contain">
+    <!-- Slide of Mcp Agent describing canon law look up -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/lawRefPrompt.png" data-background-size="contain">
+    <!-- Show Prompt for canon law look up -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/autoMarkingCanonLawRefs.gif" data-background-size="contain">
+    <!-- Video of Canon law auto marking -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/pullRequestForLawRefs.png" data-background-size="contain">
+    <!-- Slide of canon law pull requests. -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/bibleRomansNgramMatching.png" data-background-size="contain">
+    <!-- Bible ngram visualization -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/bibleCandidates.png" data-background-size="contain">
+    <!-- Candidate file -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/bibleMarkingPrompt.png" data-background-size="contain">
+    <!-- prompt -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/bibleMarkingPrompt2.png" data-background-size="contain">
+    <!-- prompt -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/bibleMarkingProcess.gif" data-background-size="contain">
+    <!-- Video of bible verse marking -->
+    <!-- could do an Augustine version if we want -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/bibleRefMarkingPostReport.png" data-background-size="contain">
+    <!-- Slide of marked bible refs -->
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Using the Citation Sediment Layer</h2>
+
+    <p class="fragment fade-in">1. to construct human readable citations and footnotes instantaneously; creating references that are windows and not just pointers.</p>
+    <p class="fragment fade-in">2. to create deep links into an edition's generative history, allowing users to transparently see all the manuscript witnesses to a given quotation and its sources.</p>
+    <p class="fragment fade-in">3. to auto-generate indices of sources AND indices of influences (future use)</p>
+    <p class="fragment fade-in">4. to use these indices to build recommendations of related passages for discovery and exploration.</p>
+    
+  </section>
+  <section data-markdown>
+    ## 1. Instantaneous Citations and Footnotes
+    </section>
+    <section data-markdown>
+      ## Citations as a human readable list of containers
+      
+      Work, Book, Chapter
+      
+      Or
+      
+      1959 edition, volume 35,  p. 123.
+    </section>
+   <section>
+    <h3>The problem with container based references</h3>
+
+      <p class="fragment fade-in">1. Container references are not sufficient granular and imprecise.</p>
+        <p class="fragment fade-in" style="font-size: 24px;">Text Hierarchy Reference (e.g. Work, Book, Chapter) are not sufficiently granular and do not provide enough information to find any specific witness</p>
+        <p class="fragment fade-in" style="font-size: 24px;">Material Hierarchy References (e.g. 1959 edition, volume 35,  p. 123) are also not sufficiently granular and their page references does not apply to other witnesses.</p>
+      <p class="fragment fade-in">2. Resolving container based references is laborious and has to be repeated for every resolution.</p>
+    </section>
+    <section data-markdown data-background="https://s3.amazonaws.com/lum-faculty-jcwitt-public/web.jpg" data-state="opaquebg">
+      ## Citations as granular unit level unique identifiers with hierarchial relationships
+    </section>
+  <section data-background="{{ site.assets_url }}2021-10-29-Nijmegen/NetherLandsPaperMap.jpg" data-background-size="contain">
+    <p style="background-color: azure;">We used to use containers to find granular places</p>
+  </section>
+  <section data-background="{{ site.assets_url }}2021-10-29-Nijmegen/GoogleMapsNijmegenConferenceCenter.png" data-background-size="contain">
+    <p style="background-color: azure;">Now we use the abstract id of granular places, and let the places locate themselves along with all their containers</p>
+  </section>
+  <section data-markdown>
+    ### A GPS coordinates for our texts
+  </section>
+  <section data-background="{{ site.assets_url }}PeterOfSpainBerlin-2019-09-20/ModifiedFRBR.svg" data-background-size="contain">
+    <!-- slide of text hierarchy-->
+  </section>
+  <section data-background="{{ site.assets_url }}textExpansion/Folie1.png" data-background-size="contain">
+  </section>
+  <section data-background="{{ site.assets_url }}textExpansion/Folie2.png" data-background-size="contain">
+  </section>
+  <section data-background="{{ site.assets_url }}textExpansion/Folie3.png" data-background-size="contain">
+  </section>
+  <section data-background="{{ site.assets_url }}textExpansion/Folie4.png" data-background-size="contain">
+  </section>
+  <section data-background="{{ site.assets_url }}textExpansion/Folie5.png" data-background-size="contain">
+  </section>
+  <section data-background="{{ site.assets_url }}textExpansion/Folie6.png" data-background-size="contain">
+  </section>
+  <section data-background="{{ site.assets_url }}textExpansion/Folie7.png" data-background-size="contain">
+  </section>
+  <section data-background="{{ site.assets_url }}textExpansion/Folie9.png" data-background-size="contain"></section>
+
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/LasCasasMairCitationsWithoutImages.png" data-background-size="contain">
+    <!-- Las Casas Citation constructions example with manuscript and folio designation -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/printFootnotes2.png" data-background-size="contain">
+    <!-- Print  footnotes -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/printFootnotes.png" data-background-size="contain">
+    <!-- Print  footnotes -->
+  </section>
+  
+  <section data-markdown>
+    ## 2. Deep Links into the Generative History of an Edition
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/LasCasasMairCitations.png" data-background-size="contain"></section>
+  <!-- 2: mansucript image consultation -->
+  <!-- <section data-background="{{ site.assets_url }}2026-03-19-providence/LasCasasMair1.png" data-background-size="contain">
+     Slide of las casas citation of major with highlight in sub window with image revealed
+     (slide of las casas citation of major with highlight in sub window with image revealed;
+    image of las casas witness in bottom window and major witness in side bar) 
+  </section> -->
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/LasCasasMair2.png" data-background-size="contain"></section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/lasCasas2Witnesses.png" data-background-size="contain"></section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/LasCasas2WitnessesWithMair.png" data-background-size="contain"></section>
+  <section data-background="{{ site.assets_url }}2025-06-18-seville/imageByParagraphConsultation.gif">
+    <!-- Final Gif of moving through plaoul text images and collation table and mirador) -->
+  </section>
+  <section data-markdown>
+    ## 3. Auto Generated Indices of Sources and Influences
+  </section>
+  <!-- 3: Index examples -->
+  <section  data-background="{{ site.assets_url }}2025-06-18-seville/citationTableLasAgainstBible.png" data-background-size="contain">
+    <!-- Gif citation Table of use of bible verses -->
+  </section>
+  
+  <section data-background="{{ site.assets_url}}2026-03-19-providence/romansReverseIndexHeatMap.gif">
+<!--
+    Reverse index heat map example of bible verses-->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/bibleCitationIndex.gif" data-background-size="contain">
+    <!-- Bible index page  -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/MairCitedByHeatMap.png" data-background-size="contain">
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/printIndex.png" data-background-size="contain">
+    <!-- Print  Index -->
+  </section>
+  
+  <section data-markdown>
+    ## 4.  Using Indices to Build Recommendations of Related Passages for Discovery and Exploration
+  </section>
+  <!-- 4: Recommender examples -->
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/StrasburgScholion.png" data-background-size="contain">
+    <!-- Picture of Thomas of Strasburg Scholion -->
+  </section>
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/ScotusScholion.png" data-background-size="contain">
+    <!-- Picture of Scotus Scholion -->
+  </section>
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/AquinasScholion.png" data-background-size="contain">
+    <!-- Picture of Aquinas Scholion -->
+  </section>
+  <section  data-background="{{ site.assets_url }}2025-06-18-seville/citationTableLasAgainstAll.png" data-background-size="contain">
+    <!-- Gif citation Table against all texts -->
+  </section>
+  
+  <section data-background="{{ site.assets_url }}2026-03-05-vienna/recommendation_list_grouped_sorted_citation.png" data-background-size="contain">
+    <!-- Picture of Lombard Press Grouped by Hierarchy (recorded) -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/progressivePublicationAndCorrection.png" data-background-size="contain">
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Final Thoughts</h2>
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/MultipleViews.png" data-background-size="contain">
+  </section>
+  <section data-background="{{ site.assets_url }}scta-home-page.png" data-background-size="contain">
+  </section>
+  <section data-markdown>
+      ## Threefold Mission of the SCTA
+      
+      1. To develop field standards
+      2. To aggregate data created according to field standards
+      3. To publish aggregated data for open and creative re-use by the community.
+    </section>
+  <section data-markdown>
+    ## Thank You
+    
+    ### Questions and Comments
+    
+  </section>
+</section>
+<section>
+  <section data-markdown>
+    ## Scholastic Commentaries and Texts Archive
+  </section>
+  <section data-markdown data-background="{{ site.assets_url }}scta-home-page.png" data-background-size="contain" data-state="opaquebg">
+    ### SCTA as new kind of Scholarly Society
+  </section>
+  <section data-markdown>
+    ## Threefold Mission of the SCTA
+
+    1. To develop field standards
+    2. To aggregate data created according to field standards
+    3. To publish aggregated data for open and creative re-use by the community.
+  </section>
+  <section data-markdown>
+    ### The "Platform Effect"
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/comments.gif" data-background-size="contain">
+    <!-- Slide of alternative viewers (Reader) -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/slideDeck.gif" data-background-size="contain">
+    <!-- Slide of alternative viewers (Print) -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/customPrint.gif" data-background-size="contain">
+    <!-- Custom Print -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/customPrint2.gif" data-background-size="contain">
+    <!-- Custom Print -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/correctionFromSlide.png" data-background-size="contain">
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/membership.png" data-background-size="contain">
+  </section>
+  <section data-markdown>
+    ## Thanks You 
+    ### Questions and Comments?
+  </section>
+</section>
+
