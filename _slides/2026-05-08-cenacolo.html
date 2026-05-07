@@ -1,0 +1,308 @@
+---
+layout: slide
+title: "Using Large Language Models and AI Agents to Create an Index Biblicus Scholasticus"
+description:
+date: 2026-05-08
+theme: white
+transition: slide
+tags: scta
+size: full
+---
+
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<section>
+  <h3>Using Large Language Models and AI Agents to Create an Index Biblicus Scholasticus</h3>
+  <hr />
+  <p>Jeffrey C. Witt (Loyola University Maryland) <br /> <a
+      href="https://jeffreycwitt.com/">https://jeffreycwitt.com</a> | jcwitt@loyola.edu</p>
+  <hr />
+  <p>May 8, 2026, Univeristy of Towson, Towson, MD</p>
+  <hr />
+  <p>Slide Deck: <a
+    href="http://jeffreycwitt.com/slides/2026-05-08-cenacolo">http://jeffreycwitt.com/slides/2026-05-08-cenacolo</a>
+    </p>
+  
+  <p style="font-size: 14px;"><a>https://creativecommons.org/licenses/by-nc-sa/4.0/</a></p>
+</section>
+<section>
+  <section data-markdown>
+    ## Part 1: A GPS for Scholastic Texts 
+  </section>
+  <!-- <section data-background="{{ site.assets_url }}2025-06-18-seville/apologia8missingAquinasRef.png" data-background-size="contain">
+    las casas c. 8 with missing Aquinas ref 
+  </section> -->
+  <section>
+    <h3>The problem with container based references</h3>
+    <p>Material Container References: "1959 edition, volume 35,  p. 123"</p>
+
+    <p class="fragment fade-in">1. Container references are not sufficiently granular and imprecise.</p>
+    <p class="fragment fade-in">2. References are tethered to a specific physical volume or presentation.</p>
+    <p class="fragment fade-in">3. References via the material container are detached from important context information.</p>
+  </section>
+  <section data-markdown data-background="https://s3.amazonaws.com/lum-faculty-jcwitt-public/web.jpg" data-state="opaquebg">
+      In contrast, we need to think about our corpus as a giant pool of granular and identifiable fragments of text, 
+      that share hierarchical and non-hierarchical relationships with one another. 
+  </section>
+    <section data-background="{{ site.assets_url }}2021-10-29-Nijmegen/NetherLandsPaperMap.jpg" data-background-size="contain">
+      <p style="background-color: azure;">We used to use containers to find granular places</p>
+    </section>
+    <section data-background="{{ site.assets_url }}2021-10-29-Nijmegen/GoogleMapsNijmegenConferenceCenter.png" data-background-size="contain">
+      <p style="background-color: azure;">Now we use the abstract id of granular places, and let the places locate themselves along with all their containers</p>
+    </section>
+    <section data-markdown>
+      ### A GPS coordinates for our texts
+    </section>
+    <section data-background="{{ site.assets_url }}PeterOfSpainBerlin-2019-09-20/ModifiedFRBR.svg" data-background-size="contain">
+      <!-- slide of text hierarchy-->
+    </section>
+    <section data-background="{{ site.assets_url }}textExpansion/Folie1.png" data-background-size="contain">
+    </section>
+    <section data-background="{{ site.assets_url }}textExpansion/Folie2.png" data-background-size="contain">
+    </section>
+    <section data-background="{{ site.assets_url }}textExpansion/Folie3.png" data-background-size="contain">
+    </section>
+    <section data-background="{{ site.assets_url }}textExpansion/Folie4.png" data-background-size="contain">
+    </section>
+    <section data-background="{{ site.assets_url }}textExpansion/Folie5.png" data-background-size="contain">
+    </section>
+    <section data-background="{{ site.assets_url }}textExpansion/Folie6.png" data-background-size="contain">
+    </section>
+    <section data-background="{{ site.assets_url }}textExpansion/Folie7.png" data-background-size="contain">
+    </section>
+    <section data-background="{{ site.assets_url }}textExpansion/Folie9.png" data-background-size="contain"></section>
+
+    <section data-background="{{ site.assets_url }}2026-03-19-providence/LasCasasMairCitationsWithoutImages.png" data-background-size="contain">
+      <!-- Las Casas Citation constructions example with manuscript and folio designation -->
+    </section>
+    <section data-background="{{ site.assets_url }}2026-03-19-providence/printFootnotes2.png" data-background-size="contain">
+      <!-- Print  footnotes -->
+    </section>
+    <section data-background="{{ site.assets_url }}2026-03-19-providence/printFootnotes.png" data-background-size="contain">
+      <!-- Print  footnotes -->
+    </section>
+  </section>
+  <section>
+    <section data-markdown>
+      ## Part 2: Deploying AI Agents
+    </section>
+    <section data-markdown>
+  What we need our AI agent to do.
+
+  1. request a paragraph fragment from the pool of data using its unique identifier
+  2. request a candidate bible verse fragment from the pool of data using its unique identifier
+  3. make a decision about whether the bible verse really is quoted within that paragraph
+  4. if present, identify the quoting fragment of the paragraph and mint a new unique identifier
+  5. if present, identify the quoted fragment of the bible verse (e.g. words 4-11)
+  6. link the quoting fragment to the quoted fragment.
+    </section>
+    <section data-markdown>
+```js
+{
+  "name": "textLookup",
+  "description": "Retrieves the text content for a given SCTA resource identifier.",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "resourceId": {
+        "type": "string",
+        "description": "The SCTA resource identifier. Can be a full URL (e.g., 'http://scta.info/resource/rom1_1') or a short ID (e.g., 'rom1_1')."
+      }
+    },
+    "required": ["resourceId"]
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "resourceId": {
+        "type": "string",
+        "description": "The full SCTA resource ID"
+      },
+      "text": {
+        "type": "string",
+        "description": "The text content of the resource"
+      }
+    }
+  },
+  "endpoint": "http://localhost:3001/textLookup",
+  "method": "POST"
+}
+```
+    </section>
+    <section data-background="{{ site.assets_url }}2026-03-19-providence/bibleRomansNgramMatching.png" data-background-size="contain">
+      <!-- Bible ngram visualization -->
+    </section>
+    <section data-background="{{ site.assets_url }}2026-03-19-providence/bibleCandidates.png" data-background-size="contain">
+      <!-- Candidate file -->
+    </section>
+    <section data-markdown>
+```js
+{
+      "name": "textRangeIdentify",
+      "description": "Finds the token position range of a quote fragment within a source text identified by SCTA resource ID.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "resourceId": {
+            "type": "string",
+            "description": "The SCTA resource identifier. Can be a full URL (e.g., 'http://scta.info/resource/rom1_1') or a short ID (e.g., 'rom1_1')."
+          },
+          "quoteFragment": {
+            "type": "string",
+            "description": "The text fragment to locate within the source text."
+          }
+        },
+        "required": ["resourceId", "quoteFragment"]
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {
+          "resourceId": {
+            "type": "string",
+            "description": "The full SCTA resource ID"
+          },
+          "quoteFragment": {
+            "type": "string",
+            "description": "The quote fragment searched for"
+          },
+          "start": {
+            "type": "number",
+            "description": "Starting token position (1-indexed)"
+          },
+          "end": {
+            "type": "number",
+            "description": "Ending token position (1-indexed)"
+          },
+          "found": {
+            "type": "boolean",
+            "description": "Whether the quote fragment was found"
+          }
+        }
+      },
+      "endpoint": "http://localhost:3001/textRangeIdentify",
+      "method": "POST"
+    }
+```
+    </section>
+    <section data-background="{{ site.assets_url }}2026-03-19-providence/bibleMarkingPrompt.png" data-background-size="contain">
+      <!-- prompt -->
+    </section>
+    <section data-background="{{ site.assets_url }}2026-03-19-providence/bibleMarkingPrompt2.png" data-background-size="contain">
+      <!-- prompt -->
+    </section>
+    <section   data-background="{{ site.assets_url }}2026-05-08-cenacolo/claudeBibleQuotes.gif" data-background-size="contain">
+
+    </section>
+    <section data-background="{{ site.assets_url }}2026-03-19-providence/bibleMarkingProcess.gif" data-background-size="contain">
+      <!-- Video of bible verse marking -->
+      <!-- could do an Augustine version if we want -->
+    </section>
+    <section data-background="{{ site.assets_url }}2026-03-19-providence/bibleRefMarkingPostReport.png" data-background-size="contain">
+      <!-- Slide of marked bible refs -->
+    </section>
+    <section data-background="{{ site.assets_url }}2026-05-08-cenacolo/bibleCitationTable.png" data-background-size="contain">
+      <!-- Slide of table showing all bible quotes -->
+    </section>
+  </section>
+  <section>
+    <section data-markdown>
+      ## Part 3: Making the most of a machine actionable index
+    </section>
+    <section data-background="{{ site.assets_url }}2025-07-10-leeds/StrasburgScholion.png" data-background-size="contain">
+      <!-- Picture of Thomas of Strasburg Scholion -->
+    </section>
+    <section data-background="{{ site.assets_url }}2025-07-10-leeds/ScotusScholion.png" data-background-size="contain">
+      <!-- Picture of Scotus Scholion -->
+    </section>
+    <section data-background="{{ site.assets_url }}2025-07-10-leeds/AquinasScholion.png" data-background-size="contain">
+      <!-- Picture of Aquinas Scholion -->
+    </section>
+    <section data-background="{{ site.assets_url }}2026-05-08-cenacolo/bibleCitationTable.png" data-background-size="contain">
+      <!-- Slide of table showing all bible quotes -->
+    </section>
+    <section data-background="{{ site.assets_url }}2026-05-08-cenacolo/lombardBooks_bible.png" data-background-size="contain">
+      <!-- Slide of table showing all Lombard Books Citing Bible verses  -->
+    </section>
+    <section data-background="{{ site.assets_url }}2026-05-08-cenacolo/distinctions_bible.png" data-background-size="contain">
+      <!-- Slide of table showing all Lombard Distinctions Books Citing Bible verses  -->
+    </section>
+    <section data-background="{{ site.assets_url }}2026-05-08-cenacolo/TSNE0.png" data-background-size="contain">
+    </section>
+    <section data-background="{{ site.assets_url }}2026-05-08-cenacolo/TSNE1.png" data-background-size="contain">
+      <!-- TSNE 1 -->
+    </section>
+    <section data-background="{{ site.assets_url }}2026-05-08-cenacolo/TSNE2.png" data-background-size="contain">
+      <!-- TSNE 2 -->
+    </section>
+    <section data-background="{{ site.assets_url }}2026-05-08-cenacolo/TSNE3.png" data-background-size="contain">
+      <!-- TSNE 3 -->
+    </section>
+    <section data-background="{{ site.assets_url }}2026-05-08-cenacolo/Recommendation.png" data-background-size="contain">
+      <!-- Recommendation from Aquinas to Las Casas -->
+    </section>
+    <!-- <section  data-background="{{ site.assets_url }}2025-06-18-seville/neighborhoodNetwork.png" data-background-size="contain">
+      
+    </section> -->
+    
+    <!-- <section>
+      Prompt for LLM to explain passage in context of passages related through shared use of a bible verse:
+      
+      `You are an instructor of medieval scholastic philosophy. 
+      Your job is to explain the following text and its importance to an English-speaking student. 
+      Can you summarize and explain the following text in approximately 300 words? 
+      If the main text seems to oppose or argue with any related text please explain the argument. \n\n`;
+
+      ### Below is Main Text with its specific ID and text. 
+      Please use this ID when referring to the main text with the following pattern ID: <id> Important! Always use this EXACT ID###\n\n`
+
+      ### Below are Related Paragraphs with their specific IDs and text. 
+      Please use these IDs when referring to any related text with the following pattern ID: <id> Important! Always use this EXACT ID\n\n`
+        
+    </section> -->
+    <!-- <section  data-background="{{ site.assets_url }}2026-05-08-cenacolo/romans13_1_chatbot1.png" data-background-size="contain"></section> -->
+    <section data-background="{{ site.assets_url }}2026-05-08-cenacolo/romans13_1_chatbot_2.png" data-background-size="contain">
+
+    </section>
+    <section data-background="{{ site.assets_url }}2026-05-08-cenacolo/openevidence.png" data-background-size="contain">
+      <!-- Comparison to Open Evidence -->
+    </section>
+    <!-- <section  data-background="{{ site.assets_url }}2025-06-18-seville/chatBotSummary2.png" data-background-size="contain">
+      LLM Gif Neighborhood relatedness with LLM 
+      <div class="fragment fade-in" style="background-color: white; padding: 30px;">
+        <p>
+          "However, document Z4Yt34-d1e1156-d1e963, written by Melchor Cano, presents a more nuanced view of infidelity, arguing that it can be understood in three ways: as a pure negation of faith, as a contrary position to faith, or as a middle ground between the two. According to Cano, only the second type of infidelity, which involves a deliberate rejection of faith, is considered as a sin."
+        </p>
+        </div>
+    </section> -->
+    <section data-background="{{ site.assets_url }}2026-05-08-cenacolo/printLasCasasIndex.png" data-background-size="contain">
+      <!-- Las Casas Print Index -->
+    </section>
+    <section data-background="{{ site.assets_url }}2026-05-08-cenacolo/printInput.png" data-background-size="contain">
+      <!-- Print input -->
+    </section>
+    <section data-background="{{ site.assets_url }}2026-05-08-cenacolo/printD44Toc.png" data-background-size="contain">
+      <!-- Print index output -->
+    </section>
+    <section data-background="{{ site.assets_url }}2026-05-08-cenacolo/printD44Index.png" data-background-size="contain">
+      <!-- In conclusion -->
+    </section>
+  </section>
+  <section>
+    <section>
+      <h2>Conclusion</h2>
+
+      <p class="fragment fade-in">1: AI can be positively used in our field when the texts are prepared as data first.</p>
+      <p class="fragment fade-in">2: The traditional publication paradigm is in conflict with the data-first paradigm required to use AI effectively.</p>
+      <p class="fragment fade-in">C: If we want to repeat the benefts of AI, there is an urgent need for scholarly editors and academic institutions to support and demand a new publication workflow.</p>
+
+    </section>
+    <section data-markdown>
+      ## Contact me!
+
+      * Interested in editing a scholastic text as machine actionable data? Contact me!
+      * Interested in using the Index Biblicus Scholasticus for research? Contact me!
+
+      * jcwitt@loyola.edu
+    </section>
+  </section>
