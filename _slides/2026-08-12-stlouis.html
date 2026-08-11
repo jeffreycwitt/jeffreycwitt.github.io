@@ -1,0 +1,426 @@
+---
+layout: slide
+title: "Connecting the Scholastic Corpus"
+description:
+date: 2026-08-12
+theme: white
+transition: slide
+tags: scta
+size: full
+---
+
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<section>
+  <h3>Connecting the Scholastic Corpus</h3>
+  <hr />
+  <p>Jeffrey C. Witt (Loyola University Maryland) <br /> <a
+      href="https://jeffreycwitt.com/">https://jeffreycwitt.com</a> | jcwitt@loyola.edu</p>
+  <hr />
+  <p>August 12, 2026, St. Louis University, St. Louis, MO</p>
+  <hr />
+  <p>Slide Deck: <a
+    href="http://jeffreycwitt.com/slides/2026-08-12-stlouis">http://jeffreycwitt.com/slides/2026-08-12-stlouis</a>
+    </p>
+  
+  <p style="font-size: 14px;"><a>https://creativecommons.org/licenses/by-nc-sa/4.0/</a></p>
+</section>
+<section>
+<section data-markdown>
+# Introduction
+</section>
+<section data-markdown data-background="{{ site.assets_url }}scta-home-page.png" data-background-size="contain">
+<!-- ### SCTA as a new kind of Scholarly Society -->
+</section>
+<section data-markdown>
+# The Problem
+
+There is a contradiction between the means of production and the relations of production
+</section>
+<section>
+<h1>Drawbacks to the Print Publication Paradigm</h1>
+
+<div>
+<p class="fragment fade-in">1. Progress is slow</p>
+<p class="fragment fade-in">2. Work is isolated and fragmented</p>
+<p class="fragment fade-in">3. Access is tightly controlled</p>
+</div>
+
+</section>
+<section  data-background="{{ site.assets_url }}2026-03-19-providence/atomic.png" data-background-size="contain">
+  <!-- atom workflow diagram slide-->
+</section>
+<section  data-background="{{ site.assets_url }}2026-03-19-providence/sediment.png" data-background-size="contain">
+  <!-- Sediment layer workflow slide -->
+</section>
+<section data-markdown data-background="https://s3.amazonaws.com/lum-faculty-jcwitt-public/web.jpg" data-background-size="contain">
+
+</section>
+<section data-markdown>
+  ## Field Standards
+
+  * How do we name files
+  * Where do files live
+  * how do we organize files
+  * How do we structure the contents of files
+
+---
+  
+These banal and boring questions are crucial. It is this organization that allows us to apply automated tools. If they are not answered, then we miss out on the ability to automate workflows and scale our work.
+
+---
+
+The specific answer we give is not that important. 
+  
+What is important is that we have the **same** answer.
+
+</section>
+<section data-background="{{ site.assets_url }}2026-03-19-providence/workflow.png" data-background-size="contain">
+    <!-- Basic Workflow image 
+    OCR/HTR -> Line Text and Coordinate capture -> TEI/XML Text Segmentation -> File splitting, organization -> Github publication -> Down stream Visualization and/or Analysis -->
+</section>
+<section data-background="{{ site.assets_url }}2026-03-19-providence/GithubFileOrgAndSegmentation.png" data-background-size="contain">
+    <!-- Segmentation of Structure of Canon Law Text
+    Slide of github publication and file organization -->
+  </section>
+<section  data-background="{{ site.assets_url }}2026-03-19-providence/atomic-sediment-compare.png" data-background-size="contain">
+  <!-- atomic workflow and sediment workflow side by side -->
+</section>
+<section data-background="{{ site.assets_url }}2021-10-29-Nijmegen/Payoff.png" data-background-size="contain">
+  <!-- slide of effort to time ratio -->
+</section>
+<section data-markdown>
+    ## Threefold Mission of the Scholastic Commentaries and Texts Archive (SCTA)
+
+    1. To develop field standards
+    2. To aggregate data created according to field standards
+    3. To publish aggregated data for open and creative re-use by the community.
+  </section>
+  <section data-markdown>
+    # Examples
+
+    1. Raw Text Similarity Detection
+    2. Automated Citation Detection, Indices, and Recommendations
+
+  </section>
+</section>
+<section>
+  <section data-markdown>
+    ## Example 1 
+    
+    ### Texts Similarity Detection
+  </section>
+  
+  <section data-markdown>
+
+"The cat is on the mat"
+
+---
+
+4-grams
+
+---
+
+"the cat is on"
+
+"cat is on the"
+
+"is on the mat"
+</section>
+<section>
+  <h3>Paragraph (Document) Feature Vector 
+    <br/>
+    as 
+    <br/>
+    Vector recording ngram presence (1) or absence (0)</h3>
+
+  <table class="c18" style="font-size: 16px"><tbody>
+    <tr class="c5"><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">Paragraph</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram2</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram3</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram4</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram5</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram6</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram7</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram8</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram9</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram10</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram11</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram12</span></p></td></tr>
+    <tr class="c5"><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">Doc A</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td>
+    </tr>
+  </tbody>
+</table>
+</section>
+<section>
+  Intersection of shared ngrams in Docs A and B 
+  <br/>
+  as 
+  <br/>
+  Dot Product of Document Feature Vectors
+
+  $$ A \cdot B = \sum\limits_{i=1}^{n}{A_i  B_i} $$
+  
+  If Dot Product of A and B >= 6, then Doc Vectors A and B are "similar"
+
+  <hr/>
+  <div>
+    <table class="c18" style="font-size: 16px">
+      <tbody>
+        <tr class="c5">
+          <td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">Paragraph</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram2</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram3</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram4</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram5</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram6</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram7</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram8</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram9</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram10</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram11</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">4gram12</span></p></td>
+          <td class="c4 c15" colspan="1" rowspan="1">sum</td>
+        </tr><tr class="c5"><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">Doc A</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td>
+            
+            <td class="c4 c15" colspan="1" rowspan="1">8</td>
+          
+          </tr><tr class="c5"><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">Doc B</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1</span></p></td>
+          
+            <td class="c4 c15" colspan="1" rowspan="1">10</td>
+
+          </tr><tr class="c5"><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">A * B (Dot Product Vector) </span></p></td><td class="c4 c15" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x1=1</span></p></td><td class="c4 c15" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x1=1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0x1=0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x0=0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0x1=0</span></p></td><td class="c4 c15" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x1=1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0x0=0</span></p></td><td class="c4 c15" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x1=1</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0x0=0</span></p></td><td class="c4" colspan="1" rowspan="1"><p class="c14"><span class="c1">0x1=0</span></p></td><td class="c4 c15" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x1=1</span></p></td><td class="c4 c15" colspan="1" rowspan="1"><p class="c14"><span class="c1">1x1=1</span></p></td>
+            <td class="c4 c15" colspan="1" rowspan="1"><p class="c14"><span class="c1">6</span></p></td>
+            </tr>
+      </tbody>
+    </table>
+    </div>
+</section>
+<section data-markdown>
+
+  ![intersection]({{ site.assets_url }}2023-02-01/image5.png)
+  
+  Similarity = X is similar to Y, if and only if 
+  
+  $$ \\#\\{ a | \forall{ng}\forall{x}\forall{y}(IsFoundIn(ng,x) \land IsFoundIn(ng,y) \land x \neq y \\} >= n $$
+  
+  where n = 6
+    
+  </section>
+  <section data-background="{{ site.assets_url }}2023-02-01/image14.png" data-background-size="contain">
+    <!-- Image of ngram viz for gracilis book 1 without annotation -->
+  </section>
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/GracilisMarcolinoQ1.png" data-background-size="contain">
+    <!-- image of gracilis marcolino q1 -->
+     <div class="fragment fade-in">
+      <img src="{{ site.assets_url }}2025-07-10-leeds/GracilisBasilParagraphCompare.png" style="width: 70%; height: auto; text-align: right">
+     </div>
+  </section>
+  <section data-markdown>
+    “...Only by a **lucky coincidence** [emphasis mine] was I enabled to "unmask" Gracilis' dubious literary honesty. (See Trapp, Damasus, "Augustinian Theology of the 14th Century," Augustiniana 6 (1956): 147-274, p. 254.)
+  </section>
+  <section data-background="{{ site.assets_url }}2023-02-01/image7.png" data-background-size="contain">
+    <!-- Image of marcolino article -->
+  </section>
+  <section data-background="{{ site.assets_url }}2023-02-01/image24.png" data-background-size="contain">
+    <!-- ngram viz for gracilis with Annotation -->
+  </section>
+  <!-- <section data-background="{{ site.assets_url }}2025-07-10-leeds/GracilsB1Q38-ConvolutionSimilarities.png" data-background-size="contain">
+    ngram viz for gracilis with Annotation
+  </section> -->
+  <!-- <section data-background="{{ site.assets_url }}2023-02-01/image26.png" data-background-size="contain">
+    Now that we know what we're looking for, we have the potential to repeat this for every make discoveries about people we already expect are compilers, 
+    but use the computer to discover the patterns that we would otherwise not suspect
+
+    Here's a viz from the Sentences Commentary of Albert the Great. Clearly there are lots of cases of re-use, 
+
+    but we can't just go about cataloguing this with our eyes for each text, we need to enable to computer to move through each matrix, 
+  </section> -->
+  <section>
+    Detecting Successive Text Re-use 
+    
+    at Scale 
+    
+    with Convolution
+    
+    <div class="fragment fade-in">
+      <table>
+  <tbody>
+    <tr>
+      <td data-markdown>
+||5|6|7|8|9|10|11|12|
+|---|---|---|---|---|---|---|---|---|---|
+|2|0|0|0|0|0|0|0|0|
+|3|0|0|**0**|**0**|**0**|**0**|0|0|
+|4|0|0|**0**|**1**|**0**|**0**|0|0|
+|5|0|0|**0**|**0**|**1**|**0**|0|0|
+|6|0|0|**0**|**0**|**0**|**1**|0|0|
+|7|0|0|0|0|0|0|0|0|
+|8|0|0|0|0|0|0|0|0|
+|9|0|0|0|0|0|0|0|0|
+      </td>
+      </tr>
+      </tbody>
+      </table>
+    </div>
+  </section>
+  <section>
+ <table>
+  <tbody>
+    <tr>
+      <td data-markdown>
+||5|6|7|8|9|10|11|12|
+|---|---|---|---|---|---|---|---|---|---|
+|2|0|0|0|0|0|0|0|0|
+|3|0|0|**0**|**0**|**0**|**0**|0|0|
+|4|0|0|**0**|**1**|**0**|**0**|0|0|
+|5|0|0|**0**|**0**|**1**|**0**|0|0|
+|6|0|0|**0**|**0**|**0**|**1**|0|0|
+|7|0|0|0|0|0|0|0|0|
+|8|0|0|0|0|0|0|0|0|
+|9|0|0|0|0|0|0|0|0|
+      </td>
+      <td><p>X</p></td>
+<td data-markdown>
+|||||
+|---|---|---|
+|1|0|0|0|
+|0|1|0|0|
+|0|0|1|0|
+|0|0|0|1|
+</td>
+<td><p>=</p></td>
+<td data-markdown>
+  |||||
+  |---|---|---|---|
+  |0|0|0|0|
+  |0|1|0|0|
+  |0|0|1|0|
+  |0|0|0|1|
+  </td>
+  <td><p>=</p></td>
+  <td><p>3</p></td>
+</tr>
+</tbody>
+</table>   
+
+</section>
+<section data-background="{{ site.assets_url }}2025-07-10-leeds/ConvolutionReportExplore.gif" data-background-size="contain">
+  <!-- Gif of exploring Convolution Report -->
+</section>
+<!-- <section data-background="{{ site.assets_url }}2025-07-10-leeds/GracilisB1Q1-ConvolutionDurandus.png" data-background-size="contain">
+    And coming back to our earlier example, we can see that what vector similarity ranked as 486, convolution singled out as 1 or 2 relevant results.    
+    ngram viz for gracilis with Annotation
+  </section> -->
+<section data-background="{{ site.assets_url }}2025-07-10-leeds/ConvolutionReportExplore2.gif" data-background-size="contain">
+  <!-- Gif of exploring Convolution Report -->
+</section>
+<section data-background="{{ site.assets_url }}2025-07-10-leeds/SuarezNgramAgainstAll.png" data-background-size="contain">
+ 
+</section>
+<section data-background="{{ site.assets_url }}2025-07-10-leeds/SuarezVsYavorsky.png" data-background-size="contain">
+ <!-- suarez vs yavorsky -->
+</section>
+<!-- <section data-background="{{ site.assets_url }}2025-07-10-leeds/YavorskyVsAll.png" data-background-size="contain">
+ Yavorsky vs All
+</section> -->
+<!-- <section data-background="{{ site.assets_url }}2025-07-10-leeds/YavorskyVsSuarez.png" data-background-size="contain">
+ Yavorsky vs Suarez
+</section> -->
+<section data-background="{{ site.assets_url }}2025-07-10-leeds/YavorskyVsSuarez.png" data-background-size="contain">
+ <!-- Yavorsky vs Suarez -->
+</section>
+<!-- <section data-background="{{ site.assets_url }}2025-07-10-leeds/YavorskyVsSuarezWithComparison.png" data-background-size="contain">
+ Yavorsky vs Suarez with Comparison 
+</section> -->
+<section data-background="{{ site.assets_url }}2025-07-10-leeds/YavorskyVsAquinas.png" data-background-size="contain">
+ <!-- Yavorsky vs Aquinas -->
+</section>
+</section>
+<section>
+  <section data-markdown>
+    ## Example 2
+    
+    ### Automated Citation Detection, Indices, and Recommendations
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/bibleRomansNgramMatching.png" data-background-size="contain">
+    <!-- Bible ngram visualization -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/bibleCandidates.png" data-background-size="contain">
+    <!-- Candidate file -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/bibleMarkingPrompt.png" data-background-size="contain">
+    <!-- prompt -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/bibleMarkingPrompt2.png" data-background-size="contain">
+    <!-- prompt -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/bibleMarkingProcess.gif" data-background-size="contain">
+    <!-- Video of bible verse marking -->
+    <!-- could do an Augustine version if we want -->
+  </section>
+  <section data-background="{{ site.assets_url }}2026-03-19-providence/bibleRefMarkingPostReport.png" data-background-size="contain">
+    <!-- Slide of marked bible refs -->
+  </section>
+  <section data-background="{{ site.assets_url }}2025-06-18-seville/connectedGraph.gif" data-background-size="contain">
+    <!-- Cosmograph of all texts 
+    The compound effect of this the full network  -->
+  </section>
+  <section data-background-iframe="https://cosmograph.app/run/?data=https://gist.githubusercontent.com/jeffreycwitt/799d25df397548d9d759605b04a8aa63/raw/edges.csv&source=source&target=target&gravity=0.25&repulsion=1&repulsionTheta=1.15&linkSpring=1&linkDistance=10&friction=0.85&renderLabels=true&renderHoveredLabel=true&renderLinks=true&nodeSizeScale=1&linkWidthScale=1&linkArrowsSizeScale=1&nodeSize=size-incoming%20links&nodeColor=color-incoming%20links&linkWidth=width-number%20of%20data%20records&linkColor=color-number%20of%20data%20records&">  
+  </section>
+  <section data-background="{{ site.assets_url }}2025-07-10-leeds/StrasburgScholion.png" data-background-size="contain">
+      <!-- Picture of Thomas of Strasburg Scholion -->
+    </section>
+    <section data-background="{{ site.assets_url }}2025-07-10-leeds/ScotusScholion.png" data-background-size="contain">
+      <!-- Picture of Scotus Scholion -->
+    </section>
+    <section data-background="{{ site.assets_url }}2025-07-10-leeds/AquinasScholion.png" data-background-size="contain">
+      <!-- Picture of Aquinas Scholion -->
+    </section>
+  
+<section data-background="{{ site.assets_url }}2026-05-08-cenacolo/bibleCitationTable.png" data-background-size="contain">
+      <!-- Slide of table showing all bible quotes -->
+    </section>
+    <section data-background="{{ site.assets_url }}2026-05-08-cenacolo/lombardBooks_bible.png" data-background-size="contain">
+      <!-- Slide of table showing all Lombard Books Citing Bible verses  -->
+    </section>
+    <section data-background="{{ site.assets_url }}2026-05-08-cenacolo/distinctions_bible.png" data-background-size="contain">
+      <!-- Slide of table showing all Lombard Distinctions Books Citing Bible verses  -->
+    </section>
+  
+    <section data-background="{{ site.assets_url }}2026-05-08-cenacolo/TSNE0.png" data-background-size="contain">
+    </section>
+    <section data-background="{{ site.assets_url }}2026-05-08-cenacolo/TSNE1.png" data-background-size="contain">
+      <!-- TSNE 1 -->
+    </section>
+    <section data-background="{{ site.assets_url }}2026-05-08-cenacolo/TSNE2.png" data-background-size="contain">
+      <!-- TSNE 2 -->
+    </section>
+    <section data-background="{{ site.assets_url }}2026-05-08-cenacolo/TSNE3.png" data-background-size="contain">
+      <!-- TSNE 3 -->
+    </section>
+  
+    
+   <section data-background="{{ site.assets_url }}2026-05-08-cenacolo/Recommendation.png" data-background-size="contain">
+      <!-- Recommendation from Aquinas to Las Casas -->
+    </section>
+    
+   
+    <section data-background="{{ site.assets_url }}2026-05-08-cenacolo/romans13_1_chatbot_2.png" data-background-size="contain">
+
+    </section>
+    <section data-background="{{ site.assets_url }}2026-05-08-cenacolo/openevidence.png" data-background-size="contain">
+      <!-- Comparison to Open Evidence -->
+    </section>
+    
+    <section data-background="{{ site.assets_url }}2026-05-08-cenacolo/printLasCasasIndex.png" data-background-size="contain">
+      <!-- Las Casas Print Index -->
+    </section>
+    <section data-background="{{ site.assets_url }}2026-05-08-cenacolo/printInput.png" data-background-size="contain">
+      <!-- Print input -->
+    </section>
+    <section data-background="{{ site.assets_url }}2026-05-08-cenacolo/printD44Toc.png" data-background-size="contain">
+      <!-- Print index output -->
+    </section>
+    <section data-background="{{ site.assets_url }}2026-05-08-cenacolo/printD44Index.png" data-background-size="contain">
+      <!-- In conclusion -->
+    </section>
+
+</section>
+<section>
+   <section>
+      <h2>Conclusion</h2>
+
+      <p class="fragment fade-in">1: Machine Learning and AI tools can be positively used in our field when our texts are prepared as data first.</p>
+      <p class="fragment fade-in">2: The traditional publication paradigm is in conflict with the data-first paradigm required to corpus wide machine analysis.</p>
+      <p class="fragment fade-in">C: If we want to reap the benefits of machine analysis, there is an urgent need for scholarly editors and academic institutions to support and demand a new publication workflow.</p>
+
+    </section>
+    <section data-markdown>
+      ## Contact me!
+
+      * Interested in editing a scholastic text as machine actionable data? Contact me!
+      * Interested in using the [Index Biblicus Scholasticus](https://lombardpress.org/index-scholasticus) for research? Contact me!
+
+      * jcwitt@loyola.edu
+    </section>
+</section>
